@@ -7,15 +7,17 @@
 
 class errorController extends Controller {
 
-    function __construct() {
-        parent::__construct('admin', 'error');
+    function __construct($app, $module) {
+        parent::__construct($app, $module);
 
         $result = array(
             "status" => false,
             "message" => "URL not found"
         );
-        header('Content-Type: application/json');
-        echo json_encode($result);
+    }
+
+    function index() {
+        $this->view->loadView('index');
     }
 
 }

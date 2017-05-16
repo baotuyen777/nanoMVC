@@ -1,31 +1,24 @@
 <?php
 
-abstract class View {
+class View {
 
-    /** @var \Model */
-    public $model;
-
-    /** @var \result */
-    public $result;
-
-    /** @var \token */
-    public $token;
-
-    /** @var \requireFields */
-    public $requireFields = array();
-
-    function __construct() {
-        $this->result = array(
-            "status" => false,
-            "message" => "Something wrong!"
-        );
+    function __construct($app = 'front', $module = 'index') {
+        $this->app = $app;
+        $this->module = $module;
     }
 
     /**
-     * @function \loadModel
+     * 
+     * @param type $action
      */
-   
-
+    public function loadView($action) {
+        $path = SERVER_ROOT . 'apps/' . $this->app . '/' . $this->module . '/view/' . $action . '.php';
+        if (file_exists($path)) {
+            require 'layout/Header.php';
+            require $path;
+            require 'layout/Footer.php';
+        }
+    }
 
 }
 

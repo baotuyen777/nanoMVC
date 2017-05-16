@@ -2,16 +2,15 @@
 
 class IndexController extends Controller {
 
-    function __construct() {
-        parent::__construct('admin', 'index');
+    function __construct($app, $module) {
+        parent::__construct($app, $module);
     }
+
     function index() {
-        $result = array(
-            "status" => true,
-            "message" => "WellCome to NANO MVC!"
-        );
-        echo json_encode($result);
+        $this->view->msg = '11111';
+        $this->view->loadView('index');
     }
+
 }
 
 ?>

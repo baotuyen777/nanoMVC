@@ -5,63 +5,57 @@
  * and open the template in the editor.
  */
 
-abstract class Controller {
+class Controller {
 
     /** @var \Model */
     public $model;
 
-    /** @var \result */
-    public $result;
+    /** @var \view */
+    public $view;
 
-    /** @var \token */
-    public $token;
-
-    /** @var \requireFields */
-    public $requireFields = array();
-
-    function __construct() {
-//        $this->result = array(
-//            "status" => false,
-//            "message" => "Something wrong!"
-//        );
-      
-        
-//        $this->loadView($action);
+    function __construct($app, $module) {
+        $this->app = $app;
+        $this->module = $module;
+        $this->view = new View($app, $module);
     }
-//    function loadModule($app,$module,$action){
-//        $this->loadModel($app, $module);
-//        $this->loadView($action);
-//    }
+
+    function loadModule($action, $param = '') {
+
+        $classColtroller = $this->module . "Controller";
+        $this->controller = new $classColtroller($this->app, $this->module);
+        $this->loadAction($action, $param);
+        $this->loadModel($this->module, $this->app);
+    }
+
+    public function loadAction($action, $param = '') {
+        if (method_exists($this->controller, $action)) {
+            $this->controller->$action($param);
+        } else {
+            $this->error();
+        }
+    }
 
     /**
      * @function \loadModel
      */
-    public function loadModel($app,$module) {
-        $this->app=$app;
-        $this->module=$module;
-        $path = 'apps/' . $this->app . '/' . $this->module . '/model.php';
+    public function loadModel($module, $app = 'front') {
+        $path = 'apps/' . $app . '/' . $module . '/model.php';
         if (file_exists($path)) {
             require $path;
             $modelName = $module . 'Model';
             $this->model = new $modelName();
         }
-        
     }
 
     /**
      * 
-     * @param type $action
+     * @return boolean
      */
-    public function loadView($action) {
-        $path = 'apps/' .  $this->app . '/' . $this->module . '/view/'.$action.'.php';
-        var_dump($path);
-        if (file_exists($path)) {
-            require 'layout/Header.php';
-            require $path;
-            require 'layout/Footer.php';
-        }
+    function error() {
+        require 'apps/front/error/controller.php';
+        new errorController();
+        return FALSE;
     }
-
 
 }
 

@@ -62,11 +62,16 @@ class Bootstrap {
                 return;
             }
         }
-        $classColtroller = $module . "Controller";
-        $controller = new $classColtroller();
-        $controller->loadModel($app, $module);
-        $controller->loadView($action);
-        $this->loadMethod($controller, $action, $param);
+//        var_dump($file);die;
+//        $classColtroller = $module . "Controller";
+        $controller = new Controller($app, $module);
+        $controller->loadModule($action, $param);
+//        $classColtroller = $module . "Controller";
+//        $controller = new $classColtroller($app, $module);
+//        $controller = new $classColtroller();
+//        $controller->loadModel($app, $module);
+//        $controller->loadView($action);
+//        $this->loadMethod($controller, $action, $param);
     }
 
     /**
@@ -76,38 +81,37 @@ class Bootstrap {
      * @param type $param
      * @return boolean
      */
-    function loadMethod($controller, $action, $param) {
-        if (!$action) {
-            if (method_exists($controller, 'index')) {
-                $controller->index($param);
-            } else {
-                $this->error();
-            }
-        } else {
-            if (method_exists($controller, $action)) {
-                //calling method no param
-
-                if (isset($param)) {
-                    $controller->$action($param);
-                    return true;
-                }
-                $controller->$action();
-            } else {
-                $this->error();
-            }
-        }
-    }
+//    function loadMethod($controller, $action, $param) {
+//        if (!$action) {
+//            if (method_exists($controller, 'index')) {
+//                $controller->index($param);
+//            } else {
+//                $this->error();
+//            }
+//        } else {
+//            if (method_exists($controller, $action)) {
+//                //calling method no param
+//
+//                if (isset($param)) {
+//                    $controller->$action($param);
+//                    return true;
+//                }
+//                $controller->$action();
+//            } else {
+//                $this->error();
+//            }
+//        }
+//    }
 
     /**
      * 
      * @return boolean
      */
-    function error() {
-        require 'apps/front/error/controller.php';
-        new errorController();
-        return FALSE;
-    }
-
+//    function error() {
+//        require 'apps/front/error/controller.php';
+//        new errorController();
+//        return FALSE;
+//    }
 }
 
 ?>

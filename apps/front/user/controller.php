@@ -4,12 +4,11 @@ class UserController extends Controller {
 
 //    public $auth;
 
-    function __construct() {
-//        parent::__construct();
+    function __construct($app, $module) {
+        parent::__construct($app, $module);
     }
 
     function index($id) {
-        echo 222;
         if ($id) {
             $this->detail($id);
         } else {

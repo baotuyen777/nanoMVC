@@ -1,6 +1,17 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+define('DB_DSN', 'mysql:host=localhost;dbname=wordpress');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+
+//mail
+define('MAIL_USERNAME', 'test123.qsoft@gmail.com');
+define('MAIL_NAME','ZAIKO SYSTEM');
+define('MAIL_PASSWORD', '!@#$%$#@!');
+define('SITE_ROOT', 'http://localhost/nanoMVC/');
+
 define('DS', DIRECTORY_SEPARATOR);
 define('SERVER_ROOT', __DIR__ . DS);
 /**config */
@@ -9,6 +20,7 @@ require 'config.php';
 require 'libs/Bootstrap.php';
 require 'libs/Controller.php';
 require 'libs/Model.php';
+require 'libs/View.php';
 require 'libs/DB.php';
 
 require 'libs/Helper.php';
@@ -22,6 +34,5 @@ error_reporting(E_ALL & ~E_DEPRECATED);
 //        }else{
 //            require 'libs/lang/vi.lang.php';
 //        }
-
 $app = new Bootstrap();
 ?>
