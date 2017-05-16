@@ -2,9 +2,9 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-define('DB_DSN', 'mysql:host=localhost;dbname=wordpress');
+define('DB_DSN', 'mysql:host=localhost;dbname=nanoMVC');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', '1');
 
 //mail
 define('MAIL_USERNAME', 'test123.qsoft@gmail.com');

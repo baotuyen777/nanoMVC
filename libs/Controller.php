@@ -17,17 +17,17 @@ class Controller {
         $this->app = $app;
         $this->module = $module;
         $this->view = new View($app, $module);
-    }
-
-    function loadModule($action, $param = '') {
-
-        $classColtroller = $this->module . "Controller";
-        $this->controller = new $classColtroller($this->app, $this->module);
-        $this->loadAction($action, $param);
         $this->loadModel($this->module, $this->app);
     }
 
+//    function loadModule($action, $param = '') {
+//
+//        $this->loadAction($action, $param);
+//    }
+
     public function loadAction($action, $param = '') {
+        $classColtroller = $this->module . "Controller";
+        $this->controller = new $classColtroller($this->app, $this->module);
         if (method_exists($this->controller, $action)) {
             $this->controller->$action($param);
         } else {

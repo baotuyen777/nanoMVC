@@ -4,8 +4,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-class UserModel extends Model {
+class userModel extends Model {
 
     public $table = "users";
 

@@ -52,7 +52,7 @@ class UserController extends Controller {
      */
     function all() {
       
-
+//echo 111;
         $arrAllData = $this->model->getAllUser();
         $params = array(
             'postPerPage' => isset($_REQUEST['postPerPage']) ? filter_var($_REQUEST['postPerPage'], FILTER_SANITIZE_STRING) : 10,

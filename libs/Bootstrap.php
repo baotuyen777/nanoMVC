@@ -65,7 +65,7 @@ class Bootstrap {
 //        var_dump($file);die;
 //        $classColtroller = $module . "Controller";
         $controller = new Controller($app, $module);
-        $controller->loadModule($action, $param);
+        $controller->loadAction($action, $param);
 //        $classColtroller = $module . "Controller";
 //        $controller = new $classColtroller($app, $module);
 //        $controller = new $classColtroller();
