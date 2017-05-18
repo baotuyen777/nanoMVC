@@ -15,7 +15,7 @@ define('SITE_ROOT', 'http://localhost/nanoMVC/');
 define('DS', DIRECTORY_SEPARATOR);
 define('SERVER_ROOT', __DIR__ . DS);
 /**config */
-require 'config.php';
+//require 'config.php';
 /**library */
 require 'libs/Bootstrap.php';
 require 'libs/Controller.php';

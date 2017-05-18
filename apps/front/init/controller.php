@@ -2,15 +2,12 @@
 
 class initController extends Controller {
 
-    function __construct() {
-        
+    function __construct($app, $module, $action = 'index') {
+        parent::__construct($app, $module, $action);
     }
 
     function index() {
-        if (!$this->checkAPI('POST')) {
-            $this->showJson();
-            return;
-        }
+       
         $status = true;
         if (!$this->model->createProduct()) {
             $status = false;
@@ -27,11 +24,6 @@ class initController extends Controller {
          if (!$this->model->createDate()) {
             $status = false;
         }
-        $result = array(
-            "status" => $status,
-            'message' => "",
-        );
-        $this->showJson($result);
     }
 
 }

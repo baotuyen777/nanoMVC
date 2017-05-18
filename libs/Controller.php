@@ -7,23 +7,18 @@
 
 class Controller {
 
-    /** @var \Model */
+    /** @var \model */
     public $model;
 
     /** @var \view */
     public $view;
 
-    function __construct($app, $module) {
+    function __construct($app, $module,$action='index') {
         $this->app = $app;
         $this->module = $module;
-        $this->view = new View($app, $module);
-        $this->loadModel($this->module, $this->app);
+        $this->view = new View($app, $module,$action);
+        $this->model = $this->loadModel($app, $module);
     }
-
-//    function loadModule($action, $param = '') {
-//
-//        $this->loadAction($action, $param);
-//    }
 
     public function loadAction($action, $param = '') {
         $classColtroller = $this->module . "Controller";
@@ -38,14 +33,24 @@ class Controller {
     /**
      * @function \loadModel
      */
-    public function loadModel($module, $app = 'front') {
+    public function loadModel($app, $module='index') {
         $path = 'apps/' . $app . '/' . $module . '/model.php';
         if (file_exists($path)) {
-            require $path;
+            
+            require_once $path;
             $modelName = $module . 'Model';
-            $this->model = new $modelName();
+            $model = new $modelName();
+            return $model;
         }
     }
+//    public function loadView($action) {
+//        $path = SERVER_ROOT . 'apps/' . $this->app . '/' . $this->module . '/view/' . $action . '.php';
+//        if (file_exists($path)) {
+//            require 'layout/Header.php';
+//            require $path;
+//            require 'layout/Footer.php';
+//        }
+//    }
 
     /**
      * 

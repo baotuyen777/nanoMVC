@@ -9,6 +9,7 @@ class IndexController extends Controller {
     function index() {
         $this->view->msg = '11111';
         $this->view->loadView('index');
+//        $this->loadView('index',$data);
     }
 
 }

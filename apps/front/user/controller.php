@@ -16,43 +16,9 @@ class UserController extends Controller {
         }
     }
 
-    /**
-     * @api {get} /user All
-     * @apiName All
-     * @apiGroup User
-     *
-     * @apiParam {Number} id Users unique id.
-     * @apiParam {Number} postPerPage Post Per Page.
-     * @apiParam {String} filter Users .
-     * @apiParam {Number} page Page .
-     *
-     * @apiSuccess {Number} postPerPage Post Per Page.
-     * @apiSuccess {String} filter  Filter of the User.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "status": true,
-     *       "message": "200",
-     *       "postPerPage": 10,
-     *       "filter": "",
-     *       "page": 1,
-     *       "total": 1,
-     *       "data":[]
-     *     }
-     *
-     * @apiError Token invalid.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "status": false,
-     *       "message": "token invalid!"
-     *     }
-     */
     function all() {
-      
-//echo 111;
+        $index = $this->loadModel('front', 'index');
+        $user2=$index->getAllUser();
         $arrAllData = $this->model->getAllUser();
         $params = array(
             'postPerPage' => isset($_REQUEST['postPerPage']) ? filter_var($_REQUEST['postPerPage'], FILTER_SANITIZE_STRING) : 10,
@@ -66,40 +32,12 @@ class UserController extends Controller {
             "status" => true,
             'data' => $arrAllDataPagination,
         );
-      
+        $this->view->msg = $result;
+        $this->view->loadView('index');
     }
 
-    /**
-     * @api {get} /user/:id Detail
-     * @apiName Detail
-     * @apiGroup User
-     *
-     * @apiParam {Number} id Users unique id.
-     *
-     * @apiSuccess {String} data Firstname of the User.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "status": true,
-     *       "message": "200",
-     *       "data": [],
-     *     }
-     *
-     * @apiError UserNotFound The id of the User was not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "status": false,
-     *       "message": "{id} not found or deactive"
-     *     }
-     */
     function detail($id) {
-        if (!$this->checkAPI('GET')) {
-            $this->showJson();
-            return;
-        }
+       
         if ($id) {
             $arrSingleObject = $this->model->getSingleUser(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
             $result = array(
@@ -112,39 +50,13 @@ class UserController extends Controller {
                     'message' => "{id} " . LANG::__("IdNotFound"),
                 );
             }
+        }else{
+            echo 11;
         }
-
-        $this->showJson($result);
+        $this->view->loadView('detail');
     }
 
-    /**
-     * @api {post} /user Add
-     * @apiName Add
-     * @apiGroup User
-     *
-     * @apiParam {String} email Email unique id.
-     * @apiParam {String} password Password .
-     * @apiParam {String} name Name .
-     *
-     * @apiSuccess {String} status status of the API.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "status": true,
-     *       "message": "200",
-     *       "id": 10
-     *     }
-     *
-     * @apiError UserNotFound The id of the User was not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "status": false,
-     *       "message": "Please input require field {email}"
-     *     }
-     */
+    
     function add() {
         $this->requireFields = array('email', 'password', 'name');
         if (!$this->checkAPI('POST')) {
