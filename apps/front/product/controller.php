@@ -8,16 +8,16 @@ class ProductController extends Controller {
         parent::__construct($app, $module, $action);
     }
 
-    function index($id) {
+     function index($id) {
         if ($id) {
             $this->detail($id);
         } else {
             $this->all();
         }
     }
-
+    
     function all() {
-
+       
         $arrAllData = $this->model->getAll();
         $params = array(
             'postPerPage' => isset($_REQUEST['postPerPage']) ? filter_var($_REQUEST['postPerPage'], FILTER_SANITIZE_STRING) : 10,
@@ -36,17 +36,59 @@ class ProductController extends Controller {
     }
 
     function detail($id) {
-        if ($id) {
-            $arrSingleObject = $this->model->getSingle(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
-        } else {
-            $arrSingleObject = (object) array('name'=>"", 'pirce'=>"");
+      if ($id) {
+            $arrSingleObject = $this->model->getSingleUser(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
+            $result = array(
+                "status" => true,
+                'data' => $arrSingleObject,
+            );
+            if (!$arrSingleObject) {
+                $result = array(
+                    "status" => false,
+                    'message' => "{id} " . LANG::__("IdNotFound"),
+                );
+            }
+        }else{
+            echo 11;
         }
-        $this->view->arrSingleObject = $arrSingleObject;
         $this->view->msg = 'aaabc';
         $this->view->loadView('detail');
     }
 
+    /**
+     * @api {post} /product Add
+     * @apiName Add
+     * @apiGroup Product
+     *
+     * @apiParam {String} email Email unique ID.
+     * @apiParam {String} password Password .
+     * @apiParam {String} name Name .
+     *
+     * @apiSuccess {String} status status of the API.
+     *
+     * @apiSuccessExample Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "status": true,
+     *       "message": "200",
+     *       "id": 10
+     *     }
+     *
+     * @apiError ProductNotFound The id of the Product was not found.
+     *
+     * @apiErrorExample Error-Response:
+     *     HTTP/1.1 404 Not Found
+     *     {
+     *       "status": false,
+     *       "message": "Please input require field {email}"
+     *     }
+     */
     function add() {
+        $this->requireFields = array('name', 'slug', 'price');
+        if (!$this->checkAPI('POST')) {
+            $this->showJson();
+            return;
+        }
         $params = $_POST;
         $id = $this->model->add($params);
         if ($id) {

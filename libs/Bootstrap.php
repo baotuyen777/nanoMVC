@@ -16,11 +16,6 @@ class Bootstrap {
         if (!$url[0]) {
             $url = array('index');
         }
-//        var_dump($url[0]);die;
-//        if ($url[0]=='public') {
-//            return ;
-//        }
-
         $this->loadModule($url);
     }
 
@@ -62,16 +57,8 @@ class Bootstrap {
                 return;
             }
         }
-//        var_dump($file);die;
-//        $classColtroller = $module . "Controller";
-//        $controller = new Controller($app, $module);
-//        $controller->loadAction($action, $param);
-        
         $classColtroller = $module . "Controller";
         $controller = new $classColtroller($app, $module);
-//        $controller = new $classColtroller();
-//        $controller->loadModel($app, $module);
-//        $controller->loadView($action);
         $this->loadMethod($controller, $action, $param);
     }
 
@@ -80,7 +67,6 @@ class Bootstrap {
      * @param type $controller
      * @param type $action
      * @param type $param
-     * @return boolean
      */
     function loadMethod($controller, $action, $param) {
         if (!$action) {

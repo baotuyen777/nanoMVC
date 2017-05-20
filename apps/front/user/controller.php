@@ -89,31 +89,7 @@ class UserController extends Controller {
         $this->showJson($result);
     }
 
-    /**
-     * @api {put} /user/:id Update
-     * @apiName Update
-     * @apiGroup User
-     *
-     * @apiParam {Number} id Users unique id.
-     *
-     * @apiSuccess {String} status status of the API.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "status": true,
-     *       "message": "200",
-     *     }
-     *
-     * @apiError UserNotFound The id of the User was not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "status": false,
-     *        "message": "id not found!"
-     *     }
-     */
+   
     function update($id) {
 
         if (!$this->checkAPI('PUT')) {
@@ -143,31 +119,7 @@ class UserController extends Controller {
         $this->showJson($result);
     }
 
-    /**
-     * @api {delete} /user DeleteUser
-     * @apiName Delete
-     * @apiGroup User
-     *
-     * @apiParam {Number} id Users unique id.
-     *
-     * @apiSuccess {String} status status of the API.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "status": true,
-     *       "message": "200",
-     *     }
-     *
-     * @apiError UserNotFound The id of the User was not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "status": false,
-     *       "message": "id not found!"
-     *     }
-     */
+    
     function delete($id) {
         if (!$this->checkAPI('DELETE')) {
             $this->showJson();
@@ -193,31 +145,7 @@ class UserController extends Controller {
         $this->showJson($result);
     }
 
-    /**
-     * @api {delete} /user deleteMulti
-     * @apiName deleteMulti
-     * @apiGroup User
-     *
-     * @apiParam {String} listId eg: /deleteMulti/1,2,5.
-     *
-     * @apiSuccess {String} status status of the API.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "status": true,
-     *       "message": "200",
-     *     }
-     *
-     * @apiError UserNotFound The id of the User was not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "status": false,
-     *       "message": "id not found!"
-     *     }
-     */
+    
     function deleteMulti($listId) {
         if (!$this->checkAPI('DELETE')) {
             $this->showJson();
