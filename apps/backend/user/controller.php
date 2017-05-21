@@ -17,46 +17,26 @@ class UserController extends Controller {
     }
 
     function all() {
-        $index = $this->loadModel('front', 'index');
-        $user2=$index->getAllUser();
-        $arrAllData = $this->model->getAllUser();
         $params = array(
             'postPerPage' => isset($_REQUEST['postPerPage']) ? filter_var($_REQUEST['postPerPage'], FILTER_SANITIZE_STRING) : 10,
             'filter' => isset($_REQUEST['filter']) ? filter_var($_REQUEST['filter'], FILTER_SANITIZE_STRING) : "",
             'page' => isset($_REQUEST['page']) ? filter_var($_REQUEST['page'], FILTER_SANITIZE_STRING) : 1,
-            'total' => count($arrAllData)
         );
 
-        $arrAllDataPagination = $this->model->getAllUser($params);
-        $result = array(
-            "status" => true,
-            'data' => $arrAllDataPagination,
-        );
-        $this->view->msg = $result;
+        $this->view->objects = $this->model->getAllPagination($params);
         $this->view->loadView('index');
     }
 
     function detail($id) {
-       
         if ($id) {
-            $arrSingleObject = $this->model->getSingleUser(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
-            $result = array(
-                "status" => true,
-                'data' => $arrSingleObject,
-            );
-            if (!$arrSingleObject) {
-                $result = array(
-                    "status" => false,
-                    'message' => "{id} " . LANG::__("IdNotFound"),
-                );
-            }
-        }else{
-            echo 11;
+            $arrSingle = $this->model->getSingle(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
+        } else {
+            $arrSingle=(object) array('name'=>'','id'=>'');
         }
+        $this->view->object=$arrSingle;
         $this->view->loadView('detail');
     }
 
-    
     function add() {
         $this->requireFields = array('email', 'password', 'name');
         if (!$this->checkAPI('POST')) {
@@ -89,7 +69,6 @@ class UserController extends Controller {
         $this->showJson($result);
     }
 
-   
     function update($id) {
 
         if (!$this->checkAPI('PUT')) {
@@ -119,7 +98,6 @@ class UserController extends Controller {
         $this->showJson($result);
     }
 
-    
     function delete($id) {
         if (!$this->checkAPI('DELETE')) {
             $this->showJson();
@@ -145,7 +123,6 @@ class UserController extends Controller {
         $this->showJson($result);
     }
 
-    
     function deleteMulti($listId) {
         if (!$this->checkAPI('DELETE')) {
             $this->showJson();

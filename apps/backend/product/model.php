@@ -7,14 +7,13 @@
 
 class ProductModel extends Model {
 
- 
     public $table = "products";
 
     public function __construct() {
         parent::__construct();
     }
 
-    public function getAll($params = false) {
+    public function getAllPagination($params = false) {
         $cond = "";
         $pagination = "";
         if ($params) {
@@ -23,9 +22,19 @@ class ProductModel extends Model {
             $start = ($params['page'] - 1) * $params['postPerPage'];
             $pagination = "limit {$start},{$params['postPerPage']}";
         }
+        $arrAllData = $this->getAll();
+        $total = count($arrAllData);
 
         $sql = "SELECT * FROM " . $this->table . " "
                 . "WHERE 1=1 {$cond} {$pagination}";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return ($result);
+    }
+
+    public function getAll() {
+        $sql = "SELECT * FROM " . $this->table ;
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,8 +54,6 @@ class ProductModel extends Model {
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         return $result;
     }
-
-    
 
     /**
      * 

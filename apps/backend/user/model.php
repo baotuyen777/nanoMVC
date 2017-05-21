@@ -4,6 +4,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 class userModel extends Model {
 
     public $table = "users";
@@ -12,22 +13,31 @@ class userModel extends Model {
         parent::__construct();
     }
 
-    public function getAllUser($params = false) {
+    public function getAllPagination($params = false) {
         $cond = "";
         $pagination = "";
+        $arrAllData = $this->getAll();
+        $total = count($arrAllData);
         if ($params) {
-            $cond = $params['filter'] ? ' AND display_name like "%' . filter_var($params['filter'], FILTER_SANITIZE_STRING) . '%"' : "";
-            $countPage = ceil($params['total'] / $params['postPerPage']);
+            $cond = $params['filter'] ? ' AND name like "%' . filter_var($params['filter'], FILTER_SANITIZE_STRING) . '%"' : "";
             $start = ($params['page'] - 1) * $params['postPerPage'];
             $pagination = "limit {$start},{$params['postPerPage']}";
+            $countPage = ceil($total / $params['postPerPage']);
         }
-
-        $sql = "SELECT id, email, name,avatar FROM " . $this->table . " "
+        $sql = "SELECT * FROM " . $this->table . " "
                 . "WHERE 1=1 {$cond} {$pagination}";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return ($result);
+    }
+
+    public function getAll() {
+        $sql = "SELECT * FROM " . $this->table;
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+        return ($result);
     }
 
     /**
@@ -35,13 +45,13 @@ class userModel extends Model {
      * @param type $id
      * @return type
      */
-    public function getSingleUser($id) {
+    public function getSingle($id) {
         $sql = "SELECT id, email, name  FROM " . $this->table . " WHERE id =:id ";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $this->transform($result);
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
 
     /**

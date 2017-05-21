@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 define('DB_DSN', 'mysql:host=localhost;dbname=nanoMVC');
 define('DB_USER', 'root');
-define('DB_PASS', '1');
+define('DB_PASS', '');
 
 //mail
 define('MAIL_USERNAME', 'test123.qsoft@gmail.com');
