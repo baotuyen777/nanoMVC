@@ -31,112 +31,74 @@ class UserController extends Controller {
         if ($id) {
             $arrSingle = $this->model->getSingle(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
         } else {
-            $arrSingle=(object) array('name'=>'','id'=>'');
+            $arrSingle = (object) array('id' => '',
+                        'name' => '', 'email' => '',
+                        'status' => '');
         }
-        $this->view->object=$arrSingle;
+        $this->view->object = $arrSingle;
         $this->view->loadView('detail');
     }
 
-    function add() {
-        $this->requireFields = array('email', 'password', 'name');
-        if (!$this->checkAPI('POST')) {
-            $this->showJson();
-            return;
-        }
-        $params = $_POST;
-        $params['password'] = md5($_POST['password']);
-        $email = ($_POST["email"]);
-        //validate email
-        $status = false;
-        $mes = "something wrong! please contact admin!";
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $mes = "Invalid email format";
-        } else if ($this->model->getUserByEmail($email)) {
-            $mes = "Email existed!";
-        } else {
-            $id = $this->model->addUser($params);
-            if ($id) {
-                $mes = "Success";
-                $status = true;
-            } else {
-                $mes = "Server overload!";
-            }
-        }
-        $result = array(
-            "status" => $status,
-            'message' => $mes,
-        );
-        $this->showJson($result);
-    }
-
     function update($id) {
-
-        if (!$this->checkAPI('PUT')) {
-            $this->showJson();
-            return;
+        if ($_POST) {
+            $params = $_POST;
+            $status = false;
+            if ($id) {
+                unset($params['email']);
+                $params['status'] = !isset($params['status']) ? 0 : 1;
+                /** check exist id */
+                $checkId = Helper::checkId($this->model->table, 'id', $id);
+                if (!$checkId) {
+                    $mes = "Id not found!";
+                } elseif ($this->model->update($id, $params)) {
+                    $mes = "Success";
+                    $status = true;
+                } else {
+                    $mes = "Server overload! please try again";
+                }
+            } else {
+                $params['password'] = md5($_POST['password']);
+                $email = ($_POST["email"]);
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $mes = "Invalid email format";
+                } elseif ($this->model->getUserByEmail($email)) {
+                    $mes = "Email existed!";
+                } elseif ($this->model->add($params)) {
+                    $status = true;
+                    $mes = "Success";
+                } else {
+                    $mes = "Server overload!";
+                }
+            }
+            $this->view->status = $status;
+            $this->view->mes = $mes;
+            $this->view->loadView('notice');
         }
-        /** check exist id */
-        $checkId = Helper::checkId($this->model->table, 'id', $id);
-        if (!$checkId['status']) {
-            $this->showJson($checkId);
-            return;
-        }
-        parse_str(file_get_contents("php://input"), $put_vars);
-//validate
-//..
-        if ($this->model->updateUser($id, $put_vars)) {
-            $result = array(
-                "status" => true,
-                'message' => "200",
-            );
-        } else {
-            $result = array(
-                "status" => false,
-                'message' => "you should use x-www-form-urlencoded or please contact admin!",
-            );
-        }
-        $this->showJson($result);
     }
 
     function delete($id) {
-        if (!$this->checkAPI('DELETE')) {
-            $this->showJson();
-            return;
-        }
+        $status = false;
         /** check exist id */
-        $checkId = Helper::checkId($this->model->table, 'id', $id);
-        if (!$checkId['status']) {
-            $this->showJson($checkId);
-            return;
-        }
-        if ($this->model->deleteUser($id)) {
-            $result = array(
-                "status" => true,
-                'message' => "200",
-            );
+        if (!$id) {
+            $mes = "You must be choose some item !";
+        } elseif (!Helper::checkId($this->model->table, 'id', $id)) {
+            $mes = "Item not found!";
+        } elseif ($this->model->delete($id)) {
+            $status = true;
+            $mes = "delete success";
         } else {
-            $result = array(
-                "status" => false,
-                'message' => "something wrong, please contact admin!",
-            );
+            $mes = "something wrong, please contact admin!";
         }
-        $this->showJson($result);
+        $this->view->status = $status;
+        $this->view->mes = $mes;
+        $this->view->loadView('notice');
     }
 
     function deleteMulti($listId) {
-        if (!$this->checkAPI('DELETE')) {
-            $this->showJson();
-            return;
-        }
+        $status = false;
         if (!$listId) {
-            $this->result = array(
-                "status" => false,
-                "message" => "please input {listid} in URL eg:{/deleteMulti/1,2,5}"
-            );
-            $this->showJson();
-            return;
-        }
-        if ($this->model->deleteUser(filter_var($listId, FILTER_SANITIZE_STRING))) {
+            $mes = "You must be choose some item !";
+        } elseif ($this->model->delete(filter_var($listId, FILTER_SANITIZE_STRING))) {
             $result = array(
                 "status" => true,
                 'message' => "200",

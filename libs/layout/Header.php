@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Fixed Top Navbar Example for Bootstrap</title>
+        <title>nanoMVC</title>
 
         <!-- Bootstrap core CSS -->
         <link href="<?php echo SITE_ROOT ?>/public/css/bootstrap.min.css" rel="stylesheet">
@@ -19,8 +19,6 @@
     </head>
 
     <body>
-
-        <!-- Fixed navbar -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
