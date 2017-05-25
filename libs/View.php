@@ -14,12 +14,10 @@ class View {
     public function loadView($action) {
         $path = SERVER_ROOT . 'apps/' . $this->app . '/' . $this->module . '/view/' . $action . '.php';
         if (file_exists($path)) {
-            require 'layout/Header.php';
+            require SERVER_ROOT . 'layout/Header.php';
             require $path;
-            require 'layout/Footer.php';
+            require SERVER_ROOT . 'layout/Footer.php';
         }
     }
 
 }
-
-?>

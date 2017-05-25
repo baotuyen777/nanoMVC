@@ -2,8 +2,6 @@
 
 class UserController extends Controller {
 
-//    public $auth;
-
     function __construct($app, $module) {
         parent::__construct($app, $module);
     }
@@ -99,19 +97,14 @@ class UserController extends Controller {
         if (!$listId) {
             $mes = "You must be choose some item !";
         } elseif ($this->model->delete(filter_var($listId, FILTER_SANITIZE_STRING))) {
-            $result = array(
-                "status" => true,
-                'message' => "200",
-            );
+            $status = true;
+            $mes = "delete success";
         } else {
-            $result = array(
-                "status" => false,
-                'message' => "something wrong, please contact admin!",
-            );
+            $mes = "something wrong, please contact admin!";
         }
-        $this->showJson($result);
+        $this->view->status = $status;
+        $this->view->mes = $mes;
+        $this->view->loadView('notice');
     }
 
 }
-
-?>

@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class Controller {
 
     /** @var \model */
@@ -13,44 +8,36 @@ class Controller {
     /** @var \view */
     public $view;
 
-    function __construct($app, $module,$action='index') {
+    function __construct($app, $module, $action = 'index') {
         $this->app = $app;
         $this->module = $module;
-        $this->view = new View($app, $module,$action);
+        $this->view = new View($app, $module, $action);
         $this->model = $this->loadModel($app, $module);
     }
 
-    public function loadAction($action, $param = '') {
-        $classColtroller = $this->module . "Controller";
-        $this->controller = new $classColtroller($this->app, $this->module);
-        if (method_exists($this->controller, $action)) {
-            $this->controller->$action($param);
-        } else {
-            $this->error();
-        }
-    }
+//    public function loadAction($action, $param = '') {
+//        $classColtroller = $this->module . "Controller";
+//        $this->controller = new $classColtroller($this->app, $this->module);
+//        if (method_exists($this->controller, $action)) {
+//            $this->controller->$action($param);
+//        } else {
+//            $this->error();
+//        }
+//    }
 
     /**
      * @function \loadModel
      */
-    public function loadModel($app, $module='index') {
+    public function loadModel($app, $module = 'index') {
         $path = 'apps/' . $app . '/' . $module . '/model.php';
         if (file_exists($path)) {
-            
+
             require_once $path;
             $modelName = $module . 'Model';
             $model = new $modelName();
             return $model;
         }
     }
-//    public function loadView($action) {
-//        $path = SERVER_ROOT . 'apps/' . $this->app . '/' . $this->module . '/view/' . $action . '.php';
-//        if (file_exists($path)) {
-//            require 'layout/Header.php';
-//            require $path;
-//            require 'layout/Footer.php';
-//        }
-//    }
 
     /**
      * 
@@ -63,5 +50,3 @@ class Controller {
     }
 
 }
-
-?>

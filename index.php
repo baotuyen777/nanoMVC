@@ -16,18 +16,15 @@ define('SITE_ROOT', 'http://localhost/nanoMVC/');
 define('DS', DIRECTORY_SEPARATOR);
 define('SERVER_ROOT', __DIR__ . DS);
 define('IS_REWRITE', false);
-/* * config */
-//require 'config.php';
 /* * library */
 require 'libs/Bootstrap.php';
 require 'libs/Controller.php';
 require 'libs/Model.php';
 require 'libs/View.php';
-require 'libs/DB.php';
+//require 'libs/DB.php';
 
 require 'libs/Helper.php';
 //lang
-//error_reporting(E_ALL & ~E_DEPRECATED);
 //require 'libs/function.php';
 //$lang_get= Session::get('lang');
 //        if ($lang_get=='en') {
