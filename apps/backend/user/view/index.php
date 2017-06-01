@@ -40,11 +40,18 @@
     </table>
     <hr/>
     <ul class="pagination">
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
+        <?php if ($this->page > 1 && $this->page <= $this->countPage): ?>
+            <li><a href="<?php echo Helper::getPermalink('backend/user', "page=" . ($this->page -1)) ?>">Prev</a></li>
+        <?php endif; ?>
+        <?php
+        for ($i = 1; $i <= $this->countPage; $i++):
+            ?>
+            <li><a href="<?php echo Helper::getPermalink('backend/user', "page={$i}") ?>"><?php echo $i ?></a></li>
+        <?php endfor; ?>
+
+        <?php if ($this->page < $this->countPage): ?>
+            <li><a href="<?php echo Helper::getPermalink('backend/user', "page=" . ($this->page + 1)) ?>">Next</a></li>
+        <?php endif; ?>
     </ul>
 
 </div> <!-- /container -->

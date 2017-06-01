@@ -4,7 +4,6 @@ class Bootstrap {
 
     function __construct() {
         $url = isset($_GET['url']) ? filter_var($_GET['url'], FILTER_SANITIZE_STRING) : null;
-
         $url = rtrim($url, '/');
         $url = explode('/', $url);
         /**  run default */
@@ -21,9 +20,7 @@ class Bootstrap {
         if (file_exists($file)) {
             require $file;
             $module = $url[0];
-
             $action = isset($url[1]) ? $url[1] : 'index';
-
             if ($action > 0) {
                 $param = $action;
                 $action = 'index';
@@ -33,12 +30,13 @@ class Bootstrap {
         } else {
             // find module in other apps
             if (isset($url[1])) {
-                $file = 'apps/' . $url[0] . '/' . $url[1] . '/controller.php';
 
+                $file = 'apps/' . $url[0] . '/' . $url[1] . '/controller.php';
                 if (file_exists($file)) {
                     require $file;
                     $app = $url[0];
                     $module = $url[1];
+
                     $action = isset($url[2]) ? $url[2] : false;
                     if ($action > 0) {
                         $param = $action;
@@ -46,6 +44,9 @@ class Bootstrap {
                     } else {
                         $param = isset($url[3]) ? $url[3] : false;
                     }
+                } else {
+                    $this->error('File not found');
+                    return;
                 }
             } else {
                 $this->error();
@@ -73,7 +74,6 @@ class Bootstrap {
         } else {
             if (method_exists($controller, $action)) {
                 //calling method no param
-
                 if (isset($param)) {
                     $controller->$action($param);
                     return true;
@@ -85,15 +85,9 @@ class Bootstrap {
         }
     }
 
-    /**
-     * 
-     * @return boolean
-     */
-    function error() {
-        require 'apps/front/error/controller.php';
-        new errorController();
+    function error($error = 'URL not found') {
+        echo $error;
         return FALSE;
     }
-}
 
-?>
+}

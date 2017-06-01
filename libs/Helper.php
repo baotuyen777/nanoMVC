@@ -1,4 +1,5 @@
 <?php
+
 class Helper {
 
     /**
@@ -51,11 +52,19 @@ class Helper {
         return true;
     }
 
-    static function getPermalink($action) {
+    /**
+     * 
+     * @param type $action
+     * @param type $param
+     * @return type
+     */
+    static function getPermalink($action = '', $param = "") {
         if (IS_REWRITE) {
-            return SITE_ROOT . $action;
+            $param = $param != "" ? '?' . $param : '';
+            return SITE_ROOT . $action . $param;
         } else {
-            return SITE_ROOT . '?url=' . $action;
+            $param = $param != "" ? '&' . $param : '';
+            return SITE_ROOT . '?url=' . $action . $param;
         }
     }
 

@@ -1,18 +1,9 @@
-<?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <p class="text-muted">This is footer.</p>
     </div>
 </footer>
 
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="<?php echo SITE_ROOT ?>public/js/main.js"></script>
 </body>
 </html>

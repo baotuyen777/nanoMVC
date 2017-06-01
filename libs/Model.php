@@ -60,36 +60,14 @@ class Model {
     }
 
 // use all module
-    /**
-     * 
-     * @param type $param
-     */
-    public function add($params) {
-        $sql = "INSERT INTO " . $this->table . " SET ";
-        $arrField = array();
-        foreach ($params as $field => $val) {
-            if ($val == '') {
-                continue;
-            }
-            $arrField[] = trim($field) . "='" . filter_var($val, FILTER_SANITIZE_STRING) . "'";
-        }
-        $strField = implode(', ', $arrField);
-        $sql .= $strField;
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        return $this->db->lastInsertId();
-    }
+
 
     public function getAllPagination($params = false) {
         $cond = "";
         $pagination = "";
-        $arrAllData = $this->getAll();
-        $total = count($arrAllData);
         if ($params) {
             $cond = $params['filter'] ? ' AND name like "%' . filter_var($params['filter'], FILTER_SANITIZE_STRING) . '%"' : "";
-            $start = ($params['page'] - 1) * $params['postPerPage'];
-            $pagination = "limit {$start},{$params['postPerPage']}";
-            $countPage = ceil($total / $params['postPerPage']);
+            $pagination = "limit {$params['start']},{$params['postPerPage']}";
         }
         $sql = "SELECT * FROM " . $this->table . " "
                 . "WHERE 1=1 {$cond} {$pagination}";
@@ -119,6 +97,26 @@ class Model {
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         return $result;
+    }
+
+    /**
+     * 
+     * @param type $param
+     */
+    public function add($params) {
+        $sql = "INSERT INTO " . $this->table . " SET ";
+        $arrField = array();
+        foreach ($params as $field => $val) {
+            if ($val == '') {
+                continue;
+            }
+            $arrField[] = trim($field) . "='" . filter_var($val, FILTER_SANITIZE_STRING) . "'";
+        }
+        $strField = implode(', ', $arrField);
+        $sql .= $strField;
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $this->db->lastInsertId();
     }
 
     /**
