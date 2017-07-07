@@ -1,13 +1,13 @@
 <?php
 
-class IndexController extends Controller {
+class UserController extends Controller {
 
     function __construct($app, $module) {
         parent::__construct($app, $module);
     }
 
     function all() {
-        $postPerPage = 2;
+        $postPerPage = 3;
         $page = isset($_REQUEST['page']) ? filter_var($_REQUEST['page'], FILTER_SANITIZE_STRING) : 1;
 
         $total = count($this->model->getAll());
@@ -26,5 +26,3 @@ class IndexController extends Controller {
     }
 
 }
-
-?>
