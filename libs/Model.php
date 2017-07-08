@@ -4,11 +4,15 @@ class Model {
 
     public $db;
     protected $lang;
-    protected $table;
+//    protected $table;
 
-    function __construct() {
+    /** @var \module */
+    protected $module;
+
+    function __construct($module) {
         $this->db = new PDO(DB_DSN, DB_USER, DB_PASS);
         $this->lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'vi';
+        $this->module = $module;
     }
 
     /**
@@ -69,7 +73,7 @@ class Model {
             $cond = $params['filter'] ? ' AND name like "%' . filter_var($params['filter'], FILTER_SANITIZE_STRING) . '%"' : "";
             $pagination = "limit {$params['start']},{$params['postPerPage']}";
         }
-        $sql = "SELECT * FROM " . $this->table . " "
+        $sql = "SELECT * FROM " . $this->module . " "
                 . "WHERE 1=1 {$cond} {$pagination}";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
@@ -78,7 +82,7 @@ class Model {
     }
 
     public function getAll() {
-        $sql = "SELECT * FROM " . $this->table;
+        $sql = "SELECT * FROM " . $this->module;
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -91,7 +95,7 @@ class Model {
      * @return type
      */
     public function getSingle($id) {
-        $sql = "SELECT * FROM " . $this->table . " WHERE id =:id ";
+        $sql = "SELECT * FROM " . $this->module . " WHERE id =:id ";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
         $stmt->execute();
@@ -104,7 +108,7 @@ class Model {
      * @param type $param
      */
     public function add($params) {
-        $sql = "INSERT INTO " . $this->table . " SET ";
+        $sql = "INSERT INTO " . $this->module . " SET ";
         $arrField = array();
         foreach ($params as $field => $val) {
             if ($val == '') {
@@ -124,7 +128,7 @@ class Model {
      * @param type $param
      */
     public function update($id, $params) {
-        $sql = "UPDATE " . $this->table . " SET ";
+        $sql = "UPDATE " . $this->module . " SET ";
         $arrField = array();
         foreach ($params as $field => $val) {
             if ($val === '') {
@@ -141,7 +145,7 @@ class Model {
     }
 
     public function delete($listId) {
-        $sql = "DELETE FROM " . $this->table . " WHERE id IN ($listId)";
+        $sql = "DELETE FROM " . $this->module . " WHERE id IN ($listId)";
         $stmt = $this->db->prepare($sql);
 //        $stmt->bindValue(":listId", $listId);
         $result = $stmt->execute();

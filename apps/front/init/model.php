@@ -24,7 +24,7 @@ class initModel extends Model {
         $strField = '';
         if (!empty($arrField))
             $strField = ',' . implode(',', $arrField);
-        $sql = " CREATE TABLE $table (
+        $sql = " CREATE TABLE IF NOT EXISTS $table (
             id INT (6) UNSIGNED AUTO_INCREMENT PRIMARY KEY
              $strField
           ) ;";
@@ -32,7 +32,8 @@ class initModel extends Model {
     }
 
     public function runSQl() {
-        var_dump($this->sql);
+        echo '<pre>';
+        print_r($this->sql);
         $stmt = $this->db->prepare($this->sql);
         $result = $stmt->execute();
         return $result;

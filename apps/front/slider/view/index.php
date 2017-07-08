@@ -1,6 +1,6 @@
 <div class="container">
     <?php
-    $objects = $this->objects;
+//    $objects = $this->arrAll;
     ?>
     <div class="function">
         <a class="btn btn-success" href="<?php echo Helper::getPermalink('backend/user/detail') ?>">Add</a>

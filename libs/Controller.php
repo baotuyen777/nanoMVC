@@ -8,6 +8,9 @@ class Controller {
     /** @var \view */
     public $view;
 
+    /** @var \module */
+    protected $module;
+
     function __construct($app, $module, $action = 'index') {
         $this->app = $app;
         $this->module = $module;
@@ -24,7 +27,7 @@ class Controller {
 
             require_once $path;
             $modelName = $module . 'Model';
-            $model = new $modelName();
+            $model = new $modelName($module);
             return $model;
         }
     }
@@ -59,7 +62,7 @@ class Controller {
         );
         $this->view->page = $page;
         $this->view->countPage = $countPage;
-        $this->view->objects = $this->model->getAllPagination($params);
+        $this->view->arrAll = $this->model->getAllPagination($params);
         $this->view->loadView('index');
     }
 
@@ -71,7 +74,8 @@ class Controller {
                         'name' => '', 'email' => '',
                         'status' => '');
         }
-        $this->view->object = $arrSingle;
+        var_dump($arrSingle);
+        $this->view->arrSingle = $arrSingle;
         $this->view->loadView('detail');
     }
 

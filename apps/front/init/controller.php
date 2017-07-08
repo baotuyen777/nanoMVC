@@ -9,21 +9,6 @@ class initController extends Controller {
     function index($id) {
 
         $status = true;
-//        if (!$this->model->createProduct()) {
-//            $status = false;
-//        }
-//        if (!$this->model->createOrder()) {
-//            $status = false;
-//        }
-//        if (!$this->model->createOrderDetail()) {
-//            $status = false;
-//        }
-//        if (!$this->model->createUser()) {
-//            $status = false;
-//        }
-//         if (!$this->model->createDate()) {
-//            $status = false;
-//        }
         $this->model->addSql('menu', array(
             'name VARCHAR (30) NOT NULL',
             'link VARCHAR (30) NOT NULL',
@@ -62,6 +47,12 @@ class initController extends Controller {
             'role TINYINT DEFAULT 1',
             'wallet  FLOAT DEFAULT 0',
             'status INT (2) DEFAULT 1'
+        ));
+        $this->model->addSql('slider', array(
+            'name VARCHAR (30) NOT NULL',
+            'link VARCHAR (30) NOT NULL',
+            'content TEXT  ',
+            'orders INT (11)',
         ));
 
         $this->model->runSql();
