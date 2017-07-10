@@ -68,4 +68,70 @@ class Helper {
         }
     }
 
+    static function upload($file_upload) {
+        if (empty($file_upload)) {
+            return array(
+                'status' => false,
+                'mes' => 'File không hợp lệ!'
+            );
+        }
+        $year = date("Y");
+        $month = date("m");
+        $uploadPath = SERVER_ROOT . "public/img/upload/";
+        $yearPath = $uploadPath . $year;
+        $monthPath = $uploadPath . $year . "/" . $month;
+
+        if (file_exists($yearPath)) {
+            if (file_exists($monthPath) == false) {
+                mkdir($monthPath, 0777, true);
+            }
+        } else {
+            mkdir($yearPath, 0777, true);
+        }
+        $filePath = $year . "/" . $month . "/" . basename($file_upload["image"]["name"]);
+        $target_file = $uploadPath . $filePath;
+        $status = 1;
+        $mes = '';
+        $return = array();
+        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($file_upload["image"]["tmp_name"]);
+        if (!$check) {
+            $mes = "Yêu cầu gửi lên 1 định dạng ảnh";
+            $status = 0;
+        }
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            $mes = "Ảnh đã tồn tại";
+            $status = 0;
+        }
+        // Check file size
+        if ($file_upload["image"]["size"] > IMAGE_SIZE) {
+            $mes = "File quá lớn(<5Mb)";
+            $status = 0;
+        }
+        // Allow certain file formats
+
+        $allowed = explode('|', IMAGE_FILE_TYPE);
+        if (!in_array($imageFileType, $allowed)) {
+            $mes = "Chỉ sử dụng định dạng JPG, JPEG, PNG & GIF.";
+            $status = 0;
+        }
+        // Check if $status is set to 0 by an error
+        if ($status != 0) {
+            if (move_uploaded_file($file_upload["image"]["tmp_name"], $target_file)) {
+                $mes = "" . basename($file_upload["image"]["name"]) . " tải lên thành công!.";
+                chmod($target_file, 0777);
+            } else {
+                $mes = "Xảy ra lỗi trong quá trình upload file (phân quyền, sự cố mạng)";
+            }
+        }
+        $return = array(
+            'status' => $status,
+            'mes' => $mes,
+            'filePath' => $filePath
+        );
+        return $return;
+    }
+
 }

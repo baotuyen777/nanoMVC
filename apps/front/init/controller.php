@@ -52,11 +52,12 @@ class initController extends Controller {
             'name VARCHAR (30) NOT NULL',
             'link VARCHAR (30) NOT NULL',
             'content TEXT  ',
+            'image  VARCHAR(255) NOT NULL',
             'orders INT (11)',
+            'status INT (2) DEFAULT 1'
         ));
 
         $this->model->runSql();
-        echo 111;
     }
 
 }

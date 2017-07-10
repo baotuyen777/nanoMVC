@@ -9,8 +9,8 @@ class initModel extends Model {
 
     protected $sql = "";
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($module) {
+        parent::__construct($module);
     }
 
 //    public function createStruct($params = false) {
@@ -20,7 +20,7 @@ class initModel extends Model {
 //        return $result;
 //    }
     public function addSql($table, $arrField = array()) {
-       
+
         $strField = '';
         if (!empty($arrField))
             $strField = ',' . implode(',', $arrField);
@@ -111,7 +111,6 @@ class initModel extends Model {
 //        $result = $stmt->execute();
 //        return $result;
 //    }
-
 }
 
 ?>

@@ -4,6 +4,6 @@
     </div>
 </footer>
 
-<script src="<?php echo SITE_ROOT ?>public/js/main.js"></script>
+<script src="<?php echo SITE_ROOT ?>public/js/main.js" type="text/javascript"></script>
 </body>
 </html>

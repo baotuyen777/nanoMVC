@@ -2,19 +2,21 @@
 
 class Model {
 
-    public $db;
+    protected $db;
     protected $lang;
 //    protected $table;
 
     /** @var \module */
     protected $module;
 
+    /** @var \module */
+    protected $fields = array();
+
     function __construct($module) {
         $this->db = new PDO(DB_DSN, DB_USER, DB_PASS);
         $this->lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'vi';
         $this->module = $module;
     }
-
     /**
      * 
      * @param type $sql
@@ -111,13 +113,14 @@ class Model {
         $sql = "INSERT INTO " . $this->module . " SET ";
         $arrField = array();
         foreach ($params as $field => $val) {
-            if ($val == '') {
+            if ($val == '' || ! property_exists($this, $field)) {
                 continue;
             }
             $arrField[] = trim($field) . "='" . filter_var($val, FILTER_SANITIZE_STRING) . "'";
         }
         $strField = implode(', ', $arrField);
         $sql .= $strField;
+        var_dump($sql);
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $this->db->lastInsertId();
@@ -131,13 +134,14 @@ class Model {
         $sql = "UPDATE " . $this->module . " SET ";
         $arrField = array();
         foreach ($params as $field => $val) {
-            if ($val === '') {
+            if ($val == '' || ! property_exists($this, $field)) {
                 continue;
             }
             $arrField[] = trim($field) . "='" . filter_var($val, FILTER_SANITIZE_STRING) . "'";
         }
         $sql .= implode(', ', $arrField);
         $sql .= " WHERE id= :id";
+
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
         $result = $stmt->execute();

@@ -16,6 +16,9 @@ define('SITE_ROOT', 'http://localhost/nanoMVC/');
 define('DS', DIRECTORY_SEPARATOR);
 define('SERVER_ROOT', __DIR__ . DS);
 define('IS_REWRITE', false);
+
+define('IMAGE_SIZE', 5000000);
+define('IMAGE_FILE_TYPE', "gif|png|jpg");
 /* * library */
 require 'libs/Bootstrap.php';
 require 'libs/Controller.php';
