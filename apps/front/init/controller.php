@@ -10,17 +10,17 @@ class initController extends Controller {
 
         $status = true;
         $this->model->addSql('menu', array(
-            'name VARCHAR (30) NOT NULL',
-            'link VARCHAR (30) NOT NULL',
+            'name VARCHAR (255) NOT NULL',
+            'link VARCHAR (255) NOT NULL',
             'parent INT (11) ',
             'orders INT (11)',
         ));
         $this->model->addSql('product', array(
-            'name VARCHAR (30) NOT NULL',
-            'slug VARCHAR (30) NOT NULL',
+            'name VARCHAR (255) NOT NULL',
+            'slug VARCHAR (255) NOT NULL',
             'price INT (11) NOT NULL',
-            'category INT (11) NOT NULL',
-            'description VARCHAR (255) NOT NULL',
+            'category INT (11)',
+            'description VARCHAR (255) ',
             'image VARCHAR (255)',
             'status INT (2) DEFAULT 1',
         ));
@@ -49,12 +49,18 @@ class initController extends Controller {
             'status INT (2) DEFAULT 1'
         ));
         $this->model->addSql('slider', array(
-            'name VARCHAR (30) NOT NULL',
-            'link VARCHAR (30) NOT NULL',
+            'name VARCHAR (255) NOT NULL',
+            'link VARCHAR (255) NOT NULL',
             'content TEXT  ',
             'image  VARCHAR(255) NOT NULL',
             'orders INT (11)',
             'status INT (2) DEFAULT 1'
+        ));
+        $this->model->addSql('media', array(
+            'name VARCHAR (255) ',
+            'image  VARCHAR(255) NOT NULL',
+            'type VARCHAR (20) DEFAULT "jpg"',
+            'description TEXT '
         ));
 
         $this->model->runSql();

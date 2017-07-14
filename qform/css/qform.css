@@ -1,0 +1,50 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 12, 2015, 10:50:31 AM
+    Author     : qsoft
+*/
+/* example styles for validation form demo */
+.qform {
+    background: url("form-fieldset.gif") repeat-x scroll left bottom #F8FDEF;
+    border: 1px solid #DFDCDC;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    padding: 25px 50px 10px;
+    display: inline-block;
+    padding: 8px 10px;
+    width: 100%;
+}
+
+
+.qform  label {
+    padding: 15px 0 0;
+    text-align: right;
+}
+
+.qform  input, .qform  textarea, .qform  select {
+    margin: 10px 0;
+}
+
+.qform .submit {
+    padding: 10px;
+}
+
+.qform  label.error {
+    color: #FB3A3A;
+    display: inline-block;
+    padding: 0;
+    text-align: left;
+}
+input[type=file]{
+    float:left;
+}
+#show_thumb .thumbnail{
+    height: 100px;
+    display: inline-block;
+}

@@ -17,6 +17,7 @@ class Model {
         $this->lang = isset($_SESSION['lang']) ? $_SESSION['lang'] : 'vi';
         $this->module = $module;
     }
+
     /**
      * 
      * @param type $sql
@@ -113,16 +114,18 @@ class Model {
         $sql = "INSERT INTO " . $this->module . " SET ";
         $arrField = array();
         foreach ($params as $field => $val) {
-            if ($val == '' || ! property_exists($this, $field)) {
+            if ($val == '' || !property_exists($this, $field)) {
                 continue;
             }
             $arrField[] = trim($field) . "='" . filter_var($val, FILTER_SANITIZE_STRING) . "'";
         }
         $strField = implode(', ', $arrField);
         $sql .= $strField;
-        var_dump($sql);
         $stmt = $this->db->prepare($sql);
-        $stmt->execute();
+        $result = $stmt->execute();
+        if (!$result) {
+            var_dump($sql);
+        }
         return $this->db->lastInsertId();
     }
 
@@ -134,7 +137,7 @@ class Model {
         $sql = "UPDATE " . $this->module . " SET ";
         $arrField = array();
         foreach ($params as $field => $val) {
-            if ($val == '' || ! property_exists($this, $field)) {
+            if ($val == '' || !property_exists($this, $field)) {
                 continue;
             }
             $arrField[] = trim($field) . "='" . filter_var($val, FILTER_SANITIZE_STRING) . "'";
@@ -145,6 +148,9 @@ class Model {
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
         $result = $stmt->execute();
+        if (!$result) {
+            var_dump($sql);
+        }
         return $result;
     }
 

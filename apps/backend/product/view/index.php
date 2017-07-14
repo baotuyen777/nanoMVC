@@ -1,13 +1,75 @@
-<div class="container">
-<?php var_dump($this->msg)?>
-      <!-- Main component for a primary marketing message or call to action -->
-<!--      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>-->
+<?php
+$timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
 
-    </div> <!-- /container -->
+?>
+
+<div class="container">
+    <div class="function">
+        <a class="btn btn-success" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail') ?>">Add</a>
+        <!--        <a class="btn btn-danger" onclick="deleteMulti(this)" 
+                   data-href="<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>">Delete</a>-->
+        <hr/>
+    </div>
+    <table class="table">
+        <tr>
+            <th><input type="checkbox" class="masCheck"></th>
+            <th>STT</th>
+            <?php
+            foreach ($this->model as $field => $val):
+                if ($field == 'id')
+                    continue;
+                ?>
+                <th><?php echo ($field) ?></th>
+            <?php endforeach; ?>
+            <th>Action</th>
+        </tr>
+        <?php
+        if (!empty($this->arrAll)):
+            $i = 0;
+            foreach ($this->arrAll as $arrSingle):
+                $i++;
+                ?>
+                <tr>
+                    <td><input type="checkbox" class="ckcItem" name="ckc[]"></td>
+                    <td><?php echo $i ?></td>
+                    <?php // foreach ($this->model as $field => $val): ?>
+                    <!--<td><?php // echo $arrSingle->$field      ?></td>-->
+                    <?php // endforeach;  ?>
+                    <td><?php echo $arrSingle->name ?></td>
+                    <td><?php echo $arrSingle->slug ?></td>
+                    <td><?php echo $arrSingle->price ?></td>
+                    <td><?php echo $arrSingle->category ?></td>
+                    <td><?php echo $arrSingle->description ?></td>
+
+                    <td>
+                        <img class="img-list" 
+                             src="<?= $timthumb . SITE_ROOT . "public/img/upload/" . $arrSingle->image ?>&h=50&w=100">
+                    </td>
+                    <td><?php echo $arrSingle->status ?></td>
+                    <td>
+                        <a class="btn btn-warning" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail/') . $arrSingle->id ?>">Edit</a> &nbsp;
+                        <a class="btn btn-danger" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/delete/') . $arrSingle->id ?>">Delele</a>
+                    </td>
+                </tr>
+                <?php
+            endforeach;
+        endif;
+        ?>
+    </table>
+    <hr/>
+    <ul class="pagination">
+        <?php if ($this->page > 1 && $this->page <= $this->countPage): ?>
+            <li><a href="<?php echo Helper::getPermalink('backend/' . $this->module, "page=" . ($this->page - 1)) ?>">Prev</a></li>
+        <?php endif; ?>
+        <?php
+        for ($i = 1; $i <= $this->countPage; $i++):
+            ?>
+            <li><a href="<?php echo Helper::getPermalink('backend/' . $this->module, "page={$i}") ?>"><?php echo $i ?></a></li>
+        <?php endfor; ?>
+
+        <?php if ($this->page < $this->countPage): ?>
+            <li><a href="<?php echo Helper::getPermalink('backend/' . $this->module, "page=" . ($this->page + 1)) ?>">Next</a></li>
+        <?php endif; ?>
+    </ul>
+
+</div> <!-- /container -->

@@ -1,10 +1,10 @@
 <?php
 class userModel extends Model {
 
-    public $table = "users";
+    public $name = "";
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($module) {
+        parent::__construct($module);
     }
 
 }

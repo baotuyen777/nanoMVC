@@ -20,4 +20,15 @@ class View {
         }
     }
 
+    /**
+     * 
+     * @param type $action
+     */
+    public function customView($action) {
+        $path = SERVER_ROOT . 'apps/' . $this->app . '/' . $this->module . '/view/' . $action . '.php';
+        if (file_exists($path)) {
+            require $path;
+        }
+    }
+
 }

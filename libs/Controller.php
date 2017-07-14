@@ -49,7 +49,7 @@ class Controller {
 
     function all() {
 
-        $postPerPage = 2;
+        $postPerPage = 12;
         $page = isset($_REQUEST['page']) ? filter_var($_REQUEST['page'], FILTER_SANITIZE_STRING) : 1;
 
         $total = count($this->model->getAll());
@@ -81,7 +81,8 @@ class Controller {
 
     function update($id) {
         if ($_POST) {
-            $params = $_POST;
+            
+            $params=Helper::changeFormatPost($_POST['data']);
             $mes = '';
             $status = false;
             if (isset($_FILES['image']) && $_FILES['image']['name']) {
@@ -116,10 +117,13 @@ class Controller {
                     }
                 }
             }
-
-            $this->view->status = $status;
-            $this->view->mes = $mes;
-            $this->view->loadView('notice');
+            
+            $result = array(
+                'status' => $status,
+                'mes' => $mes
+            );
+            header('Content-Type: application/json');
+            echo json_encode($result);
         }
     }
 

@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 13, 2015, 6:20:11 PM
+    Author     : tuyenbv
+*/
+#qform_wrap{
+    padding-top: 50px;
+}
+#qform_wrap thead{
+    background: #23282d;
+    color: white;
+}
+#mail_config{
+    width: 100%;
+}
+#mail_config input{
+    width: 100%;
+}
+#mail_config textArea{
+    width: 100%;
+}

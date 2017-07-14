@@ -15,24 +15,15 @@
         <link href="<?php echo SITE_ROOT ?>/public/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="<?php echo SITE_ROOT ?>/public/backend/css/main.css" rel="stylesheet">
-
     </head>
 
     <body>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Project name</a>
-                </div>
+
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li class="active"><a href="<?php echo Helper::getPermalink('backend/') ?>">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li class="dropdown">
@@ -56,3 +47,14 @@
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
+        <div class="wrap_main clearfix">
+            <aside id="sidebar">
+                <ul>
+                    <li><a href="<?php echo Helper::getPermalink('backend/slider') ?>">Slider</a></li>
+                    <li><a href="<?php echo Helper::getPermalink('backend/menu') ?>">Menu</a></li>
+                    <li><a href="<?php echo Helper::getPermalink('backend/user') ?>">User</a></li>
+                    <li><a href="<?php echo Helper::getPermalink('backend/product') ?>">Product</a></li>
+                    <li><a href="<?php echo Helper::getPermalink('backend/media') ?>">Media</a></li>
+                </ul>
+            </aside>
+            <main>

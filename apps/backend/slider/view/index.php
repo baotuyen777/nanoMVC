@@ -12,9 +12,13 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
         <tr>
             <th><input type="checkbox" class="masCheck"></th>
             <th>STT</th>
-            <?php foreach ($this->model as $field => $val): ?>
+            <?php
+            foreach ($this->model as $field => $val):
+                if ($field == 'id')
+                    continue;
+                ?>
                 <th><?php echo ($field) ?></th>
-            <?php endforeach; ?>
+        <?php endforeach; ?>
             <th>Action</th>
         </tr>
         <?php
@@ -27,8 +31,8 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
                     <td><input type="checkbox" class="ckcItem" name="ckc[]"></td>
                     <td><?php echo $i ?></td>
                     <?php // foreach ($this->model as $field => $val): ?>
-                    <!--<td><?php // echo $arrSingle->$field   ?></td>-->
-                    <?php // endforeach; ?>
+                    <!--<td><?php // echo $arrSingle->$field    ?></td>-->
+        <?php // endforeach;  ?>
                     <td><?php echo $arrSingle->name ?></td>
                     <td><?php echo $arrSingle->link ?></td>
                     <td><?php echo $arrSingle->content ?></td>
@@ -59,8 +63,8 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
         <?php endfor; ?>
 
         <?php if ($this->page < $this->countPage): ?>
-            <li><a href="<?php echo Helper::getPermalink('backend/user', "page=" . ($this->page + 1)) ?>">Next</a></li>
-        <?php endif; ?>
+            <li><a href="<?php echo Helper::getPermalink('backend/' . $this->module, "page=" . ($this->page + 1)) ?>">Next</a></li>
+<?php endif; ?>
     </ul>
 
 </div> <!-- /container -->

@@ -101,10 +101,10 @@ class Helper {
             $status = 0;
         }
         // Check if file already exists
-        if (file_exists($target_file)) {
-            $mes = "Ảnh đã tồn tại";
-            $status = 0;
-        }
+//        if (file_exists($target_file)) {
+//            $mes = "Ảnh đã tồn tại";
+//            $status = 0;
+//        }
         // Check file size
         if ($file_upload["image"]["size"] > IMAGE_SIZE) {
             $mes = "File quá lớn(<5Mb)";
@@ -132,6 +132,18 @@ class Helper {
             'filePath' => $filePath
         );
         return $return;
+    }
+
+    static function redirect($link) {
+        echo '<script>window.location.replace("' . $link . '");</script>';
+    }
+
+    static function changeFormatPost($arrAllField = array()) {
+        $newArr = array();
+        foreach ($arrAllField as $arrField) {
+            $newArr[$arrField['name']] = $arrField['value'];
+        }
+        return $newArr;
     }
 
 }
