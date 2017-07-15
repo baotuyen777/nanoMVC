@@ -1,6 +1,5 @@
 <?php
 $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
-
 ?>
 
 <div class="container">
@@ -32,9 +31,9 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
                 <tr>
                     <td><input type="checkbox" class="ckcItem" name="ckc[]"></td>
                     <td><?php echo $i ?></td>
-                    <?php // foreach ($this->model as $field => $val): ?>
-                    <!--<td><?php // echo $arrSingle->$field      ?></td>-->
-                    <?php // endforeach;  ?>
+                    <?php // foreach ($this->model as $field => $val):  ?>
+                    <!--<td><?php // echo $arrSingle->$field       ?></td>-->
+                    <?php // endforeach;   ?>
                     <td><?php echo $arrSingle->name ?></td>
                     <td><?php echo $arrSingle->slug ?></td>
                     <td><?php echo $arrSingle->price ?></td>
@@ -73,3 +72,4 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
     </ul>
 
 </div> <!-- /container -->
+

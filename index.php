@@ -17,9 +17,13 @@ define('DS', DIRECTORY_SEPARATOR);
 define('SERVER_ROOT', __DIR__ . DS);
 define('IS_REWRITE', false);
 define('TIMTHUMB', SITE_ROOT . 'libs/timthumb.php?src=');
-
+define('UPLOAD_DIR', SERVER_ROOT . 'public/img/upload/');
+define('UPLOAD_LINK', SITE_ROOT . 'public/img/upload/');
+define('TIMTHUMB_LINK', SITE_ROOT . 'libs/timthumb.php?src=' . UPLOAD_LINK);
 define('IMAGE_SIZE', 5000000);
 define('IMAGE_FILE_TYPE', "gif|png|jpg");
+define('THUMBNAIL', "&h=50&w=100");
+
 /* * library */
 require 'libs/Bootstrap.php';
 require 'libs/Controller.php';
@@ -29,7 +33,6 @@ require 'libs/DB.php';
 
 require 'libs/Helper.php';
 require 'libs/Session.php';
-require 'libs/UploadHandler.php';
 //lang
 //require 'libs/function.php';
 //$lang_get= Session::get('lang');

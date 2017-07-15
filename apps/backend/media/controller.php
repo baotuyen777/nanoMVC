@@ -6,10 +6,27 @@ class mediaController extends Controller {
         parent::__construct($app, $module);
     }
 
-//    public function all() {
-////        $upload_handler = new UploadHandler();
-//        $this->view->loadView('index');
-//    }
+    public function srv_all($page) {
+        $postPerPage = 12;
+//        $page = isset($_REQUEST['page']) ? filter_var($_REQUEST['page'], FILTER_SANITIZE_STRING) : 1;
+
+        $total = count($this->model->getAll());
+
+        $start = ($page - 1) * $postPerPage;
+        $countPage = ceil($total / $postPerPage);
+        $params = array(
+            'filter' => isset($_REQUEST['filter']) ? filter_var($_REQUEST['filter'], FILTER_SANITIZE_STRING) : "",
+            'start' => $start,
+            'postPerPage' => $postPerPage
+        );
+        $result = array(
+            'status' => True,
+            'page' => $page,
+            'total' => $countPage,
+            'data' => $this->model->getAllPagination($params),
+        );
+        $this->loadJson($result);
+    }
 
     public function upload() {
         $status = TRUE;
@@ -24,8 +41,8 @@ class mediaController extends Controller {
 
                 move_uploaded_file($tmp_file, SERVER_ROOT . 'public/img/upload/' . $filename);
                 $arrMultiRow[] = array(
-                    'name' => '"'.$filename.'"',
-                    'image' => '"'.$filename.'"',
+                    'name' => '"' . $filename . '"',
+                    'image' => '"' . $filename . '"',
                 );
             }
 
@@ -44,6 +61,42 @@ class mediaController extends Controller {
         //send mail
 //    deliver_mail($form_id, $arr_attach_file);
 //        $wpdb->insert($wpdb->prefix . 'qsoft_form_st', array('submit_time' => $_SERVER['REQUEST_TIME']));
+    }
+
+    function delete() {
+
+        $status = false;
+        $mes = "something wrong, please contact admin!";
+        if ($_POST && $_POST['listId']) {
+            $listId = $_POST['listId'];
+            $this->deleteFile($listId);
+            if ($this->model->delete($listId)) {
+                $status = true;
+                $mes = "delete success";
+            }
+            $this->view->status = $status;
+            $this->view->mes = $mes;
+        } else {
+            $mes = "You must be choose some item !";
+        }
+
+        $result = array(
+            'status' => $status,
+            'mes' => $mes
+        );
+        $this->loadJson($result);
+    }
+
+    function deleteFile($listId) {
+        $arrId = explode(',', $listId);
+        foreach ($arrId as $id) {
+            $obj = $this->model->getSingle($id);
+            if ($obj && $obj->image) {
+                if (file_exists(UPLOAD_DIR . $obj->image)) {
+                    unlink(UPLOAD_DIR . $obj->image);
+                }
+            }
+        }
     }
 
     function reArrayFiles(&$file_post) {

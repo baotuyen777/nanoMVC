@@ -51,3 +51,12 @@ main{
 .progress-bar-success{
     display: block;
 }
+.list_media img{
+    vertical-align: middle;
+    margin: 5px;
+    border: 1px solid #ccc;
+   
+}
+.list_media a:focus img{
+    border:1px solid red !important;
+}

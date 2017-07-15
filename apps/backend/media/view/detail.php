@@ -1,5 +1,4 @@
-<?php
-$arrSingle = $this->arrSingle;
+<?php $arrSingle = $this->arrSingle;
 $imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?src=' . SITE_ROOT . "public/img/upload/" . $this->arrSingle->image . '&h=150&w=300';
 ?>
 <style>
@@ -68,4 +67,5 @@ $imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?sr
         // read the image file as a data URL.
         reader.readAsDataURL(this.files[0]);
     };
+    
 </script>

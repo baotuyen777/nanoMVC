@@ -26,5 +26,8 @@ class mediaModel extends Model {
         }
         return $result;
     }
+    function abc(){
+        echo 123123121;
+    }
 
 }

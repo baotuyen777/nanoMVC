@@ -1,6 +1,6 @@
 <?php
 $arrSingle = $this->arrSingle;
-$imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?src=' . SITE_ROOT . "public/img/upload/" . $this->arrSingle->image . '&h=150&w=300';
+//$imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?src=' . SITE_ROOT . "public/img/upload/" . $this->arrSingle->image . '&h=150&w=300';
 ?>
 <style>
     #image{
@@ -10,7 +10,7 @@ $imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?sr
 <div class="container">
     <h1>Detail</h1>
     <div class="notice">
-        
+
     </div>
     <form  class="form_ajax form-horizontal" method="post" enctype="multipart/form-data"
            action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" >
@@ -50,7 +50,8 @@ $imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?sr
         <div class="form-group">
             <label class="control-label col-sm-2" >Image:</label>
             <div class="col-sm-10">
-                <input type="file" name="image" id="files">
+                <button type="button" class="btn btn-primary" onclick="loadImage()">Add Image</button>
+                <input type="hidden" name="image" id="image_id">
                 <img id="image"
                      src="<?= $imgSrc ?>">
             </div>
@@ -69,15 +70,69 @@ $imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?sr
     </form>
 
 </div> <!-- /container -->
+<!-- Modal -->
+<div id="mediaModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="wrap_list_media">
+                    <div class="function">
+                        <a class="btn btn-success" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail') ?>">Add</a>
+
+                    </div>
+                    <div class="list_media">
+
+                    </div>
+                    <hr/>
+                    <ul class="pagination">
+
+                    </ul>
+
+                </div> <!-- /container -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="chooseImage()">Choose</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 <script>
-    document.getElementById("files").onchange = function () {
+    function loadImage() {
+        $('#mediaModal').modal('show');
+    }
+    jQuery.ajax({
+        type: "GET",
+        url: '<?php echo Helper::getPermalink('backend/media/srv_all/1') ?>',
+//        data: {"page": 1},
+        success: function (result) {
+//            console.log(result);
+            let listMedia = '';
+            for (k in result.data) {
+                listMedia += '<a href="#"><img data-id="' + result.data[k].id + '" src="<?php echo TIMTHUMB_LINK ?>' + result.data[k].image + '<?= THUMBNAIL ?>"/></a>';
+            }
+            $('.list_media').append(listMedia);
+        }
+    });
+    var chooseId = '';
+    var chooseUrl = '';
+    $(document).on("click", '.list_media img', function (event) {
+        chooseId = $(this).data('id');
+        chooseUrl = $(this).attr('src');
 
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            // get loaded data and render thumbnail.
-            document.getElementById("image").src = e.target.result;
-        };
-        // read the image file as a data URL.
-        reader.readAsDataURL(this.files[0]);
-    };</script>
+    });
+    function chooseImage() {
+        $('#image').attr('src', chooseUrl);
+        $('#image_id').val(chooseId);
+    }
+
+</script>

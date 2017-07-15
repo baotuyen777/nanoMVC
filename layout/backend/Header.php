@@ -15,6 +15,10 @@
         <link href="<?php echo SITE_ROOT ?>/public/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->
         <link href="<?php echo SITE_ROOT ?>/public/backend/css/main.css" rel="stylesheet">
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     </head>
 
     <body>

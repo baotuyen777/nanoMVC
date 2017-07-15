@@ -77,7 +77,7 @@ class Model {
             $pagination = "limit {$params['start']},{$params['postPerPage']}";
         }
         $sql = "SELECT * FROM " . $this->module . " "
-                . "WHERE 1=1 {$cond} {$pagination}";
+                . "WHERE 1=1 {$cond} ORDER BY id DESC {$pagination}";
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);

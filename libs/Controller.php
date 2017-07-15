@@ -68,6 +68,7 @@ class Controller {
         $this->view->model = $this->model;
         $this->view->loadView('index');
     }
+  
 
     function detail($id) {
         if ($id) {
@@ -81,8 +82,8 @@ class Controller {
 
     function update($id) {
         if ($_POST) {
-            
-            $params=Helper::changeFormatPost($_POST['data']);
+
+            $params = Helper::changeFormatPost($_POST['data']);
             $mes = '';
             $status = false;
             if (isset($_FILES['image']) && $_FILES['image']['name']) {
@@ -117,7 +118,7 @@ class Controller {
                     }
                 }
             }
-            
+
             $result = array(
                 'status' => $status,
                 'mes' => $mes
@@ -127,37 +128,31 @@ class Controller {
         }
     }
 
-    function delete($id) {
+    function delete() {
         $status = false;
-        /** check exist id */
-        if (!$id) {
-            $mes = "You must be choose some item !";
-        } elseif (!Helper::checkId($this->module, 'id', $id)) {
-            $mes = "Item not found!";
-        } elseif ($this->model->delete($id)) {
-            $status = true;
-            $mes = "delete success";
+        $mes = "something wrong, please contact admin!";
+        if ($_POST && $_POST['listId']) {
+            $listId = $_POST['listId'];
+            if ($this->model->delete($listId)) {
+                $status = true;
+                $mes = "delete success";
+            }
+            $this->view->status = $status;
+            $this->view->mes = $mes;
         } else {
-            $mes = "something wrong, please contact admin!";
+            $mes = "You must be choose some item !";
         }
-        $this->view->status = $status;
-        $this->view->mes = $mes;
-        $this->view->loadView('notice');
+
+        $result = array(
+            'status' => $status,
+            'mes' => $mes
+        );
+        $this->loadJson($result);
     }
 
-    function deleteMulti($listId) {
-        $status = false;
-        if (!$listId) {
-            $mes = "You must be choose some item !";
-        } elseif ($this->model->delete(filter_var($listId, FILTER_SANITIZE_STRING))) {
-            $status = true;
-            $mes = "delete success";
-        } else {
-            $mes = "something wrong, please contact admin!";
-        }
-        $this->view->status = $status;
-        $this->view->mes = $mes;
-        $this->view->loadView('notice');
+    function loadJson($result) {
+        header('Content-Type: application/json');
+        echo json_encode($result);
     }
 
 }
