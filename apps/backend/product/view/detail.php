@@ -1,6 +1,6 @@
 <?php
 $arrSingle = $this->arrSingle;
-//$imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?src=' . SITE_ROOT . "public/img/upload/" . $this->arrSingle->image . '&h=150&w=300';
+$imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image). '&h=150&w=300';
 ?>
 <style>
     #image{
@@ -12,7 +12,7 @@ $arrSingle = $this->arrSingle;
     <div class="notice">
 
     </div>
-    <form  class="form_ajax form-horizontal" method="post" enctype="multipart/form-data"
+    <form class="form_ajax form-horizontal" method="post" enctype="multipart/form-data"
            action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" >
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Title:</label>
@@ -134,5 +134,18 @@ $arrSingle = $this->arrSingle;
         $('#image').attr('src', chooseUrl);
         $('#image_id').val(chooseId);
     }
-
+//    $('.form_ajax').submit(function(e){
+//        console.log();
+//        data = $(this).serializeArray();
+//        e.preventDefault();
+//        jQuery.ajax({
+//        type: "POST",
+//        url: $(this).attr('action'),
+////        data: {"page": 1},
+//        success: function (result) {
+//            console.log(result);
+////            $('.list_media').append(listMedia);
+//        }
+//    });
+//    });
 </script>

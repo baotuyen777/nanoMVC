@@ -23,7 +23,7 @@ define('TIMTHUMB_LINK', SITE_ROOT . 'libs/timthumb.php?src=' . UPLOAD_LINK);
 define('IMAGE_SIZE', 5000000);
 define('IMAGE_FILE_TYPE', "gif|png|jpg");
 define('THUMBNAIL', "&h=50&w=100");
-
+define('NO_IMAGE', SITE_ROOT.'public/img/upload/no-image.jpg');
 /* * library */
 require 'libs/Bootstrap.php';
 require 'libs/Controller.php';

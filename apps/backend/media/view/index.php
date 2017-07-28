@@ -2,8 +2,8 @@
 <div class="container">
     <div class="function">
         <a class="btn btn-primary " id="btn_add_file" href="#">Add File</a>
-        <a class="btn btn-danger" href="#"
-           onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>')" >Delete</a>
+        <button type="button" class="btn btn-danger" href="#"
+           onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>')" >Delete</button>
         <hr/>
     </div>
     <div class="notice"></div>
@@ -55,7 +55,8 @@
                     <td><?php echo $arrSingle->description ?></td>
                     <td>
                         <a class="btn btn-warning" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail/') . $arrSingle->id ?>">Edit</a> &nbsp;
-                        <a class="btn btn-danger" onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>',<?php echo $arrSingle->id ?>)">Delele</a>
+                        <button type="button" class="btn btn-danger" 
+                                onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>',<?php echo $arrSingle->id ?>)">Delele</button>
                     </td>
                 </tr>
                 <?php

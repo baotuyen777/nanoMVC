@@ -68,7 +68,6 @@ class Controller {
         $this->view->model = $this->model;
         $this->view->loadView('index');
     }
-  
 
     function detail($id) {
         if ($id) {
@@ -82,43 +81,30 @@ class Controller {
 
     function update($id) {
         if ($_POST) {
-
             $params = Helper::changeFormatPost($_POST['data']);
             $mes = '';
             $status = false;
-            if (isset($_FILES['image']) && $_FILES['image']['name']) {
-                $upload = Helper::upload($_FILES);
-                if ($upload['status']) {
-                    $params['image'] = $upload['filePath'];
+            if ($id) {
+                $params['status'] = !isset($params['status']) ? 0 : 1;
+                /** check exist id */
+                $checkId = Helper::checkId($this->module, 'id', $id);
+                if (!$checkId) {
+                    $mes = "Id not found!";
+                }
+                if ($this->model->update($id, $params)) {
+                    $mes = "Success";
+                    $status = true;
                 } else {
-                    $mes = $upload['mes'];
+                    $mes = "Server overload! please try again";
+                }
+            } else {
+                if ($this->model->add($params)) {
+                    $status = true;
+                    $mes = "Success";
+                } else {
+                    $mes = "Server overload!";
                 }
             }
-            if ($mes == '') {
-                if ($id) {
-                    $params['status'] = !isset($params['status']) ? 0 : 1;
-                    /** check exist id */
-                    $checkId = Helper::checkId($this->module, 'id', $id);
-                    if (!$checkId) {
-                        $mes = "Id not found!";
-                    }
-
-                    if ($this->model->update($id, $params)) {
-                        $mes = "Success";
-                        $status = true;
-                    } else {
-                        $mes = "Server overload! please try again";
-                    }
-                } else {
-                    if ($this->model->add($params)) {
-                        $status = true;
-                        $mes = "Success";
-                    } else {
-                        $mes = "Server overload!";
-                    }
-                }
-            }
-
             $result = array(
                 'status' => $status,
                 'mes' => $mes

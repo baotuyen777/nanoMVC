@@ -145,5 +145,19 @@ class Helper {
         }
         return $newArr;
     }
+    static function get_image($id){
+        if (!$id) {
+            return NO_IMAGE;
+        }
+        $sql = "SELECT image FROM media WHERE id=:id ";
+        $stmt = DB::getInstance()->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+        if(!$result){
+            return NO_IMAGE ;
+        }
+        return $result;
+    }
 
 }

@@ -64,23 +64,22 @@ function del(url_ajax, id) {
         }
     });
 }
+$('.form_ajax').submit(function (e) {
+    e.preventDefault();
+    data = $(this).serializeArray();
+    jQuery.ajax({
+        type: "POST",
+        url: $(this).attr('action'),
+        data: {data},
+        success: function (result) {
+            console.log(result);
+            let color = result.status ? 'success' : 'danger';
+            jQuery(".notice").html('<div class="alert alert-' + color + ' alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + result.mes + '</div>');
+//            setTimeout(location.reload(), 3000);
+        }
 
-//$('.form_ajax').on('submit', function (e) {
-//    e.preventDefault();
-//    data = $(this).serializeArray();
-//    jQuery.ajax({
-//        type: "POST",
-//        url: $(this).attr('action'),
-//        data: {data},
-//        success: function (result) {
-//            console.log(result);
-//            let color = result.status ? 'success' : 'danger';
-//            jQuery(".notice").html('<div class="alert alert-' + color + ' alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + result.mes + '</div>');
-//            setTimeout(location.reload(), 2000);
-//        }
-//
-//    });
-//});
+    });
+});
 //function submit(url_ajax) {
 //    var data = new FormData($form[0]); //formelement
 //    return;

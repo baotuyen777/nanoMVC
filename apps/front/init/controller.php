@@ -21,7 +21,7 @@ class initController extends Controller {
             'price INT (11) NOT NULL',
             'category INT (11)',
             'description VARCHAR (255) ',
-            'image VARCHAR (255)',
+            'image  INT(11)',
             'status INT (2) DEFAULT 1',
         ));
         $this->model->addSql('orders', array(
