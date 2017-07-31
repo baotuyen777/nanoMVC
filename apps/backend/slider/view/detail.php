@@ -56,13 +56,14 @@ $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get
 </div> <!-- /container -->
 
 <script>
-    document.getElementById("files").onchange = function () {
-
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            // get loaded data and render thumbnail.
-            document.getElementById("image").src = e.target.result;
-        };
-        // read the image file as a data URL.
-        reader.readAsDataURL(this.files[0]);
-    };</script>
+    //    document.getElementById("files").onchange = function () {
+    //
+    //        var reader = new FileReader();
+    //        reader.onload = function (e) {
+    //            // get loaded data and render thumbnail.
+    //            document.getElementById("image").src = e.target.result;
+    //        };
+    //        // read the image file as a data URL.
+    //        reader.readAsDataURL(this.files[0]);
+    //    };
+</script>

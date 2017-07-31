@@ -8,8 +8,10 @@ $arrSingle = $this->arrSingle;
 </style>
 <div class="container">
     <h1>Detail</h1>
-    <form class="form-horizontal" method="post" enctype="multipart/form-data"
-          action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" >
+    <form class="form-horizontal form_ajax" method="post" enctype="multipart/form-data"
+          action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" 
+          data-url_list="<?php echo Helper::getPermalink('backend/' . $this->module)?>"
+          >
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Title:</label>
             <div class="col-sm-10">
@@ -38,14 +40,4 @@ $arrSingle = $this->arrSingle;
 
 </div> <!-- /container -->
 
-<script>
-    document.getElementById("files").onchange = function () {
 
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            // get loaded data and render thumbnail.
-            document.getElementById("image").src = e.target.result;
-        };
-        // read the image file as a data URL.
-        reader.readAsDataURL(this.files[0]);
-    };</script>

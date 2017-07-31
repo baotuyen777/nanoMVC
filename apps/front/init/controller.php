@@ -21,8 +21,13 @@ class initController extends Controller {
             'price INT (11) NOT NULL',
             'cat_id INT (11)',
             'description VARCHAR (255) ',
+            'content TEXT ',
             'image  INT(11)',
             'status INT (2) DEFAULT 1',
+        ));
+         $this->model->addSql('productslide', array(
+            'product_id INT (11) NOT NULL',
+            'image_id INT (11)  NOT NULL',
         ));
          $this->model->addSql('productcat', array(
             'name VARCHAR (255) NOT NULL',

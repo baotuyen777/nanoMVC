@@ -57,11 +57,15 @@ main{
     border: 1px solid #ccc;
 
 }
-.list_media a:focus img{
+/*.list_media a:focus img{
     border:1px solid red !important;
-}
+}*/
 .img-list{
     height: 50px;
+}
+img.selected{
+    border:1px solid red !important;
+    opacity: 0.5;
 }
 #image{
     max-height: 200px;

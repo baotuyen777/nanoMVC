@@ -98,7 +98,7 @@ class Controller {
                     $mes = "Server overload! please try again";
                 }
             } else {
-                if ($this->model->add($params)) {
+                if ($id=$this->model->add($params)) {
                     $status = true;
                     $mes = "Success";
                 } else {

@@ -162,4 +162,39 @@ class Model {
         return $result;
     }
 
+//    public function addMany2many($table, $arrObj1 = array('product_id' => 1), $arrObj2 = array('image_id' => array())) {
+//        $sqlCheck = "SELECT * from :table where ";
+//        $stmt = $this->db->prepare($sql);
+//        $stmt->bindValue(":id", $id);
+//        $stmt->execute();
+//        $result = $stmt->fetch(PDO::FETCH_OBJ);
+//    }
+    public function delProductSlide($product_id) {
+
+        $sqlDel = "DELETE from productslide where product_id=:product_id";
+        var_dump($product_id);
+        $stmt = $this->db->prepare($sqlDel);
+        $stmt->bindValue(":product_id", $product_id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function addProductSlide($product_id, $media_id) {
+        $sql = "INSERT INTO productslide(product_id,image_id) values (:product_id,:image_id) ";
+        $stmt2 = $this->db->prepare($sql);
+        $stmt2->bindValue(":product_id", $product_id);
+        $stmt2->bindValue(":image_id", $media_id);
+        $stmt2->execute();
+        $result = $stmt2->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getProductSlide($product_id) {
+        $sql = "SELECT * FROM productslide where product_id=:product_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":product_id", $product_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return ($result);
+    }
+
 }

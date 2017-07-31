@@ -64,43 +64,53 @@ function del(url_ajax, id) {
         }
     });
 }
-$('.form_ajax').submit(function (e) {
-    e.preventDefault();
-    data = $(this).serializeArray();
-    var form=$(this);
-    jQuery.ajax({
-        type: "POST",
-        url: $(this).attr('action'),
-        data: {data},
-        success: function (result) {
-            console.log(result);
-            let color = result.status ? 'success' : 'danger';
-            jQuery(".notice").html('<div class="alert alert-' + color + ' alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + result.mes + '</div>');
-//            
-            if(result.status){
-                setTimeout(window.location.href=form.data('url_list'), 3000);
-            }
-        }
 
-    });
-});
 //function submit(url_ajax) {
 //    var data = new FormData($form[0]); //formelement
 //    return;
 //}
 //
 //media
-   function loadImage() {
-        $('#mediaModal').modal('show');
+function loadImage() {
+    $('#mediaModal').modal('show');
+}
+var arrId = [];
+var chooseUrl = '';
+$(document).on("click", '.list_media img', function (event) {
+    $(this).toggleClass('selected');
+    let index = arrId.indexOf($(this).data('id'));
+    if (index > -1) {
+        arrId.splice(index, 1);
+    } else {
+        arrId.push($(this).data('id'));
     }
-   var chooseId = '';
-    var chooseUrl = '';
-    $(document).on("click", '.list_media img', function (event) {
-        chooseId = $(this).data('id');
-        chooseUrl = $(this).attr('src');
+
+    console.log(arrId);
+    chooseUrl = $(this).attr('src');
+
+});
+function chooseImage() {
+//    $('#image').attr('src', chooseUrl);
+//    $('#image_id').val(arrId);
+}
+
+$('.form_ajax').submit(function (e) {
+    e.preventDefault();
+    data = $(this).serializeArray();
+    var form = $(this);
+    jQuery.ajax({
+        type: "POST",
+        url: $(this).attr('action'),
+        data: {data,arrId},
+        success: function (result) {
+            console.log(result);
+            let color = result.status ? 'success' : 'danger';
+            jQuery(".notice").html('<div class="alert alert-' + color + ' alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + result.mes + '</div>');
+//            
+//            if (result.status) {
+//                setTimeout(window.location.href = form.data('url_list'), 3000);
+//            }
+        }
 
     });
-    function chooseImage() {
-        $('#image').attr('src', chooseUrl);
-        $('#image_id').val(chooseId);
-    }
+});

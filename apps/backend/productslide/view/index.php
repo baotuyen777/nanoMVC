@@ -1,11 +1,12 @@
 <?php
 $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
 ?>
+
 <div class="container">
     <div class="function">
         <a class="btn btn-success" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail') ?>">Add</a>
-        <!--        <a class="btn btn-danger" onclick="deleteMulti(this)" 
-                   data-href="<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>">Delete</a>-->
+         <button type="button" class="btn btn-danger" href="#"
+           onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>')" >Delete</button>
         <hr/>
     </div>
     <table class="table">
@@ -18,7 +19,7 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
                     continue;
                 ?>
                 <th><?php echo ($field) ?></th>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
             <th>Action</th>
         </tr>
         <?php
@@ -26,24 +27,29 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
             $i = 0;
             foreach ($this->arrAll as $arrSingle):
                 $i++;
-                $imgSrc = $arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($arrSingle->image). '&h=50&w=100';
+                $imgSrc = $arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($arrSingle->image_id). '&h=50&w=100';
                 ?>
                 <tr>
-                    <td><input type="checkbox" class="ckcItem" name="ckc[]"></td>
+                    <td><input type="checkbox" class="ick" name="ckc[]" value="<?php echo $arrSingle->id ?>"></td>
                     <td><?php echo $i ?></td>
-                    <?php // foreach ($this->model as $field => $val): ?>
-                    <!--<td><?php // echo $arrSingle->$field    ?></td>-->
-        <?php // endforeach;  ?>
+                    <?php // foreach ($this->model as $field => $val):  ?>
+                    <!--<td><?php // echo $arrSingle->$field       ?></td>-->
+                    <?php // endforeach;   ?>
                     <td><?php echo $arrSingle->name ?></td>
-                    <td><?php echo $arrSingle->link ?></td>
-                    <td><?php echo $arrSingle->content ?></td>
+                    <td><?php echo $arrSingle->slug ?></td>
+                    <td><?php echo $arrSingle->parent_id     ?></td>
+                    <td><?php echo $arrSingle->description ?></td>
+
+                    <td>
+                        <img class="img-list" 
+                             src="<?= $imgSrc?>"/>
+                    </td>
                     <td><?php echo $arrSingle->status ?></td>
                     <td>
-                        <img class="img-list" src="<?= $imgSrc ?>">
-                    </td>
-                    <td>
                         <a class="btn btn-warning" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail/') . $arrSingle->id ?>">Edit</a> &nbsp;
-                        <a class="btn btn-danger" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/delete/') . $arrSingle->id ?>">Delele</a>
+                       <button type="button" class="btn btn-danger" 
+                                onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>',<?php echo $arrSingle->id ?>)">
+                           Delele</button>
                     </td>
                 </tr>
                 <?php
@@ -64,7 +70,8 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
 
         <?php if ($this->page < $this->countPage): ?>
             <li><a href="<?php echo Helper::getPermalink('backend/' . $this->module, "page=" . ($this->page + 1)) ?>">Next</a></li>
-<?php endif; ?>
+        <?php endif; ?>
     </ul>
 
 </div> <!-- /container -->
+

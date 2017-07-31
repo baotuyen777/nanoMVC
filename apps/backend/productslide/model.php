@@ -1,15 +1,13 @@
 <?php
 
-class productModel extends Model {
+class productcatModel extends Model {
 
     public $id = '';
     public $name = '';
     public $slug = '';
-    public $price = '';
-    public $cat_id = '';
+    public $parent_id = '';
     public $description = '';
-    public $content='';
-    public $image = '';
+    public $image_id = '';
     public $status = '';
     
     public function __construct($module) {
