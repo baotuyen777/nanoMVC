@@ -1,17 +1,19 @@
 <?php
 $arrSingle = $this->arrSingle;
-$imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image) . '&h=150&w=300';
+$imgSrc = $this->arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image_id). '&h=150&w=300';
 ?>
-
+<style>
+    #image{
+        max-height: 200px;
+    }
+</style>
 <div class="container">
     <h1>Detail</h1>
     <div class="notice">
 
     </div>
     <form class="form_ajax form-horizontal" method="post" enctype="multipart/form-data"
-          action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" 
-          data-url_list="<?php echo Helper::getPermalink('backend/' . $this->module) ?>"
-          >
+           action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" >
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Title:</label>
             <div class="col-sm-10">
@@ -24,25 +26,12 @@ $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get
                 <input type="text" name="slug" value="<?php echo $arrSingle->slug ?>" class="form-control" id="link">
             </div>
         </div>
+       
         <div class="form-group">
-            <label class="control-label col-sm-2" >Price:</label>
+            <label class="control-label col-sm-2" >Parent:</label>
             <div class="col-sm-10">
-                <input type="number" name="price" value="<?php echo $arrSingle->price ?>" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Category:</label>
-            <div class="col-sm-10">
-                <select name="cat_id" class="form-control">
-                     <option value="">Please choose a item</option>
-                    <?php
-                    
-                    foreach ($this->arrMultiCat as $arrSingleCat):
-                        $selected=$this->arrSingle->cat_id== $arrSingleCat->id ? 'selected' : '';
-                        ?>
-                        <option value="<?php echo $arrSingleCat->id ?>" <?php echo $selected ?>>
-                            <?php echo $arrSingleCat->name ?></option>
-                    <?php endforeach; ?>
+                <select name="category">
+
                 </select>
             </div>
         </div>
@@ -113,9 +102,33 @@ $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get
 </div>
 
 <script>
- 
-  
- 
+    function loadImage() {
+        $('#mediaModal').modal('show');
+    }
+    jQuery.ajax({
+        type: "GET",
+        url: '<?php echo Helper::getPermalink('backend/media/srv_all/1') ?>',
+//        data: {"page": 1},
+        success: function (result) {
+//            console.log(result);
+            let listMedia = '';
+            for (k in result.data) {
+                listMedia += '<a href="#"><img data-id="' + result.data[k].id + '" src="<?php echo TIMTHUMB_LINK ?>' + result.data[k].image + '<?= THUMBNAIL ?>"/></a>';
+            }
+            $('.list_media').append(listMedia);
+        }
+    });
+    var chooseId = '';
+    var chooseUrl = '';
+    $(document).on("click", '.list_media img', function (event) {
+        chooseId = $(this).data('id');
+        chooseUrl = $(this).attr('src');
+
+    });
+    function chooseImage() {
+        $('#image').attr('src', chooseUrl);
+        $('#image_id').val(chooseId);
+    }
 //    $('.form_ajax').submit(function(e){
 //        console.log();
 //        data = $(this).serializeArray();

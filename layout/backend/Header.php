@@ -58,6 +58,7 @@
                     <li><a href="<?php echo Helper::getPermalink('backend/menu') ?>">Menu</a></li>
                     <li><a href="<?php echo Helper::getPermalink('backend/user') ?>">User</a></li>
                     <li><a href="<?php echo Helper::getPermalink('backend/product') ?>">Product</a></li>
+                    <li><a href="<?php echo Helper::getPermalink('backend/productcat') ?>">Product category</a></li>
                     <li><a href="<?php echo Helper::getPermalink('backend/media') ?>">Media</a></li>
                 </ul>
             </aside>

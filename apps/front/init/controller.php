@@ -19,9 +19,17 @@ class initController extends Controller {
             'name VARCHAR (255) NOT NULL',
             'slug VARCHAR (255) NOT NULL',
             'price INT (11) NOT NULL',
-            'category INT (11)',
+            'cat_id INT (11)',
             'description VARCHAR (255) ',
             'image  INT(11)',
+            'status INT (2) DEFAULT 1',
+        ));
+         $this->model->addSql('productcat', array(
+            'name VARCHAR (255) NOT NULL',
+            'slug VARCHAR (255) NOT NULL',
+            'parent_id INT (11) ',
+            'description VARCHAR (255) ',
+            'image_id  INT(11)',
             'status INT (2) DEFAULT 1',
         ));
         $this->model->addSql('orders', array(

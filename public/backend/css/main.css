@@ -63,3 +63,6 @@ main{
 .img-list{
     height: 50px;
 }
+#image{
+    max-height: 200px;
+}

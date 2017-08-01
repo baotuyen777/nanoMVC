@@ -8,8 +8,8 @@ class indexModel extends Model {
 
     public $table = "users";
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct($module) {
+        parent::__construct($module);
     }
 
     public function getAllUser($params = false) {

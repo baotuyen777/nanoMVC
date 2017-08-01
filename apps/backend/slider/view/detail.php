@@ -1,16 +1,17 @@
 <?php
 $arrSingle = $this->arrSingle;
-$imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?src=' . SITE_ROOT . "public/img/upload/" . $this->arrSingle->image . '&h=150&w=300';
+$imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image) . '&h=150&w=300';
 ?>
-<style>
-    #image{
-        max-height: 200px;
-    }
-</style>
+
 <div class="container">
     <h1>Detail</h1>
-    <form class="form-horizontal" method="post" enctype="multipart/form-data"
-          action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" >
+    <div class="notice">
+
+    </div>
+    <form class="form_ajax form-horizontal" method="post" enctype="multipart/form-data"
+          action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" 
+          data-url_list="<?php echo Helper::getPermalink('backend/' . $this->module) ?>"
+          >
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Title:</label>
             <div class="col-sm-10">
@@ -30,10 +31,11 @@ $imgSrc = $this->arrSingle->image == '' ? '' : SITE_ROOT . 'libs/timthumb.php?sr
                           ><?php echo $this->arrSingle->content ?></textarea>
             </div>
         </div>
-        <div class="form-group">
+         <div class="form-group">
             <label class="control-label col-sm-2" >Image:</label>
             <div class="col-sm-10">
-                <input type="file" name="image" id="files">
+                <button type="button" class="btn btn-primary" onclick="loadImage()">Add Image</button>
+                <input type="hidden" name="image" id="image_id">
                 <img id="image"
                      src="<?= $imgSrc ?>">
             </div>

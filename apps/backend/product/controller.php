@@ -12,8 +12,8 @@ class productController extends Controller {
         } else {
             $arrSingle = $this->model;
         }
-//        $mediaModel = $this->loadModel('backend', 'media');
-//        $arrMultiMedia=$mediaModel->getAllPagination();
+        $mediaModel = $this->loadModel('backend', 'productcat');
+        $this->view->arrMultiCat=$mediaModel->getAll();
         $this->view->arrSingle = $arrSingle;
         $this->view->loadView('detail');
     }
