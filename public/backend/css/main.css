@@ -70,3 +70,11 @@ img.selected{
 #image{
     max-height: 200px;
 }
+.wrap_slide{
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.wrap_slide img{
+    margin-left: 10px;
+}

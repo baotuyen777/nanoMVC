@@ -74,9 +74,11 @@ function del(url_ajax, id) {
 function loadImage() {
     $('#mediaModal').modal('show');
 }
+
 var arrId = [];
-var chooseUrl = '';
-$(document).on("click", '.list_media img', function (event) {
+
+$(document).on("click", '#slideModal .list_media img', function (event) {
+    console.log(111)
     $(this).toggleClass('selected');
     let index = arrId.indexOf($(this).data('id'));
     if (index > -1) {
@@ -84,14 +86,19 @@ $(document).on("click", '.list_media img', function (event) {
     } else {
         arrId.push($(this).data('id'));
     }
-
-    console.log(arrId);
+});
+var chooseUrl = '';
+var chooseId=''
+$(document).on("click", '#mediaModal .list_media img', function (event) {
+    $(this).addClass('selected');
     chooseUrl = $(this).attr('src');
+    chooseId =$(this).data('id');
+    console.log(chooseId);
 
 });
 function chooseImage() {
-//    $('#image').attr('src', chooseUrl);
-//    $('#image_id').val(arrId);
+    $('#image').attr('src', chooseUrl);
+    $('#image_id').val(arrId);
 }
 
 $('.form_ajax').submit(function (e) {
@@ -101,7 +108,7 @@ $('.form_ajax').submit(function (e) {
     jQuery.ajax({
         type: "POST",
         url: $(this).attr('action'),
-        data: {data,arrId},
+        data: {data, arrId},
         success: function (result) {
             console.log(result);
             let color = result.status ? 'success' : 'danger';

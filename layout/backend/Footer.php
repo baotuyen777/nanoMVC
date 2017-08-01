@@ -34,7 +34,7 @@
                 </div> <!-- /container -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="chooseImage()">Choose</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="chooseImage()" >Choose</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -46,19 +46,19 @@
 <script src="<?php echo SITE_ROOT ?>/public/backend/js/jquery.validate.min.js"></script>
 <script>
 
-    jQuery.ajax({
-        type: "GET",
-        url: '<?php echo Helper::getPermalink('backend/media/srv_all/1') ?>',
+                    jQuery.ajax({
+                        type: "GET",
+                        url: '<?php echo Helper::getPermalink('backend/media/srv_all/1') ?>',
 //        data: {"page": 1},
-        success: function (result) {
+                        success: function (result) {
 //            console.log(result);
-            let listMedia = '';
-            for (k in result.data) {
-                listMedia += '<a href="#"><img data-id="' + result.data[k].id + '" src="<?php echo TIMTHUMB_LINK ?>' + result.data[k].image + '<?= THUMBNAIL ?>"/></a>';
-            }
-            $('.list_media').append(listMedia);
-        }
-    });
+                            let listMedia = '';
+                            for (k in result.data) {
+                                listMedia += '<a href="#"><img data-id="' + result.data[k].id + '" src="<?php echo TIMTHUMB_LINK ?>' + result.data[k].image + '<?= THUMBNAIL ?>"/></a>';
+                            }
+                            $('.list_media').append(listMedia);
+                        }
+                    });
 </script>
 </body>
 </html>

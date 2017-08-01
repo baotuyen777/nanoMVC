@@ -145,7 +145,8 @@ class Helper {
         }
         return $newArr;
     }
-    static function get_image($id){
+
+    static function get_image($id) {
         if (!$id) {
             return NO_IMAGE;
         }
@@ -154,10 +155,17 @@ class Helper {
         $stmt->bindValue(":id", $id);
         $stmt->execute();
         $result = $stmt->fetchColumn();
-        if(!$result){
-            return NO_IMAGE ;
+        if (!$result) {
+            return NO_IMAGE;
         }
         return $result;
+    }
+
+    static function show_image($url, $size = '&h=150&w=300') {
+        if (!$url) {
+            return NO_IMAGE;
+        }
+        return TIMTHUMB_LINK . $url . $size;
     }
 
 }

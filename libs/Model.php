@@ -172,7 +172,6 @@ class Model {
     public function delProductSlide($product_id) {
 
         $sqlDel = "DELETE from productslide where product_id=:product_id";
-        var_dump($product_id);
         $stmt = $this->db->prepare($sqlDel);
         $stmt->bindValue(":product_id", $product_id);
         $stmt->execute();
@@ -189,7 +188,8 @@ class Model {
     }
 
     public function getProductSlide($product_id) {
-        $sql = "SELECT * FROM productslide where product_id=:product_id";
+        $sql = "SELECT * FROM productslide as PS INNER JOIN media as M ON PS.image_id=M.id"
+                . " where product_id=:product_id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":product_id", $product_id);
         $stmt->execute();

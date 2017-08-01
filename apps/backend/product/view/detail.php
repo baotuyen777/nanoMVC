@@ -1,7 +1,6 @@
 <?php
 $arrSingle = $this->arrSingle;
 $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image) . '&h=150&w=300';
-var_dump($this->arrSlider);
 ?>
 
 <div class="container">
@@ -35,11 +34,10 @@ var_dump($this->arrSlider);
             <label class="control-label col-sm-2" >Category:</label>
             <div class="col-sm-10">
                 <select name="cat_id" class="form-control">
-                     <option value="">Please choose a item</option>
+                    <option value="">Please choose a item</option>
                     <?php
-                    
                     foreach ($this->arrMultiCat as $arrSingleCat):
-                        $selected=$this->arrSingle->cat_id== $arrSingleCat->id ? 'selected' : '';
+                        $selected = $this->arrSingle->cat_id == $arrSingleCat->id ? 'selected' : '';
                         ?>
                         <option value="<?php echo $arrSingleCat->id ?>" <?php echo $selected ?>>
                             <?php echo $arrSingleCat->name ?></option>
@@ -57,21 +55,23 @@ var_dump($this->arrSlider);
         <div class="form-group">
             <label class="control-label col-sm-2" >Image:</label>
             <div class="col-sm-10">
-                <button type="button" class="btn btn-primary" onclick="loadImage()">Add Image</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediaModal">Add Image</button>
                 <input type="hidden" name="image" id="image_id">
                 <img id="image"
                      src="<?= $imgSrc ?>">
             </div>
         </div>
-           <div class="form-group">
+        <div class="form-group">
             <label class="control-label col-sm-2" >Slide:</label>
             <div class="col-sm-10">
-                <button type="button" class="btn btn-primary" onclick="loadImage()">Add Slide</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#slideModal">Add Slide</button>
                 <!--<input type="hidden" name="slide" id="image_id">-->
                 <div class="wrap_slide">
-                    
+                    <?php foreach ($this->arrSlider as $arrSlide): ?>
+                        <img src="<?php echo Helper::show_image($arrSlide->image,'&h=50&w=100') ?>"/>
+                    <?php endforeach; ?>
                 </div>
-              
+
             </div>
         </div>
         <div class="form-group">
@@ -96,10 +96,43 @@ var_dump($this->arrSlider);
 
 </div> <!-- /container -->
 
+<div id="slideModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="wrap_list_media">
+                    <div class="function">
+                        <a class="btn btn-success" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail') ?>">Add</a>
+
+                    </div>
+                    <div class="list_media">
+
+                    </div>
+                    <hr/>
+                    <ul class="pagination">
+
+                    </ul>
+
+                </div> <!-- /container -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" >Choose</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 <script>
- var updateSlideUrl='<?php echo Helper::getPermalink('backend/' . $this->module) ?>/updateSlide';
- 
+    var updateSlideUrl = '<?php echo Helper::getPermalink('backend/' . $this->module) ?>/updateSlide';
+
 //    $('.form_ajax').submit(function(e){
 //        console.log();
 //        data = $(this).serializeArray();
