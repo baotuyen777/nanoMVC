@@ -49,13 +49,13 @@ class initController extends Controller {
             'product_id INT (11) NOT NULL',
             'quantity INT (11) DEFAULT 1'
         ));
-        $this->model->addSql('users', array(
+        $this->model->addSql('user', array(
             'name VARCHAR(100) NOT NULL',
             'email VARCHAR(100) NOT NULL',
-            'password VARCHAR(100) NOT NULL',
+            'password VARCHAR(100) DEFAULT "123456" ',
             'activation_key VARCHAR(100)',
             'birthday DATE',
-            'avatar VARCHAR(255)',
+            'image_id INT(11)',
             'gender TINYINT   DEFAULT 1 ',
             'role TINYINT DEFAULT 1',
             'wallet  FLOAT DEFAULT 0',

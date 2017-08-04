@@ -22,6 +22,9 @@
     </head>
 
     <body>
+        <?php
+        $user = Session::get('currentUser');
+        ?>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
 
@@ -44,9 +47,20 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/">Default</a></li>
-                        <li><a href="../navbar-static-top/">Static top</a></li>
-                        <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                Hello <?php echo isset($user->name) ? $user->name : '' ?> 
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<?php echo Helper::getPermalink('backend/auth/logout') ?>">Logout</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

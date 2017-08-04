@@ -16,6 +16,10 @@ class Controller {
         $this->module = $module;
         $this->view = new View($app, $module, $action);
         $this->model = $this->loadModel($app, $module);
+        if (!Session::get('isLogin') && $module !='auth') {
+            Helper::redirect(Helper::getPermalink('backend/auth/login'));
+            die();
+        }
     }
 
     /**
@@ -98,7 +102,7 @@ class Controller {
                     $mes = "Server overload! please try again";
                 }
             } else {
-                if ($id=$this->model->add($params)) {
+                if ($id = $this->model->add($params)) {
                     $status = true;
                     $mes = "Success";
                 } else {

@@ -46,7 +46,7 @@ $imgSrc = $this->arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::
             <label class="control-label col-sm-2" >Image:</label>
             <div class="col-sm-10">
                 <button type="button" class="btn btn-primary" onclick="loadImage()">Add Image</button>
-                <input type="hidden" name="image" id="image_id">
+                <input type="hidden" name="image_id" id="image_id">
                 <img id="image"
                      src="<?= $imgSrc ?>">
             </div>

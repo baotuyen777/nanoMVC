@@ -98,7 +98,7 @@ $(document).on("click", '#mediaModal .list_media img', function (event) {
 });
 function chooseImage() {
     $('#image').attr('src', chooseUrl);
-    $('#image_id').val(arrId);
+    $('#image_id').val(chooseId);
 }
 
 $('.form_ajax').submit(function (e) {
