@@ -12,13 +12,13 @@ class productController extends Controller {
         } else {
             $arrSingle = $this->model;
         }
-        $mediaModel = $this->loadModel('backend', 'productcat');
+        $mediaModel = $this->loadModel('productcat');
         $this->view->arrMultiCat = $mediaModel->getAll();
-         $this->view->arrSlider=$this->model->getProductSlide($id);
+        $this->view->arrSlider = $this->model->getProductSlide($id);
         $this->view->arrSingle = $arrSingle;
         $this->view->loadView('detail');
     }
- 
+
     function update($id) {
         if ($_POST) {
             $params = Helper::changeFormatPost($_POST['data']);
@@ -60,8 +60,11 @@ class productController extends Controller {
             echo json_encode($result);
         }
 
+    }
 
-//        $product_id=
+    function togglehot($id) {
+        $isHot = $_POST['isHot'] ? 1 : 0;
+        $this->model->togglehot($id, $isHot);
     }
 
 }

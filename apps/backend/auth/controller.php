@@ -13,6 +13,7 @@ class AuthController extends Controller {
                 if ($user) {
                     Session::set('isLogin', True);
                     Session::set('currentUser', $user);
+                    $this->redirect('backend/product');
                 } else {
 //                    Session::destroy();
                     $this->view->mes = 'Email or password is wrong';
@@ -21,7 +22,8 @@ class AuthController extends Controller {
         }
         $this->view->loadView('login');
     }
-    function logout(){
+
+    function logout() {
         Session::destroy();
         Helper::redirect(Helper::getPermalink('backend/auth/login'));
     }

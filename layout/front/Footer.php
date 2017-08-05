@@ -69,7 +69,7 @@
                         <li id="menu-item-254" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-254"><a href="http://linhshop.com.vn/lien-he/">Liên hệ</a></li>
                         <li id="menu-item-266" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-266"><a href="http://linhshop.com.vn/elements/pages/faq/">FAQ</a></li>
                     </ul></div>            <div class="copyright-footer">
-                    Copyright 2017 &copy; <strong>HƯNG HÀ WEB - THÁI BÌNH WEB</strong>      </div>
+                    Copyright 2017 &copy; <strong>Choxanh247.com</strong>      </div>
             </div><!-- .left -->
         </div><!-- .container -->
     </div><!-- .absolute-footer -->

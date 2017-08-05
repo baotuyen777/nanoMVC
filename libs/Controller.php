@@ -15,8 +15,8 @@ class Controller {
         $this->app = $app;
         $this->module = $module;
         $this->view = new View($app, $module, $action);
-        $this->model = $this->loadModel($app, $module);
-        if (!Session::get('isLogin') && $module !='auth') {
+        $this->model = $this->loadModel($module);
+        if (!Session::get('isLogin') && $module != 'auth') {
             Helper::redirect(Helper::getPermalink('backend/auth/login'));
             die();
         }
@@ -25,8 +25,8 @@ class Controller {
     /**
      * @function \loadModel
      */
-    public function loadModel($app, $module = 'index') {
-        $path = 'apps/' . $app . '/' . $module . '/model.php';
+    public function loadModel($module = 'index') {
+        $path = 'apps/' . $this->app . '/' . $module . '/model.php';
         if (file_exists($path)) {
 
             require_once $path;
@@ -143,6 +143,11 @@ class Controller {
     function loadJson($result) {
         header('Content-Type: application/json');
         echo json_encode($result);
+    }
+
+    function redirect($link = 'product') {
+        $fullLink = Helper::getPermalink($link);
+        echo '<script>window.location.replace("' . $fullLink . '");</script>';
     }
 
 }

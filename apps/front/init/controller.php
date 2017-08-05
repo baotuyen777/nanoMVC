@@ -23,6 +23,7 @@ class initController extends Controller {
             'description VARCHAR (255) ',
             'content TEXT ',
             'image  INT(11)',
+            'is_hot INT (2) DEFAULT 0',
             'status INT (2) DEFAULT 1',
         ));
          $this->model->addSql('productslide', array(
