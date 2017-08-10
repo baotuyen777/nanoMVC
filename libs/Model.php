@@ -144,7 +144,6 @@ class Model {
         }
         $sql .= implode(', ', $arrField);
         $sql .= " WHERE id= :id";
-
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
         $result = $stmt->execute();
@@ -188,7 +187,7 @@ class Model {
     }
 
     public function getProductSlide($product_id) {
-        $sql = "SELECT * FROM productslide as PS INNER JOIN media as M ON PS.image_id=M.id"
+        $sql = "SELECT * FROM productslide as PS INNER JOIN media as M ON PS.image_id=M.id "
                 . " where product_id=:product_id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":product_id", $product_id);

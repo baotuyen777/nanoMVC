@@ -1,6 +1,9 @@
 <?php
 $arrSingle = $this->arrSingle;
-$imgSrc = $this->arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image_id). '&h=150&w=300';
+$imgSrc=NO_IMAGE;
+if (property_exists($this->arrSingle, 'image')) {
+    $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $this->arrSingle->image . '&h=150&w=300';
+} 
 ?>
 <style>
     #image{
@@ -13,7 +16,7 @@ $imgSrc = $this->arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::
 
     </div>
     <form class="form_ajax form-horizontal" method="post" enctype="multipart/form-data"
-           action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" >
+          action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" >
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Title:</label>
             <div class="col-sm-10">
@@ -26,7 +29,7 @@ $imgSrc = $this->arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::
                 <input type="text" name="slug" value="<?php echo $arrSingle->slug ?>" class="form-control" id="link">
             </div>
         </div>
-       
+
         <div class="form-group">
             <label class="control-label col-sm-2" >Parent:</label>
             <div class="col-sm-10">

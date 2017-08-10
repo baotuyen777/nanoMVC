@@ -337,24 +337,26 @@
 <script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/assets/js/main.js?ver=3.3.6'></script>
 <script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/assets/js/woocommerce.js?ver=3.3.6'></script>
 <script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/wp-embed.min.js?ver=4.8'></script>
-<script type='text/javascript'>
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var _zxcvbnSettings = {"src": "http:\/\/linhshop.com.vn\/wp-includes\/js\/zxcvbn.min.js"};
     /* ]]> */
-</script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/zxcvbn-async.min.js?ver=1.0'></script>
-<script type='text/javascript'>
+</script>-->
+<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/zxcvbn-async.min.js?ver=1.0'></script>-->
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var pwsL10n = {"unknown": "M\u1eadt kh\u1ea9u m\u1ea1nh kh\u00f4ng x\u00e1c \u0111\u1ecbnh", "short": "R\u1ea5t y\u1ebfu", "bad": "Y\u1ebfu", "good": "Trung b\u00ecnh", "strong": "M\u1ea1nh", "mismatch": "M\u1eadt kh\u1ea9u kh\u00f4ng kh\u1edbp"};
     /* ]]> */
-</script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-admin/js/password-strength-meter.min.js?ver=4.8'></script>
-<script type='text/javascript'>
+</script>-->
+<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-admin/js/password-strength-meter.min.js?ver=4.8'></script>-->
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var wc_password_strength_meter_params = {"min_password_strength": "3", "i18n_password_error": "Vui l\u00f2ng nh\u1eadp m\u1eadt kh\u1ea9u m\u1ea1nh h\u01a1n.", "i18n_password_hint": "G\u1ee3i \u00fd: M\u1eadt kh\u1ea9u ph\u1ea3i c\u00f3 \u00edt nh\u1ea5t 12 k\u00fd t\u1ef1. \u0110\u1ec3 n\u00e2ng cao \u0111\u1ed9 b\u1ea3o m\u1eadt, s\u1eed d\u1ee5ng ch\u1eef in hoa, in th\u01b0\u1eddng, ch\u1eef s\u1ed1 v\u00e0 c\u00e1c k\u00fd t\u1ef1 \u0111\u1eb7c bi\u1ec7t nh\u01b0 ! \" ? $ % ^ & )."};
     /* ]]> */
 </script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js?ver=3.1.0'></script>
+<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js?ver=3.1.0'></script>-->
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" ></script>
+<script src="<?php echo SITE_ROOT ?>public/js/main.js"></script>
 </body>
 </html>

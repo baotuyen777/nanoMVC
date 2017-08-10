@@ -15,7 +15,7 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
             <th>STT</th>
             <?php
             foreach ($this->model as $field => $val):
-                if ($field == 'id')
+                if ($field == 'id' || $field == 'content')
                     continue;
                 ?>
                 <th><?php echo ($field) ?></th>
@@ -27,24 +27,34 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
             $i = 0;
             foreach ($this->arrAll as $arrSingle):
                 $i++;
-
-                $imgSrc = $arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . $arrSingle->image . '&h=50&w=100';
+                $imgSrc = $arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($arrSingle->image) . '&h=50&w=100';
                 ?>
                 <tr>
                     <td><input type="checkbox" class="ick" name="ckc[]" value="<?php echo $arrSingle->id ?>"></td>
                     <td><?php echo $i ?></td>
                     <?php // foreach ($this->model as $field => $val):  ?>
-                    <!--<td><?php // echo $arrSingle->$field        ?></td>-->
+                    <!--<td><?php // echo $arrSingle->$field                       ?></td>-->
                     <?php // endforeach;   ?>
-                    <td><?php echo $arrSingle->name ?></td>
-                    <td><?php echo $arrSingle->email ?></td>
+                    <td>
+                        <a  href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail/') . $arrSingle->id ?>">
+                            <?php echo $arrSingle->name ?>
+                        </a>
+                    </td>
+                    <td><?php echo $arrSingle->slug ?></td>
+                    <td><?php echo $arrSingle->price ?></td>
+                    <td><?php echo $arrSingle->cat_id ?></td>
+                    <td><?php echo $arrSingle->description ?></td>
+
                     <td>
                         <img class="img-list" 
                              src="<?= $imgSrc ?>"/>
                     </td>
+                    <td>
+                        <?php $checkedHot = $arrSingle->is_hot ? 'checked' : '' ?>
+                        <input type="checkbox" <?php echo $checkedHot ?>  name="is_hot" value="1" 
+                               onchange="toggleHot(this, <?php echo $arrSingle->id ?>)"></td>
                     <td><?php echo $arrSingle->status ?></td>
                     <td>
-                        <a class="btn btn-warning" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail/') . $arrSingle->id ?>">Edit</a> &nbsp;
                         <button type="button" class="btn btn-danger" 
                                 onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>',<?php echo $arrSingle->id ?>)">
                             Delele</button>
@@ -73,3 +83,17 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
 
 </div> <!-- /container -->
 
+<script type="text/javascript">
+    function toggleHot(elm, id) {
+        console.log(id)
+        let isHot = $(elm).is(":checked") ? 1 : 0;
+        jQuery.ajax({
+            type: "POST",
+            url: '<?php echo Helper::getPermalink('backend/product/togglehot/') ?>' + id,
+            data: {isHot},
+            success: function (result) {
+
+            }
+        });
+    }
+</script>

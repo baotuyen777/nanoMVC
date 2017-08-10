@@ -86,13 +86,14 @@ $(document).on("click", '#slideModal .list_media img', function (event) {
     } else {
         arrId.push($(this).data('id'));
     }
+    console.log(arrId);
 });
 var chooseUrl = '';
-var chooseId=''
+var chooseId = ''
 $(document).on("click", '#mediaModal .list_media img', function (event) {
     $(this).addClass('selected');
     chooseUrl = $(this).attr('src');
-    chooseId =$(this).data('id');
+    chooseId = $(this).data('id');
     console.log(chooseId);
 
 });
@@ -114,9 +115,10 @@ $('.form_ajax').submit(function (e) {
             let color = result.status ? 'success' : 'danger';
             jQuery(".notice").html('<div class="alert alert-' + color + ' alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + result.mes + '</div>');
 //            
-//            if (result.status) {
+            if (result.status) {
 //                setTimeout(window.location.href = form.data('url_list'), 3000);
-//            }
+//                setTimeout(window.location.reload(), 3000);
+            }
         }
 
     });

@@ -4,8 +4,7 @@ if (empty($this->arrSingle)) {
     die('san pham ko ton tai');
 }
 $obj = $this->arrSingle;
-
-//var_dump(Session::get('cart'));
+$imgSrc = TIMTHUMB_LINK . Helper::get_image($obj->image) . '&h=600&w=800';
 ?>
 <div class="page-title shop-page-title product-page-title">
     <div class="page-title-inner flex-row medium-flex-wrap container">
@@ -60,18 +59,15 @@ $obj = $this->arrSingle;
                                         "dragThreshold" : 15,
                                         "pageDots": false,
                                         "rightToLeft": false       }'>
-                                            <?php
-                                            foreach ($this->arrSlider as $arrSlider):
-                                                $imgSrc = TIMTHUMB_LINK . $arrSlider->image . '&h=600&w=800';
-                                                ?>
-                                        <div data-thumb="<?php echo $imgSrc ?>" 
-                                             class="first slide woocommerce-product-gallery__image">
-                                            <a href="<?php echo $imgSrc ?>">
-                                                <img width="600" height="600" src="<?php echo $imgSrc ?>"
-                                                     sizes="(max-width: 600px) 100vw, 600px" />
-                                            </a>
-                                        </div>
-                                    <?php endforeach; ?>
+                                    <?php // foreach ($this->arrSlider as $arrSlider): ?>
+                                    <div data-thumb="<?php echo $imgSrc ?>" 
+                                         class="first slide woocommerce-product-gallery__image">
+                                        <a href="<?php echo $imgSrc ?>">
+                                            <img width="600" height="600" src="<?php echo $imgSrc ?>"
+                                                 sizes="(max-width: 600px) 100vw, 600px" />
+                                        </a>
+                                    </div>
+                                    <?php // endforeach; ?>
                                 </figure>
                                 <div class="image-tools absolute bottom left z-3">
                                     <a href="#product-zoom" class="zoom-button button is-outline circle icon tooltip hide-for-small" title="Zoom">
@@ -91,17 +87,13 @@ $obj = $this->arrSingle;
                                         <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
                                 </p>
                             </div>
-                            <form class="cart form_ajax" method="post" enctype='multipart/form-data' 
-                                  action="<?php echo Helper::getPermalink('cart/add') ?>"
-                                  >
+                            <form class="cart" method="post" enctype='multipart/form-data'>
                                 <div class="quantity buttons_added">
                                     <input type="button" value="-" class="minus button is-form">    
-                                    <input type="number" class="input-text qty text" step="1" min="1" max="9999" name="quantity" value="1" title="SL"
-                                           size="4" pattern="[0-9]*" inputmode="numeric" />
-                                    <input type="hidden" name="productId" value="<?php echo $obj->id ?>"/>
+                                    <input type="number" class="input-text qty text" step="1" min="1" max="9999" name="quantity" value="1" title="SL" size="4" pattern="[0-9]*" inputmode="numeric" />
                                     <input type="button" value="+" class="plus button is-form">  
                                 </div>
-                                <button type="submit" name="add-to-cart" value="2224" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
+                                <button type="submit" name="add-to-cart" value="2224" class="single_add_to_cart_button button alt">Mua hàng ngay</button>
                             </form>
                             <div class="product_meta">
                                 <span class="posted_in">Danh mục:  <a href="http://linhshop.com.vn/danh-muc/vay-bau/" rel="tag">Váy bầu</a></span>

@@ -27,16 +27,18 @@
                  "parallax" : 0,
                  "friction": 0.6        }'
                  >
-                     <?php foreach ($this->arrSlider as $arrSlider): ?>
-                <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_<?php echo $arrSlider->id ?>">
-                    <div class="img-inner image-cover dark" style="padding-top:40%;">
-                        <img width="1920" height="825" 
-                             src="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSlider->image) . '&h=500&w=1000' ?>" 
-                             class="attachment-original size-original" alt="<?php echo $arrSlider->name ?>"
-                             srcset="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSlider->image) . '&h=500&w=1000' ?>" 
-                             sizes="(max-width: 1920px) 100vw, 1920px" />                
+                     <?php foreach ($this->arrSlider as $arrSlider): 
+                         var_dump($arrSingle);
+                         ?>
+                    <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_<?php echo $arrSlider->id ?>">
+                        <div class="img-inner image-cover dark" style="padding-top:40%;">
+                            <img width="1920" height="825" 
+                                 src="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSlider->image) . '&h=500&w=1000' ?>" 
+                                 class="attachment-original size-original" alt="<?php echo $arrSlider->name ?>"
+                                 srcset="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSlider->image) . '&h=500&w=1000' ?>" 
+                                 sizes="(max-width: 1920px) 100vw, 1920px" />                
+                        </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
                 <!--                <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_2070270351">
                                     <div class="img-inner image-cover dark" style="padding-top:40%;">
@@ -152,32 +154,32 @@
                                         <i class="icon-play" ></i>Sản phẩm bán chạy</span><b></b></h3>
                             </div><!-- .section-title -->
                             <div class="row large-columns-4 medium-columns- small-columns-2 row-small has-shadow row-box-shadow-1 row-box-shadow-1-hover">
-                                <?php foreach($this->arrHot as $arrSingleHot): ?>
-                                <div class="col" >
-                                    <div class="col-inner">
-                                        <div class="badge-container absolute left top z-1">
-                                            <div class="callout badge badge-circle"><div class="badge-inner secondary on-sale"><span class="onsale">-11%</span></div></div>
-                                        </div>
-                                        <div class="product-small box has-hover box-normal box-text-bottom">
-                                            <div class="box-image" >
-                                                <div class="" >
-                                                    <a href="<?php echo Helper::getPermalink('product/'.$arrSingleHot->id)?>">
-                                                        <img width="400" height="400" src="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSingleHot->image) . '&h=400&w=400' ?>" 
-                                                             class="attachment-medium size-medium wp-post-image" alt="" 
-                                                             srcset="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSingleHot->image) . '&h=400&w=400' ?>" sizes="(max-width: 400px) 100vw, 400px" />									</a>
-                                                </div>
-                                               
-                                                <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-                                                </div>
-                                            </div><!-- box-image -->
+                                <?php foreach ($this->arrHot as $arrSingleHot): ?>
+                                    <div class="col" >
+                                        <div class="col-inner">
+                                            <div class="badge-container absolute left top z-1">
+                                                <div class="callout badge badge-circle"><div class="badge-inner secondary on-sale"><span class="onsale">-11%</span></div></div>
+                                            </div>
+                                            <div class="product-small box has-hover box-normal box-text-bottom">
+                                                <div class="box-image" >
+                                                    <div class="" >
+                                                        <a href="<?php echo Helper::getPermalink('product/' . $arrSingleHot->id) ?>">
+                                                            <img width="400" height="400" src="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSingleHot->image) . '&h=400&w=400' ?>" 
+                                                                 class="attachment-medium size-medium wp-post-image" alt="" 
+                                                                 srcset="<?php echo TIMTHUMB_LINK . Helper::get_image($arrSingleHot->image) . '&h=400&w=400' ?>" sizes="(max-width: 400px) 100vw, 400px" />									</a>
+                                                    </div>
 
-                                            <div class="box-text text-center" >
-                                                <div class="title-wrapper"><p class="name product-title"><a href="http://linhshop.com.vn/shop/vay-suong-020298/">Vay suông 020298</a></p></div><div class="price-wrapper">
-                                                    <span class="price"><del><span class="woocommerce-Price-amount amount">280.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></del> <ins><span class="woocommerce-Price-amount amount">250.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></ins></span>
-                                                </div>							</div><!-- box-text -->
-                                        </div><!-- box -->
-                                    </div><!-- .col-inner -->
-                                </div><!-- col -->
+                                                    <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                                    </div>
+                                                </div><!-- box-image -->
+
+                                                <div class="box-text text-center" >
+                                                    <div class="title-wrapper"><p class="name product-title"><a href="http://linhshop.com.vn/shop/vay-suong-020298/">Vay suông 020298</a></p></div><div class="price-wrapper">
+                                                        <span class="price"><del><span class="woocommerce-Price-amount amount">280.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></del> <ins><span class="woocommerce-Price-amount amount">250.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></ins></span>
+                                                    </div>							</div><!-- box-text -->
+                                            </div><!-- box -->
+                                        </div><!-- .col-inner -->
+                                    </div><!-- col -->
                                 <?php endforeach; ?>
                             </div>
                             <div class="row align-center"  id="row-1086632122">

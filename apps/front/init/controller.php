@@ -22,7 +22,7 @@ class initController extends Controller {
             'cat_id INT (11)',
             'description VARCHAR (255) ',
             'content TEXT ',
-            'image  INT(11)',
+            'image_id  INT(11)',
             'is_hot INT (2) DEFAULT 0',
             'status INT (2) DEFAULT 1',
         ));

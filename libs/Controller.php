@@ -16,7 +16,7 @@ class Controller {
         $this->module = $module;
         $this->view = new View($app, $module, $action);
         $this->model = $this->loadModel($module);
-        if (!Session::get('isLogin') && $module != 'auth') {
+        if ($app=='bachend' && !Session::get('isLogin') && $module != 'auth') {
             Helper::redirect(Helper::getPermalink('backend/auth/login'));
             die();
         }

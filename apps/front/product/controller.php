@@ -36,8 +36,9 @@ class ProductController extends Controller {
     }
 
     function detail($id) {
-
+        $arrSingle= $this->model->getSingle($id);
         $this->view->arrSingle = $this->model->getSingle($id);
+        $this->view->arrSlider = $this->model->getProductSlide($id);
         $this->view->loadView('detail');
     }
 

@@ -146,7 +146,7 @@ class Helper {
         return $newArr;
     }
 
-    static function get_image($id) {
+    static function getImageById($id,$size = '&h=150&w=300') {
         if (!$id) {
             return NO_IMAGE;
         }
@@ -158,14 +158,37 @@ class Helper {
         if (!$result) {
             return NO_IMAGE;
         }
-        return $result;
+        return TIMTHUMB_LINK . $result . $size;;
     }
 
-    static function show_image($url, $size = '&h=150&w=300') {
+    static function showImage($url, $size = '&h=150&w=300') {
         if (!$url) {
             return NO_IMAGE;
         }
         return TIMTHUMB_LINK . $url . $size;
+    }
+
+//    static function addToCard($productId, $quantity = 1) {
+//        $cart = Session::get('cart');
+//        if ($cart) {
+//            $product = Helper::checkId('product', 'id', $productId);
+//            $cart[] = array(
+//                'product' => $product,
+//                'quantity' => $quantity
+//            );
+//            Session::set('cart', $cart);
+//        }
+//    }
+    static function getProductById($id) {
+        if (!$id) {
+            return false;
+        }
+        $sql = "SELECT * FROM product P INNER JOIN media as M ON P.image_id=M.id WHERE id=:id ";
+        $stmt = DB::getInstance()->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        $result = $stmt->fetchObject();
+        return $result;
     }
 
 }
