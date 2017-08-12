@@ -10,7 +10,7 @@
         <meta name="author" content="">
 
         <title>nanoMVC</title>
-
+        <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css"/>
         <!-- Bootstrap core CSS -->
         <link href="<?php echo SITE_ROOT ?>/public/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->

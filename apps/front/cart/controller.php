@@ -6,10 +6,13 @@ class cartController extends Controller {
         parent::__construct($app, $module, $action);
     }
 
+    function index($id) {
+        $this->view->loadView('index');
+    }
+
     function add() {
         if ($_POST) {
             $params = Helper::changeFormatPost($_POST['data']);
-            var_dump($params);
             $productId = $params['productId'];
             $quantity = $params['quantity'];
             $cart = Session::get('cart') != FALSE ? Session::get('cart') : array();
@@ -25,6 +28,11 @@ class cartController extends Controller {
         $cart = Session::get('cart') != FALSE ? Session::get('cart') : array();
         unset($cart[$productId]);
         Session::set('cart', $cart);
+    }
+
+    function checkout() {
+//        $this->view->arrProduct = $arrProduct;
+        $this->view->loadView('checkout');
     }
 
 }

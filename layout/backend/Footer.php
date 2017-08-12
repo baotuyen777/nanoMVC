@@ -41,6 +41,7 @@
 
     </div>
 </div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" ></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="<?php echo SITE_ROOT ?>public/backend/js/main.js" type="text/javascript"></script>
 <script src="<?php echo SITE_ROOT ?>/public/backend/js/jquery.validate.min.js"></script>

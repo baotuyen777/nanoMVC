@@ -31,4 +31,15 @@ class View {
         }
     }
 
+    function loadModule($module) {
+        $file = 'apps/' . $this->app . '/' . $module . '/controller.php';
+        if (file_exists($file)) {
+            require $file;
+            $controllerName = $module . 'Controller';
+            $controller = new $controllerName($this->app, $module);
+            return $controller;
+        }
+        return FALSE;
+    }
+
 }

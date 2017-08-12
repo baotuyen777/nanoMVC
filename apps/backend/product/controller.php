@@ -59,12 +59,13 @@ class productController extends Controller {
             header('Content-Type: application/json');
             echo json_encode($result);
         }
-
     }
 
     function togglehot($id) {
         $isHot = $_POST['isHot'] ? 1 : 0;
         $this->model->togglehot($id, $isHot);
     }
+
+   
 
 }

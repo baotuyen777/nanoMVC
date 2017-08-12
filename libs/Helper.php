@@ -183,7 +183,7 @@ class Helper {
         if (!$id) {
             return false;
         }
-        $sql = "SELECT * FROM product P INNER JOIN media as M ON P.image_id=M.id WHERE id=:id ";
+        $sql = "SELECT P.*, M.image FROM product P INNER JOIN media as M ON P.image_id=M.id WHERE P.id=:id ";
         $stmt = DB::getInstance()->prepare($sql);
         $stmt->bindValue(":id", $id);
         $stmt->execute();

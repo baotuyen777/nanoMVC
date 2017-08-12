@@ -4,7 +4,7 @@ if (empty($this->arrSingle)) {
     die('san pham ko ton tai');
 }
 $obj = $this->arrSingle;
-
+$imgSrc = NO_IMAGE;
 //var_dump(Session::get('cart'));
 ?>
 <div class="page-title shop-page-title product-page-title">
@@ -12,28 +12,28 @@ $obj = $this->arrSingle;
         <div class="flex-col flex-grow medium-text-center">
             <div class="is-small">
                 <nav class="woocommerce-breadcrumb breadcrumbs">
-                    <a href="http://linhshop.com.vn">Trang chủ</a> <span class="divider">&#47;</span> 
-                    <a href="http://linhshop.com.vn/shop/">Shop</a> <span class="divider">&#47;</span> 
-                    <a href="http://linhshop.com.vn/danh-muc/vay-bau/"><?php echo $obj->name ?></a>
+                    <a href="<?php echo SITE_ROOT ?>">Trang chủ</a> <span class="divider">&#47;</span> 
+                    <a href="<?php echo Helper::getPermalink('product') ?>">Shop</a> <span class="divider">&#47;</span> 
+                    <a ><?php echo $obj->name ?></a>
                 </nav>
             </div>
         </div><!-- .flex-left -->
         <div class="flex-col medium-text-center">
-            <ul class="next-prev-thumbs is-small ">         
-                <li class="prod-dropdown has-dropdown">
-                    <a href="http://linhshop.com.vn/shop/vay-trang-be/" rel="next" class="button icon is-outline circle">
-                        <i class="icon-angle-right" ></i> 
-                    </a>
-                    <div class="nav-dropdown">
-                        <a title="Váy trắng be" href="http://linhshop.com.vn/shop/vay-trang-be/">
-                            <img width="180" height="180" 
-                                 src="<?php echo $imgSrc ?>" 
-                                 class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" 
-                                 sizes="(max-width: 180px) 100vw, 180px" />
-                        </a>
-                    </div>
-                </li>
-            </ul>	   
+            <!--            <ul class="next-prev-thumbs is-small ">         
+                            <li class="prod-dropdown has-dropdown">
+                                <a href="<?php echo Helper::getPermalink('product') ?>" rel="next" class="button icon is-outline circle">
+                                    <i class="icon-angle-right" ></i> 
+                                </a>
+                                <div class="nav-dropdown">
+                                    <a title="Váy trắng be" href="<?php echo Helper::getPermalink('product') ?>">
+                                        <img width="180" height="180" 
+                                             src="<?php echo $imgSrc ?>" 
+                                             class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" 
+                                             sizes="(max-width: 180px) 100vw, 180px" />
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>	   -->
         </div><!-- .flex-right -->
     </div><!-- flex-row -->
 </div><!-- .page-title -->
@@ -104,7 +104,9 @@ $obj = $this->arrSingle;
                                 <button type="submit" name="add-to-cart" value="2224" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
                             </form>
                             <div class="product_meta">
-                                <span class="posted_in">Danh mục:  <a href="http://linhshop.com.vn/danh-muc/vay-bau/" rel="tag">Váy bầu</a></span>
+                                <span class="posted_in">Danh mục:  
+                                    <a href="<?= Helper::getPermalink('product/cat/' . $obj->cat_id) ?>" rel="tag">
+                                        <?php echo $obj->cat_name ?></a></span>
                             </div>
                             <div class="social-icons share-icons share-row relative icon-style-outline " >
                                 <a href="//www.facebook.com/sharer.php?u=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" data-label="Facebook" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;" rel="nofollow" target="_blank" class="icon button circle is-outline tooltip facebook" title="Share on Facebook"><i class="icon-facebook" ></i></a>
@@ -142,53 +144,22 @@ $obj = $this->arrSingle;
 
                                     </div>
                                 </div>
-
                             </div><!-- .tab-panels -->
                         </div><!-- .tabbed-content -->
-
-
                         <div class="related related-products-wrapper product-section">
-
                             <h3 class="product-section-title product-section-title-related pt-half pb-half uppercase">
                                 Có thể bạn thích    
                             </h3>
                             <div class="row large-columns-4 medium-columns- small-columns-2 row-small slider row-slider slider-nav-reveal slider-nav-push"  data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
-
-                                <!--item-->
-                                <div class="product-small col has-hover post-2131 product type-product status-publish has-post-thumbnail product_cat-vay-bau  instock shipping-taxable purchasable product-type-simple">
-                                    <div class="col-inner">
-
-                                        <div class="badge-container absolute left top z-1">
-                                        </div>
-                                        <div class="product-small box ">
-                                            <div class="box-image">
-                                                <div class="image-fade_in_back">
-                                                    <a href="http://linhshop.com.vn/shop/vay-hong-cham-bi/">
-                                                        <img width="300" height="300" src="//linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-300x300.jpg" class="attachment-shop_catalog size-shop_catalog wp-post-image" alt="" srcset="//linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-300x300.jpg 300w, //linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-280x280.jpg 280w, //linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-400x400.jpg 400w, //linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-768x768.jpg 768w, //linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-800x800.jpg 800w, //linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-180x180.jpg 180w, //linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n-600x600.jpg 600w, //linhshop.com.vn/wp-content/uploads/2017/07/19059160_255901558224727_5838569237387014735_n.jpg 960w" sizes="(max-width: 300px) 100vw, 300px" />				
-                                                    </a>
-                                                </div>
-                                            </div><!-- box-image -->
-
-                                            <div class="box-text box-text-products text-center grid-style-2">
-                                                <div class="title-wrapper"><p class="name product-title"><a href="http://linhshop.com.vn/shop/vay-hong-cham-bi/">VÁY HỒNG CHẤM BI</a></p></div><div class="price-wrapper">
-                                                    <span class="price"><span class="woocommerce-Price-amount amount">350.000<span class="woocommerce-Price-currencySymbol">&#8363;</span></span></span>
-                                                </div>		</div><!-- box-text -->
-                                        </div><!-- box -->
-                                    </div><!-- .col-inner -->
-                                </div><!-- col -->
-
-                                <!--enditem-->
-
-
+                                <?php
+                                $controller = new productController($this->app, $this->module);
+                                $controller->loop($this->arrProductRelated);
+                                ?>
                             </div>
                         </div>
-
                     </div><!-- container -->
                 </div><!-- product-footer -->
             </div><!-- .product-container -->
         </div>
-
-
     </div><!-- shop container -->
-
 </main><!-- #main -->

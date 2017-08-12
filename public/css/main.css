@@ -54,11 +54,11 @@ h3.widget-title {
     font-size: 1.1597em;
 }
 input[type='email'], input[type='date'], input[type='search'], input[type='number'], input[type='text'], input[type='tel'], input[type='url'], input[type='password'], textarea, select, .select2-container .select2-choice, .select2-container .select2-selection {
-    
+
     border: 1px solid #d33;
     padding: 0 .75em;
     height: 2.9507em;
-    
+
 }
 .button span {
     display: inline-block;
@@ -138,7 +138,7 @@ img.size-full.alignnone {
     background: #0CA63A;
     color: #fff;  
     width: 250px;
- 
+
 }
 li {
     margin-bottom: .01em;
@@ -149,7 +149,7 @@ li {
     background: none;
 }
 .wpmm-sub-menu-wrap ul li h4.wpmm-mega-block-title, .wpmm-sub-menu-wrap ul li.wp-mega-menu-header > a.wp-mega-menu-link span.wpmm-mega-menu-href-title {
-    
+
     display: inline-block;
     margin-bottom: 2px;
     text-transform: uppercase;
@@ -213,7 +213,7 @@ aside#nav_menu-2.widget.widget_nav_menu
 
 ul#menu-danh-muc-san-pham.menu
 {
-     padding: 5px;
+    padding: 5px;
 }
 .text-center .button:first-of-type {
     border-color: #b49d78;
@@ -349,4 +349,38 @@ ul.menu>li>a, ul.menu>li>span:first-child, .widget>ul>li>a, .widget>ul>li>span:f
 #wrapper, #main {
     background-color: #f6f8f8;
     position: relative;
+}
+#logo img{
+    float: left;
+}
+#logo span{
+    float: left;
+    line-height: 65px;
+    font-weight: 300;
+
+}
+.slogan{
+    font-size: 25px;
+    color: #f23675;
+    text-transform: none;
+
+}
+@media(max-width:768px){
+    #logo span{
+        font-size: 25px;
+        line-height: 61px;
+    }
+    .slogan{
+        display: none;
+    }
+}
+@media(max-width:480px){
+    #logo span{
+        font-size: 20px;
+    }
+    #logo img {
+        height: 50px;
+        margin-top: 6px;
+    }
+
 }

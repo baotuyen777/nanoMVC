@@ -19,6 +19,7 @@ class initController extends Controller {
             'name VARCHAR (255) NOT NULL',
             'slug VARCHAR (255) NOT NULL',
             'price INT (11) NOT NULL',
+            'sale INT (11) ',
             'cat_id INT (11)',
             'description VARCHAR (255) ',
             'content TEXT ',

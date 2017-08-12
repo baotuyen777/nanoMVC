@@ -292,69 +292,50 @@
     </div><!-- .account-login-container -->
 
 </div>
-<script type='text/javascript'>
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var wpcf7 = {"apiSettings": {"root": "http:\/\/linhshop.com.vn\/wp-json\/", "namespace": "contact-form-7\/v1"}, "recaptcha": {"messages": {"empty": "Please verify that you are not a robot."}}};
     /* ]]> */
-</script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.8'></script>
-<script type='text/javascript'>
+</script>-->
+<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.8'></script>-->
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var wc_add_to_cart_params = {"ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "Xem gi\u1ecf h\u00e0ng", "cart_url": "http:\/\/linhshop.com.vn\/cart\/", "is_cart": "", "cart_redirect_after_add": "no"};
     /* ]]> */
-</script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.1.0'></script>
+</script>-->
+<!--<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.1.0'></script>
 <script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
-<script type='text/javascript'>
+<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>-->
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var woocommerce_params = {"ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%"};
     /* ]]> */
 </script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.1.0'></script>
-<script type='text/javascript'>
+<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.1.0'></script>-->
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var wc_cart_fragments_params = {"ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments_964b20f9da02269750935af09bfcfae3"};
     /* ]]> */
-</script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.1.0'></script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>
-<script type='text/javascript'>
+</script>-->
+<!--<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.1.0'></script>-->
+<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>-->
+<!--<script type='text/javascript'>
     /* <![CDATA[ */
     var yith_wcwl_l10n = {"ajax_url": "\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "http:\/\/linhshop.com.vn\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": {"cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"}, "actions": {"add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem"}};
     /* ]]> */
-</script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.1.2'></script>
+</script>-->
+<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.1.2'></script>
 <script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/inc/integrations/wc-yith-wishlist/wishlist.js?ver=4.8'></script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/inc/extensions/flatsome-live-search/flatsome-live-search.js?ver=3.3.6'></script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/hoverIntent.min.js?ver=1.8.1'></script>
+<script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/inc/extensions/flatsome-live-search/flatsome-live-search.js?ver=3.3.6'></script>-->
+<script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/hoverIntent.min.js?ver=1.8.1'></script>
 <script type='text/javascript'>
-    /* <![CDATA[ */
-    var flatsomeVars = {"ajaxurl": "http:\/\/linhshop.com.vn\/wp-admin\/admin-ajax.php", "rtl": "", "sticky_height": "86"};
-    /* ]]> */
+                            /* <![CDATA[ */
+                            var flatsomeVars = {"ajaxurl": "<?php echo SITE_ROOT ?>\/wp-admin\/admin-ajax.php", "rtl": "", "sticky_height": "86"};
+                            /* ]]> */
 </script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/assets/js/flatsome.js?ver=3.3.6'></script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/assets/js/main.js?ver=3.3.6'></script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/assets/js/woocommerce.js?ver=3.3.6'></script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/wp-embed.min.js?ver=4.8'></script>
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var _zxcvbnSettings = {"src": "http:\/\/linhshop.com.vn\/wp-includes\/js\/zxcvbn.min.js"};
-    /* ]]> */
-</script>-->
-<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/zxcvbn-async.min.js?ver=1.0'></script>-->
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var pwsL10n = {"unknown": "M\u1eadt kh\u1ea9u m\u1ea1nh kh\u00f4ng x\u00e1c \u0111\u1ecbnh", "short": "R\u1ea5t y\u1ebfu", "bad": "Y\u1ebfu", "good": "Trung b\u00ecnh", "strong": "M\u1ea1nh", "mismatch": "M\u1eadt kh\u1ea9u kh\u00f4ng kh\u1edbp"};
-    /* ]]> */
-</script>-->
-<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-admin/js/password-strength-meter.min.js?ver=4.8'></script>-->
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var wc_password_strength_meter_params = {"min_password_strength": "3", "i18n_password_error": "Vui l\u00f2ng nh\u1eadp m\u1eadt kh\u1ea9u m\u1ea1nh h\u01a1n.", "i18n_password_hint": "G\u1ee3i \u00fd: M\u1eadt kh\u1ea9u ph\u1ea3i c\u00f3 \u00edt nh\u1ea5t 12 k\u00fd t\u1ef1. \u0110\u1ec3 n\u00e2ng cao \u0111\u1ed9 b\u1ea3o m\u1eadt, s\u1eed d\u1ee5ng ch\u1eef in hoa, in th\u01b0\u1eddng, ch\u1eef s\u1ed1 v\u00e0 c\u00e1c k\u00fd t\u1ef1 \u0111\u1eb7c bi\u1ec7t nh\u01b0 ! \" ? $ % ^ & )."};
-    /* ]]> */
-</script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js?ver=3.1.0'></script>-->
+<script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/flatsome.js?ver=3.3.6'></script>
+<script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/woocommerce.js?ver=3.3.6'></script>
+<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/wp-embed.min.js?ver=4.8'></script>-->
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" ></script>
 <script src="<?php echo SITE_ROOT ?>public/js/main.js"></script>

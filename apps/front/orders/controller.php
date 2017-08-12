@@ -1,6 +1,6 @@
 <?php
 
-class ProductController extends Controller {
+class OrdersController extends Controller {
 
 //    public $auth;
 
@@ -39,14 +39,11 @@ class ProductController extends Controller {
         $arrSingle = $this->model->getSingle($id);
         $this->view->arrSingle = $arrSingle;
         $this->view->arrSlider = $this->model->getProductSlide($id);
-        $this->view->arrProductRelated = $this->model->getRetated($id,$arrSingle->cat_id);
+//        $this->view->arrProductRelated = $this->model->getRetated($id,$arrSingle->cat_id);
         $this->view->loadView('detail');
     }
 
-    function loop($arrProduct) {
-        $this->view->arrProduct = $arrProduct;
-        $this->view->customView('loop');
-    }
+  
 
 }
 

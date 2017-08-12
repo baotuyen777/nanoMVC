@@ -5,7 +5,8 @@ class productModel extends Model {
     public $id = '';
     public $name = '';
     public $slug = '';
-    public $price = '';
+    public $price = 50000;
+    public $sale = 0;
     public $cat_id = '';
     public $description = '';
     public $content = '';

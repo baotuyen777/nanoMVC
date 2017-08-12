@@ -16,11 +16,13 @@ class Controller {
         $this->module = $module;
         $this->view = new View($app, $module, $action);
         $this->model = $this->loadModel($module);
-        if ($app=='bachend' && !Session::get('isLogin') && $module != 'auth') {
+        if ($app == 'bachend' && !Session::get('isLogin') && $module != 'auth') {
             Helper::redirect(Helper::getPermalink('backend/auth/login'));
             die();
         }
     }
+
+   
 
     /**
      * @function \loadModel
@@ -35,6 +37,10 @@ class Controller {
             return $model;
         }
     }
+
+//    public function loadAction($action='product/loop') {
+//        
+//    }
 
     function error() {
         require 'apps/front/error/controller.php';

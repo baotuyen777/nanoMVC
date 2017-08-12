@@ -76,8 +76,13 @@
                             <!-- Logo -->
                             <div id="logo" class="flex-col logo">
                                 <!-- Header logo -->
-                                <a href="http://linhshop.com.vn/" title="Linh Shop - Chuyên Váy bầu &#8211; váy suông" rel="home">
-                                    <img width="629" height="65" src="<?php echo SITE_ROOT ?>/public/img/U222222ntitled-1-copy.png" class="header_logo header-logo" alt="Linh Shop"/><img  width="629" height="65" src="<?php echo SITE_ROOT ?>/public/img/U222222ntitled-1-copy.png" class="header-logo-dark" alt="Linh Shop"/></a>
+                                <a href="<?php echo SITE_ROOT ?>" 
+                                   title="Choxanh247 - Bán buôn bán lẻ nữ trang" rel="home">
+                                    <!--<img width="629" height="65" src="<?php echo SITE_ROOT ?>/public/img/U222222ntitled-1-copy.png" class="header_logo header-logo" alt="Linh Shop"/>-->
+                                    <img  width="629" height="65" src="<?php echo SITE_ROOT ?>/public/img/logo.png" class="header-logo-dark" alt="Linh Shop"/>
+                                    <span>Choxanh247  <small class="slogan">| Rẻ mà Đẹp</small></span>
+                                </a>
+
                             </div>
                             <!-- Mobile Left Elements -->
                             <div class="flex-col show-for-medium flex-left">
@@ -114,11 +119,11 @@
                                     <li class="header-divider"></li>
                                     <li class="cart-item has-icon
                                         has-dropdown">
-                                        <a href="http://linhshop.com.vn/cart/" title="Giỏ hàng" class="header-cart-link is-small">
+                                        <a href="<?php echo Helper::getPermalink('cart') ?>" title="Giỏ hàng" class="header-cart-link is-small">
                                             <span class="header-cart-title">
                                                 Giỏ hàng     </span>
                                             <i class="icon-shopping-basket"
-                                               data-icon-label="0">
+                                               data-icon-label="1">
                                             </i>
                                         </a>
                                         <ul class="nav-dropdown nav-dropdown-simple">
@@ -126,25 +131,36 @@
                                                 <div class="widget_shopping_cart_content">
                                                     <?php
                                                     $arrCart = Session::get('cart');
-                                                    var_dump($arrCart);
+//                                                    var_dump($arrCart);
+
                                                     if (!empty($arrCart)):
+                                                        $total = 0;
                                                         ?>
                                                         <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                                            <?php foreach ($arrCart as $product): ?>
+                                                            <?php
+                                                            foreach ($arrCart as $product):
+                                                                $total += $product->price * $product->quantity;
+                                                                ?>
                                                                 <li class="woocommerce-mini-cart-item mini_cart_item">
                                                                     <a href="<?php echo Helper::getPermalink('cart/del/' . $product->id) ?>" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="2224" data-product_sku="">×</a>											
                                                                     <a href="<?php echo Helper::getPermalink('product/' . $product->id) ?>">
-                                                                        <img width="180" height="180" src="<?php echo Helper::getImageById($id)?>" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" srcset="//linhshop.com.vn/wp-content/uploads/2017/07/700-180x180.jpg 180w, //linhshop.com.vn/wp-content/uploads/2017/07/700-280x280.jpg 280w, //linhshop.com.vn/wp-content/uploads/2017/07/700-400x400.jpg 400w, //linhshop.com.vn/wp-content/uploads/2017/07/700-768x768.jpg 768w, //linhshop.com.vn/wp-content/uploads/2017/07/700.jpg 800w, //linhshop.com.vn/wp-content/uploads/2017/07/700-300x300.jpg 300w, //linhshop.com.vn/wp-content/uploads/2017/07/700-600x600.jpg 600w" sizes="(max-width: 180px) 100vw, 180px">A700&nbsp;							</a>
+                                                                        <img width="180" height="180" src="<?php echo TIMTHUMB_LINK . $product->image ?>" 
+                                                                             class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" 
+                                                                             sizes="(max-width: 180px) 100vw, 180px"><?php echo $product->name ?>&nbsp;							</a>
                                                                     <span class="quantity"><?php echo $product->quantity ?> × 
-                                                                        <span class="woocommerce-Price-amount amount"><?php echo $product->price?>
+                                                                        <span class="woocommerce-Price-amount amount"><?php echo $product->price ?>
                                                                             <span class="woocommerce-Price-currencySymbol">₫</span></span>
-                                                                            
+
                                                                     </span>					
                                                                 </li>
                                                             <?php endforeach; ?>
                                                         </ul>
-                                                        <p class="woocommerce-mini-cart__total total"><strong>Tạm tính:</strong> <span class="woocommerce-Price-amount amount">360.000<span class="woocommerce-Price-currencySymbol">₫</span></span></p>
-                                                        <p class="woocommerce-mini-cart__buttons buttons"><a href="http://linhshop.com.vn/cart/" class="button wc-forward">Xem giỏ hàng</a><a href="http://linhshop.com.vn/checkout/" class="button checkout wc-forward">Đặt hàng</a></p>
+                                                        <p class="woocommerce-mini-cart__total total">
+                                                            <strong>Tạm tính:</strong> 
+                                                            <span class="woocommerce-Price-amount amount"><?php echo $total ?><span class="woocommerce-Price-currencySymbol">₫</span></span></p>
+                                                        <p class="woocommerce-mini-cart__buttons buttons">
+                                                            <a href="<?php echo Helper::getPermalink('cart') ?>" class="button wc-forward">Xem giỏ hàng</a>
+                                                            <a href="<?php echo Helper::getPermalink('cart/checkout') ?>" class="button checkout wc-forward">Đặt hàng</a></p>
                                                     <?php else: ?>                                                    
                                                         <p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
                                                     <?php endif; ?>
@@ -155,13 +171,14 @@
                                         <!-- .nav-dropdown -->
                                     </li>
                                     <li class="html custom html_topbar_right">
-                                    <li class="html custom html_topbar_right"><img class="alignnone size-full wp-image-1260" src="http://sieuthi201.hunghaweb.com/wp-content/uploads/2017/07/phone9x.gif" alt="" width="20" height="20">&nbsp;<strong style="
-                                                                                                                                                                                                        font-size: 17px;
-                                                                                                                                                                                                        padding: 5px;
-                                                                                                                                                                                                        ">Hotline</strong> :<span style="font-size: 140%; color: #ed1c24;"><strong>&nbsp;<a href="tel:01694142008" style="
-                                                                                                                            color : white;
-                                                                                                                            font-size: 15px;
-                                                                                                                            ">01694.142.008</a></strong></span></li>
+                                    <li class="html custom html_topbar_right">
+                                        <img class="alignnone size-full wp-image-1260" src="<?php echo SITE_ROOT ?>public/img/phone9x.gif" alt="" width="20" height="20">
+                                        &nbsp;<strong style="
+                                                      font-size: 17px;
+                                                      padding: 5px;
+                                                      ">Hotline</strong> :<span style="font-size: 140%; color: #ed1c24;">
+                                            <strong>&nbsp;<a href="tel:01694142008" style="color : white;font-size: 15px;">01694.045.475</a></strong>
+                                        </span></li>
                                     </li>            
                                 </ul>
                             </div>
@@ -182,7 +199,39 @@
                                                     <div class="is-divider"></div>
                                                 </div>
                                                 <div class="widget_shopping_cart_content">
-                                                    <p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
+                                                    <?php
+                                                    $arrCart = Session::get('cart');
+                                                    if (!empty($arrCart)):
+                                                        $total = 0;
+                                                        ?>
+                                                        <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                            <?php
+                                                            foreach ($arrCart as $product):
+                                                                $total += $product->price * $product->quantity;
+                                                                ?>
+                                                                <li class="woocommerce-mini-cart-item mini_cart_item">
+                                                                    <a href="<?php echo Helper::getPermalink('cart/del/' . $product->id) ?>" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="2224" data-product_sku="">×</a>											
+                                                                    <a href="<?php echo Helper::getPermalink('product/' . $product->id) ?>">
+                                                                        <img width="180" height="180" src="<?php echo TIMTHUMB_LINK . $product->image ?>" 
+                                                                             class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" 
+                                                                             sizes="(max-width: 180px) 100vw, 180px"><?php echo $product->name ?>&nbsp;							</a>
+                                                                    <span class="quantity"><?php echo $product->quantity ?> × 
+                                                                        <span class="woocommerce-Price-amount amount"><?php echo $product->price ?>
+                                                                            <span class="woocommerce-Price-currencySymbol">₫</span></span>
+
+                                                                    </span>					
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                        <p class="woocommerce-mini-cart__total total">
+                                                            <strong>Tạm tính:</strong> 
+                                                            <span class="woocommerce-Price-amount amount"><?php echo $total ?><span class="woocommerce-Price-currencySymbol">₫</span></span></p>
+                                                        <p class="woocommerce-mini-cart__buttons buttons">
+                                                            <a href="http://linhshop.com.vn/cart/" class="button wc-forward">Xem giỏ hàng</a>
+                                                            <a href="http://linhshop.com.vn/checkout/" class="button checkout wc-forward">Đặt hàng</a></p>
+                                                    <?php else: ?>                                                    
+                                                        <p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
+                                                    <?php endif; ?>
                                                 </div>
                                                 <div class="cart-sidebar-content relative"></div>
                                             </div>
@@ -202,8 +251,11 @@
                         <div class="flex-row container">
                             <div class="flex-col hide-for-medium flex-left">
                                 <ul class="nav header-nav header-bottom-nav nav-left  nav-divided nav-size-medium nav-spacing-xlarge nav-uppercase">
-                                    <li id="menu-item-338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-96 current_page_item active  menu-item-338"><a href="http://linhshop.com.vn/" class="nav-top-link">Trang Chủ</a></li>
-                                    <li id="menu-item-549" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-549"><a href="http://linhshop.com.vn/gioi-thieu-ve-linh-shop/" class="nav-top-link">Giới Thiệu</a></li>
+                                    <li id="menu-item-338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-96 current_page_item active  menu-item-338">
+                                        <a href="<?php echo SITE_ROOT ?>" class="nav-top-link">Trang Chủ</a>
+                                    </li>
+                                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                                        <a href="http://linhshop.com.vn/gioi-thieu-ve-linh-shop/" class="nav-top-link">Giới Thiệu</a></li>
                                     <li id="menu-item-538" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  menu-item-538 has-dropdown">
                                         <a href="http://linhshop.com.vn/shop/" class="nav-top-link">SẢN PHẨM<i class="icon-angle-down" ></i></a>
                                         <ul class='nav-dropdown nav-dropdown-simple'>

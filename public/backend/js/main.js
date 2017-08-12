@@ -58,6 +58,7 @@ function del(url_ajax, id) {
             jQuery(".notice").html('<div class="alert alert-' + color + ' alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + result.mes + '</div>');
             setTimeout(function () {
                 console.log(112);
+                toastr.success('Thanh cong!');
                 $(".alert-dismissable").hide('slow');
                 location.reload();
             }, 1000);
@@ -116,6 +117,7 @@ $('.form_ajax').submit(function (e) {
             jQuery(".notice").html('<div class="alert alert-' + color + ' alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + result.mes + '</div>');
 //            
             if (result.status) {
+                toastr.success('Thanh cong!');
 //                setTimeout(window.location.href = form.data('url_list'), 3000);
 //                setTimeout(window.location.reload(), 3000);
             }

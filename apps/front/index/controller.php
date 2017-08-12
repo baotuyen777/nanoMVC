@@ -8,7 +8,9 @@ class IndexController extends Controller {
 
     function index($id) {
         $productModel = $this->loadModel('product');
-        $this->view->arrHot = $productModel->getHot();
+
+        $this->view->arrProductHot = $productModel->getHot();
+        $this->view->arrProductNew = $productModel->getNew();
         $this->view->arrSlider = $this->model->getSlider();
         $this->view->loadView('index');
     }
