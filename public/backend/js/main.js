@@ -111,6 +111,9 @@ $('.form_ajax').submit(function (e) {
         type: "POST",
         url: $(this).attr('action'),
         data: {data, arrId},
+        beforeSend:function(){
+            form.find('button').addClass('loading');
+        },
         success: function (result) {
             console.log(result);
             let color = result.status ? 'success' : 'danger';

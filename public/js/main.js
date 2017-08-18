@@ -1,23 +1,35 @@
-console.log(222)
 jQuery('.form_ajax').submit(function (e) {
     e.preventDefault();
-    data = jQuery(this).serializeArray();
     var form = jQuery(this);
+    callAjaxForm(form, function (result) {
+        toastr.success('Thanh cong!');
+        form.find('button').removeClass('loading');
+    });
+
+});
+jQuery('.formAddToCart').submit(function (e) {
+    e.preventDefault();
+    var form = jQuery(this);
+    callAjaxForm(form, function (result) {
+        toastr.success('Thanh cong!');
+        form.find('button').removeClass('loading');
+        console.log(result)
+        
+    });
+
+});
+function callAjaxForm(form, success) {
+    var data = form.serializeArray();
     jQuery.ajax({
         type: "POST",
-        url: jQuery(this).attr('action'),
+        url: form.attr('action'),
         data: {data},
-        success: function (result) {
-            console.log(result);
-            toastr.success('Thanh cong!');
-//            
-//            if (result.status) {
-//                setTimeout(window.location.href = form.data('url_list'), 3000);
-//            }
-        }
-
+        beforeSend: function () {
+            form.find('button').addClass('loading');
+        },
+        success
     });
-});
+}
 // menu
 jQuery(document).ready(function () {
     //console.log('test')

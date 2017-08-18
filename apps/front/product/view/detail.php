@@ -91,7 +91,7 @@ $imgSrc = NO_IMAGE;
                                         <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
                                 </p>
                             </div>
-                            <form class="cart form_ajax" method="post" enctype='multipart/form-data' 
+                            <form class="cart formAddToCart" method="post" enctype='multipart/form-data' 
                                   action="<?php echo Helper::getPermalink('cart/add') ?>"
                                   >
                                 <div class="quantity buttons_added">

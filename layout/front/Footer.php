@@ -334,7 +334,7 @@
                             /* ]]> */
 </script>
 <script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/flatsome.js?ver=3.3.6'></script>
-<script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/woocommerce.js?ver=3.3.6'></script>
+<!--<script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/woocommerce.js?ver=3.3.6'></script>-->
 <!--<script type='text/javascript' src='http://linhshop.com.vn/wp-includes/js/wp-embed.min.js?ver=4.8'></script>-->
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" ></script>
