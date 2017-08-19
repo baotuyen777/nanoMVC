@@ -165,21 +165,13 @@
                                             <i class="icon-play" ></i></a>
 
                                     </div></div>
-
-                                <style scope="scope">
-
-                                </style>
                             </div>
-                            <div class="container section-title-container" ><h3 class="section-title section-title-bold-center"><b></b><span class="section-title-main" >sản phẩm mới</span><b></b></h3></div><!-- .section-title -->
-
-
+                            <div class="container section-title-container" ><h3 class="section-title section-title-bold-center"><b></b>
+                                    <span class="section-title-main" >sản phẩm mới</span><b></b></h3></div><!-- .section-title -->
                             <div class="row large-columns-4 medium-columns- small-columns-2 row-small has-shadow row-box-shadow-1 row-box-shadow-1-hover">
-
-
                                 <?php
                                 $productController->loop($this->arrProductNew);
                                 ?>
-
                             </div>
                         </div>
                     </div>

@@ -37,11 +37,9 @@
                             <tbody>
                                 <?php
                                 $arrCart = Session::get('cart');
-                                 $total = 0;
                                 if (!empty($arrCart)):
-                                   
-                                    foreach ($arrCart as $product):
-                                        $total += ($product->price - $product->price * $product->sale / 100) * $product->quantity
+                                    foreach ($arrCart['data'] as $product):
+//                                        $total += ($product->price - $product->price * $product->sale / 100) * $product->quantity
                                         ?>
                                         <tr class="woocommerce-cart-form__cart-item cart_item">
                                             <td class="product-remove">
@@ -78,7 +76,7 @@
                                             </td>
 
                                             <td class="product-subtotal" data-title="Tổng tiền">
-                                                <span class="woocommerce-Price-amount amount"><?php echo number_format(($product->price - $product->price * $product->sale / 100) * $product->quantity) ?><span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                                <span class="woocommerce-Price-amount amount"><?php echo $product->total ?><span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
                                             </td>
                                         </tr>
                                         <?php
@@ -89,7 +87,7 @@
                                     <th colspan="6">Tổng tiền
                                         <strong>
                                             <span class="woocommerce-Price-amount amount pull-right">
-                                                <?= number_format($total) ?><span class="woocommerce-Price-currencySymbol">&#8363;</span></span></strong> 
+                                                <?= ($arrCart['total']) ?><span class="woocommerce-Price-currencySymbol">&#8363;</span></span></strong> 
                                     </th>
                                 </tr>
                                 <tr>

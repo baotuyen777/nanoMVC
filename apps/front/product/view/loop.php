@@ -26,19 +26,30 @@ if ($this->arrProduct):
                     <div class="box-text text-center" >
                         <div class="title-wrapper"><p class="name product-title">
                                 <a href="<?php echo Helper::getPermalink('product/' . $product->id) ?>">
-        <?php echo $product->name ?></a></p>
+                                    <?php echo $product->name ?></a></p>
                         </div>
                         <div class="price-wrapper">
                             <span class="price">
-                                <del>
-                                    <span class="woocommerce-Price-amount amount"><?php echo number_format($product->price) ?><span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
-                                </del> <ins><span class="woocommerce-Price-amount amount"><?php echo number_format($product->price - ($product->sale * $product->price) / 100) ?><span class="woocommerce-Price-currencySymbol">&#8363;</span></span></ins></span>
+                                <?php if ($product->sale > 0): ?>
+                                    <del>
+                                        <span class="woocommerce-Price-amount amount">
+                                            <?php echo number_format($product->price) ?>
+                                            <span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                        </span>
+                                    </del> 
+                                <?php endif; ?>
+                                <ins>
+                                    <span class="woocommerce-Price-amount amount">
+                                        <?php echo number_format($product->price - ($product->sale * $product->price) / 100) ?>
+                                        <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                </ins>
+                            </span>
                         </div>
                     </div><!-- box-text -->
                 </div><!-- box -->
             </div><!-- .col-inner -->
         </div><!-- col -->
-    <?php
+        <?php
     endforeach;
 endif;
 ?>

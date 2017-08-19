@@ -129,41 +129,43 @@
                                         <ul class="nav-dropdown nav-dropdown-simple">
                                             <li class="html widget_shopping_cart">
                                                 <div class="widget_shopping_cart_content">
-                                                    <?php
-                                                    $arrCart = Session::get('cart');
+                                                    <div class="cart_list">
+                                                        <?php
+                                                        $arrCart = Session::get('cart');
 //                                                    var_dump($arrCart);
+                                                        $hidden = 'hidden';
+                                                        if (!empty($arrCart)):
+                                                            $hidden = '';
+                                                            ?>
+                                                            <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                                <?php
+                                                                foreach ($arrCart['data'] as $product):
+                                                                    ?>
+                                                                    <li class="woocommerce-mini-cart-item mini_cart_item">
+                                                                        <a href="<?php echo Helper::getPermalink('cart/del/' . $product->id) ?>" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="2224" data-product_sku="">×</a>											
+                                                                        <a href="<?php echo Helper::getPermalink('product/' . $product->id) ?>">
+                                                                            <img width="180" height="180" src="<?php echo TIMTHUMB_LINK . $product->image ?>" 
+                                                                                 class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" 
+                                                                                 sizes="(max-width: 180px) 100vw, 180px"><?php echo $product->name ?>&nbsp;							</a>
+                                                                        <span class="quantity"><?php echo $product->quantity ?> × 
+                                                                            <span class="woocommerce-Price-amount amount"><?php echo ($product->priceSale) ?>
+                                                                                <span class="woocommerce-Price-currencySymbol">₫</span></span>
 
-                                                    if (!empty($arrCart)):
-                                                        $total = 0;
-                                                        ?>
-                                                        <ul class="woocommerce-mini-cart cart_list product_list_widget ">
-                                                            <?php
-                                                            foreach ($arrCart as $product):
-                                                                $total += $product->price * $product->quantity;
-                                                                ?>
-                                                                <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                                    <a href="<?php echo Helper::getPermalink('cart/del/' . $product->id) ?>" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="2224" data-product_sku="">×</a>											
-                                                                    <a href="<?php echo Helper::getPermalink('product/' . $product->id) ?>">
-                                                                        <img width="180" height="180" src="<?php echo TIMTHUMB_LINK . $product->image ?>" 
-                                                                             class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" 
-                                                                             sizes="(max-width: 180px) 100vw, 180px"><?php echo $product->name ?>&nbsp;							</a>
-                                                                    <span class="quantity"><?php echo $product->quantity ?> × 
-                                                                        <span class="woocommerce-Price-amount amount"><?php echo $product->price ?>
-                                                                            <span class="woocommerce-Price-currencySymbol">₫</span></span>
+                                                                        </span>					
+                                                                    </li>
+                                                                <?php endforeach; ?>
+                                                            </ul>
+                                                            <p class="woocommerce-mini-cart__total total">
+                                                                <strong>Tạm tính:</strong> 
+                                                                <span class="woocommerce-Price-amount amount cart_total"><?php echo ($arrCart['total']) ?><span class="woocommerce-Price-currencySymbol">₫</span></span></p>
 
-                                                                    </span>					
-                                                                </li>
-                                                            <?php endforeach; ?>
-                                                        </ul>
-                                                        <p class="woocommerce-mini-cart__total total">
-                                                            <strong>Tạm tính:</strong> 
-                                                            <span class="woocommerce-Price-amount amount"><?php echo $total ?><span class="woocommerce-Price-currencySymbol">₫</span></span></p>
-                                                        <p class="woocommerce-mini-cart__buttons buttons">
-                                                            <a href="<?php echo Helper::getPermalink('cart') ?>" class="button wc-forward">Xem giỏ hàng</a>
-                                                            <a href="<?php echo Helper::getPermalink('cart/checkout') ?>" class="button checkout wc-forward">Đặt hàng</a></p>
-                                                    <?php else: ?>                                                    
-                                                        <p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
-                                                    <?php endif; ?>
+                                                        <?php else: ?>                                                    
+                                                            <p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                    <p class="btn_cart buttons <?php echo $hidden ?>">
+                                                        <a href="<?php echo Helper::getPermalink('cart') ?>" class="button wc-forward">Xem giỏ hàng</a>
+                                                        <a href="<?php echo Helper::getPermalink('cart/checkout') ?>" class="button checkout wc-forward">Đặt hàng</a></p>
                                                 </div>
 
                                             </li>

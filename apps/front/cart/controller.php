@@ -11,6 +11,10 @@ class cartController extends Controller {
     }
 
     function add() {
+        $status = false;
+        $cart = array();
+        $mes = 'Fail';
+
         if ($_POST) {
             $params = Helper::changeFormatPost($_POST['data']);
             $productId = $params['productId'];
@@ -18,9 +22,33 @@ class cartController extends Controller {
             $cart = Session::get('cart') != FALSE ? Session::get('cart') : array();
             $product = Helper::getProductById($productId);
             $product->quantity = $quantity;
-            $cart[$productId] = $product;
+            $product->linkDel = Helper::getPermalink('cart/del/' . $product->id);
+            $product->linkProduct = Helper::getPermalink('product/' . $product->id);
+            $product->linkImage = TIMTHUMB_LINK . $product->image;
+            $product->priceSale = number_format($product->price - $product->price * $product->sale / 100);
+            $product->total = number_format(($product->price - $product->price * $product->sale / 100) * $product->quantity);
+            $cart['data'][$productId] = $product;
+            $total = 0;
+            foreach ($cart['data'] as $product) {
+                $total += ($product->price - $product->price * $product->sale / 100) * $product->quantity;
+            }
+            $cart['total'] = number_format($total);
             Session::set('cart', $cart);
+            $status = true;
+            $mes = 'Success';
         }
+
+        $result = array(
+            'status' => $status,
+            'mes' => $mes,
+            'cart' => $cart,
+        );
+        header('Content-Type: application/json');
+        echo json_encode($result);
+    }
+
+    function delall() {
+        Session::destroy();
     }
 
     function del($productId) {

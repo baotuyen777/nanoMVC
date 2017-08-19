@@ -19,9 +19,13 @@
                         </ul>
                     </section>
                 </div>
-            </div><div id="text-10" class="col pb-0 widget widget_text"><h3 class="widget-title">BẢN ĐỒ</h3><div class="is-divider small"></div>			<div class="textwidget"><p><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.288409819609!2d105.82355761548638!3d21.021142986002584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab79d1681d01%3A0x5ca1883448a3d981!2zMSBIb8OgbmcgQ-G6p3UgTcahzIFpLCDDlCBDaOG7oyBE4burYSwgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2sus!4v1499250640431" width="600" height="300" frameborder="0" allowfullscreen=""></iframe></p>
+            </div>
+<!--            <div id="text-10" class="col pb-0 widget widget_text">
+                <h3 class="widget-title">BẢN ĐỒ</h3><div class="is-divider small"></div>			
+                <div class="textwidget"><p><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.288409819609!2d105.82355761548638!3d21.021142986002584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab79d1681d01%3A0x5ca1883448a3d981!2zMSBIb8OgbmcgQ-G6p3UgTcahzIFpLCDDlCBDaOG7oyBE4burYSwgxJDhu5FuZyDEkGEsIEjDoCBO4buZaSwgVmlldG5hbQ!5e0!3m2!1sen!2sus!4v1499250640431" width="600" height="300" frameborder="0" allowfullscreen=""></iframe></p>
                 </div>
-            </div><div id="text-13" class="col pb-0 widget widget_text"><h3 class="widget-title">HỖ TRỢ</h3><div class="is-divider small"></div>			<div class="textwidget"><div class="textwidget">
+            </div>-->
+            <div id="text-13" class="col pb-0 widget widget_text"><h3 class="widget-title">HỖ TRỢ</h3><div class="is-divider small"></div>			<div class="textwidget"><div class="textwidget">
                         <div class="support-item">
                             <div class="pull-left skype"></div>
                             <div class="name">Mr Tú</div>
@@ -230,7 +234,7 @@
                         <!-- Spam Trap -->
                         <div style="left: -999em; position: absolute;"><label for="trap">Chống thư rác</label><input type="text" name="email_2" id="trap" tabindex="-1" /></div>
 
-                        <script type="text/javascript">
+<!--                        <script type="text/javascript">
                             if (jQuery.type(has_social_form) === "undefined") {
                                 var has_social_form = false;
                                 var socialLogins = null;
@@ -274,7 +278,7 @@
                                     }
                                 }(jQuery));
                             });
-                        </script>
+                        </script>-->
 
                         <p class="woocomerce-FormRow form-row">
                             <input type="hidden" id="_wpnonce" name="_wpnonce" value="7e25b71b3d" /><input type="hidden" name="_wp_http_referer" value="/" />				<input type="submit" class="woocommerce-Button button" name="register" value="Đăng ký" />

@@ -48,6 +48,11 @@ $imgSrc = NO_IMAGE;
 
                         <div class="product-gallery large-6 col">
                             <div class="product-images relative mb-half has-hover woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
+                                <div class="badge-container absolute left top z-1">
+                                    <div class="callout badge badge-circle">
+                                        <div class="badge-inner secondary on-sale">
+                                            <span class="onsale">-<?php echo $obj->sale ?>%</span></div></div>
+                                </div>
                                 <figure class="woocommerce-product-gallery__wrapper product-gallery-slider slider slider-nav-small mb-half"
                                         data-flickity-options='{
                                         "cellAlign": "center",
@@ -87,8 +92,19 @@ $imgSrc = NO_IMAGE;
                             <div class="is-divider small"></div>
                             <div class="price-wrapper">
                                 <p class="price product-page-price ">
-                                    <span class="woocommerce-Price-amount amount"><?php echo $obj->price ?>
-                                        <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                    <?php if ($obj->sale > 0): ?>
+                                        <del>
+                                            <span class="woocommerce-Price-amount amount">
+                                                <?php echo number_format($obj->price) ?>
+                                                <span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                            </span>
+                                        </del> 
+                                    <?php endif; ?>
+                                    <ins>
+                                        <span class="woocommerce-Price-amount amount">
+                                            <?php echo number_format($obj->price - ($obj->sale * $obj->price) / 100) ?>
+                                            <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                    </ins>
                                 </p>
                             </div>
                             <form class="cart formAddToCart" method="post" enctype='multipart/form-data' 

@@ -13,10 +13,34 @@ jQuery('.formAddToCart').submit(function (e) {
     callAjaxForm(form, function (result) {
         toastr.success('Thanh cong!');
         form.find('button').removeClass('loading');
-        console.log(result)
-        
-    });
+        if (result.status) {
+            var total = 0;
+            var cart = result.cart;
+            var cartHtml = '<ul class="woocommerce-mini-cart cart_list product_list_widget ">';
+            for (let k in cart.data) {
+                cartHtml += '<li class="woocommerce-mini-cart-item mini_cart_item">'
+                        + '<a href="' + cart.data[k].linkDel + '" class="remove" aria-label="Xóa sản phẩm nà" >×</a>'
+                        + '<a href="' + cart.data[k].linkProduct + '">'
+                        + '<img width="180" height="180" src="' + cart.data[k].linkImage + '" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" >' + cart.data[k].name + '&nbsp;</a>'
+                        + '<span class="quantity">' + cart.data[k].quantity + ' × '
+                        + '<span class="woocommerce-Price-amount amount">' + cart.data[k].priceSale
+                        + '<span class="woocommerce-Price-currencySymbol">₫</span></span>'
+                        + '</span>'
+                        + '</li>';
+            }
+            cartHtml += '</ul>';
+            cartHtml += '<p class="woocommerce-mini-cart__total total">'
+                    + '<strong>Tạm tính:</strong>'
+                    + '<span class="woocommerce-Price-amount amount cart_total">' + cart.total + '<span class="woocommerce-Price-currencySymbol">₫</span></span></p>';
+            jQuery('.btn_cart').removeClass('hidden');
+            jQuery('.cart_list').html(cartHtml);
+            console.log(cart);
+//            jQuery('.cart_total').html(cart.total);
+        }
 
+
+    }
+    );
 });
 function callAjaxForm(form, success) {
     var data = form.serializeArray();
@@ -50,3 +74,14 @@ jQuery(document).ready(function () {
         })
     })
 })
+
+//product
+var quantity = parseInt(jQuery('.qty').val());
+jQuery('.plus').click(function () {
+    quantity++;
+    jQuery('.qty').val(quantity);
+});
+jQuery('.minus').click(function () {
+    quantity--;
+    jQuery('.qty').val(quantity);
+});
