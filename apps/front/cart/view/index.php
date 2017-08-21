@@ -62,7 +62,8 @@
 
                                             <td class="product-quantity" data-title="Số lượng">
                                                 <div class="quantity buttons_added">
-                                                    <form action="<?php echo Helper::getPermalink('cart/add') ?>" method="post" class="form_ajax">
+                                                    <form action="<?php  Helper::getPermalink('cart/add') ?>" 
+                                                          method="post" class="formAddToCart1">
                                                         <input type="button" value="-" class="minus button is-form">
                                                         <input type="number" class="input-text qty text" step="1" min="0" max="9999" 
                                                                name="quantity" value="<?php echo $product->quantity ?>" title="SL" size="4"
