@@ -28,7 +28,7 @@ class Controller {
      * @function \loadModel
      */
     public function loadModel($module = 'index') {
-        $path = 'apps/' . $this->app . '/' . $module . '/model.php';
+        $path = 'apps/models/' . $module . '.php';
         if (file_exists($path)) {
 
             require_once $path;

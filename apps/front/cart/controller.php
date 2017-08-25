@@ -30,7 +30,7 @@ class cartController extends Controller {
         foreach ($cart['data'] as $product) {
             $total += ($product->price - $product->price * $product->sale / 100) * $product->quantity;
         }
-        $cart['total'] = number_format($total);
+        $cart['total'] = $total;
         Session::set('cart', $cart);
         $status = true;
         $mes = 'Success';
@@ -66,6 +66,11 @@ class cartController extends Controller {
     }
 
     function checkout() {
+        $cart = Session::get('cart');
+        if(!$cart){
+            $this->redirect('index');
+            die;
+        }
 //        $this->view->arrProduct = $arrProduct;
         $this->view->loadView('checkout');
     }

@@ -27,11 +27,11 @@ class initController extends Controller {
             'is_hot INT (2) DEFAULT 0',
             'status INT (2) DEFAULT 1',
         ));
-         $this->model->addSql('productslide', array(
+        $this->model->addSql('productslide', array(
             'product_id INT (11) NOT NULL',
             'image_id INT (11)  NOT NULL',
         ));
-         $this->model->addSql('productcat', array(
+        $this->model->addSql('productcat', array(
             'name VARCHAR (255) NOT NULL',
             'slug VARCHAR (255) NOT NULL',
             'parent_id INT (11) ',
@@ -42,20 +42,24 @@ class initController extends Controller {
         $this->model->addSql('orders', array(
             'user_id INT (11) NOT NULL',
             'date DATE NOT NULL',
-            'note VARCHAR (255)',
             'total INT(11) NOT NULL',
+            'payment_status INT (4) DEFAULT 1',
+            'method INT(4)',
+            'note VARCHAR (255)',
             'status INT (2) DEFAULT 1'
         ));
         $this->model->addSql('orders_detail', array(
             'order_id INT (11) UNSIGNED NOT NULL',
             'product_id INT (11) NOT NULL',
-            'quantity INT (11) DEFAULT 1'
+            'quantity INT (11) DEFAULT 1',
         ));
         $this->model->addSql('user', array(
-            'name VARCHAR(100) NOT NULL',
-            'email VARCHAR(100) NOT NULL',
+            'phone VARCHAR(100)  NOT NULL ',
+            'name VARCHAR(100) ',
+            'email VARCHAR(100) ',
             'password VARCHAR(100) DEFAULT "123456" ',
             'activation_key VARCHAR(100)',
+            'address VARCHAR(255)',
             'birthday DATE',
             'image_id INT(11)',
             'gender TINYINT   DEFAULT 1 ',

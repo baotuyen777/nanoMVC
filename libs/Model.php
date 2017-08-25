@@ -44,7 +44,7 @@ class Model {
      * @return type
      */
     function getUserById($id) {
-        $sql = 'SELECT id, activation_key, email,name,birthday,avatar,gender,role,wallet,status FROM users WHERE id= :id';
+        $sql = 'SELECT id, activation_key, email,name,birthday,avatar,gender,role,wallet,status FROM user WHERE id= :id';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':id', $id);
         $stmt->execute();
@@ -58,9 +58,23 @@ class Model {
      * @return type
      */
     public function getUserByEmail($email) {
-        $sql = "SELECT id, activation_key, email,name FROM users WHERE email=:email ";
+        $sql = "SELECT id, activation_key, email,name FROM user WHERE email=:email ";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":email", $email);
+        $stmt->execute();
+        $result = $stmt->fetchObject();
+        return $result;
+    }
+
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
+    public function getUserByPhone($phone) {
+        $sql = "SELECT id, activation_key, email,name,phone FROM user WHERE phone=:phone ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":phone", $phone);
         $stmt->execute();
         $result = $stmt->fetchObject();
         return $result;
@@ -113,6 +127,7 @@ class Model {
     public function add($params) {
         $sql = "INSERT INTO " . $this->module . " SET ";
         $arrField = array();
+//        var_dump($params);
         foreach ($params as $field => $val) {
             if ($val == '' || !property_exists($this, $field)) {
                 continue;
@@ -124,6 +139,7 @@ class Model {
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute();
         if (!$result) {
+            
             var_dump($sql);
         }
         return $this->db->lastInsertId();

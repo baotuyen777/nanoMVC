@@ -9,7 +9,7 @@
         <strong><?php echo ($status) ? 'Success' : 'Error' ?>!</strong> <?php echo $mes ?>
     </div>
     <div class="form-action">
-        <a class="btn btn-default" href="<?php echo Helper::getPermalink('backend/' . $this->module) ?>" >Return</a>
+        <a class="btn btn-default" href="<?php echo SITE_ROOT ?>/?url=backend/user/" >Return</a>
     </div>
 
 </div> <!-- /container -->

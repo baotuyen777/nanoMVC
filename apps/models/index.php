@@ -1,13 +1,6 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-class indexModel extends Model {
-
-    public $table = "users";
+class IndexModel extends Model {
 
     public function __construct($module) {
         parent::__construct($module);
@@ -21,5 +14,3 @@ class indexModel extends Model {
     }
 
 }
-
-?>

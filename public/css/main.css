@@ -55,7 +55,7 @@ h3.widget-title {
 }
 input[type='email'], input[type='date'], input[type='search'], input[type='number'], input[type='text'], input[type='tel'], input[type='url'], input[type='password'], textarea, select, .select2-container .select2-choice, .select2-container .select2-selection {
 
-    border: 1px solid #d33;
+    border: 1px solid rgba(0, 0, 0, 0.61);
     padding: 0 .75em;
     height: 2.9507em;
 

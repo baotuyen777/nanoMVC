@@ -16,23 +16,41 @@ class OrdersController extends Controller {
         }
     }
 
-    function all() {
+    function add($id) {
+        $mes = 'nothing';
+        $status = false;
+        if ($_POST) {
+            $params = $_POST;
+//            $params = Helper::changeFormatPost($_POST['data']);
+            if ($user = $this->model->getUserByPhone($params['phone'])) {
+                $user_id = $user->id;
+            } else {
+                $userModel = $this->loadModel('user');
+                $user_id = $userModel->add($params);
+            }
 
-        $arrAllData = $this->model->getAll();
-        $params = array(
-            'postPerPage' => isset($_REQUEST['postPerPage']) ? filter_var($_REQUEST['postPerPage'], FILTER_SANITIZE_STRING) : 10,
-            'filter' => isset($_REQUEST['filter']) ? filter_var($_REQUEST['filter'], FILTER_SANITIZE_STRING) : "",
-            'page' => isset($_REQUEST['page']) ? filter_var($_REQUEST['page'], FILTER_SANITIZE_STRING) : 1,
-            'total' => count($arrAllData)
-        );
-
-        $arrAllDataPagination = $this->model->getAll($params);
+            $cart = Session::get('cart');
+            if ($cart) {
+                $order = array(
+                    'user_id' => $user_id,
+                    'total' => (int) $cart['total'],
+                    'date' => date("Y-m-d"),
+                    'payment_method' => $params['payment_method']
+                );
+                if ($id = $this->model->add($order)) {
+                    $status = true;
+                    $mes = "Success";
+                } else {
+                    $mes = "Server overload!";
+                }
+            }
+        }
         $result = array(
-            "status" => true,
-            'data' => $arrAllDataPagination,
+            'status' => $status,
+            'mes' => $mes
         );
-        $result = array_merge($params, $result);
-        $this->showJson($result);
+//            header('Content-Type: application/json');
+        echo json_encode($result);
     }
 
     function detail($id) {
@@ -42,8 +60,6 @@ class OrdersController extends Controller {
 //        $this->view->arrProductRelated = $this->model->getRetated($id,$arrSingle->cat_id);
         $this->view->loadView('detail');
     }
-
-  
 
 }
 
