@@ -38,8 +38,18 @@ class OrdersController extends Controller {
                     'payment_method' => $params['payment_method']
                 );
                 if ($id = $this->model->add($order)) {
+                    foreach ($cart['data'] as $product) {
+                        $orderDetail = array(
+                            'order_id' => $id,
+                            'product_id' => (int) $product->id,
+                            'quantity' => $product->quantity,
+                        );
+                        $this->model->addOrderDetail($orderDetail);
+                    }
                     $status = true;
                     $mes = "Success";
+                    Session::del('cart');
+                    $this->redirect('orders/' . $id);
                 } else {
                     $mes = "Server overload!";
                 }
@@ -54,10 +64,8 @@ class OrdersController extends Controller {
     }
 
     function detail($id) {
-        $arrSingle = $this->model->getSingle($id);
-        $this->view->arrSingle = $arrSingle;
-        $this->view->arrSlider = $this->model->getProductSlide($id);
-//        $this->view->arrProductRelated = $this->model->getRetated($id,$arrSingle->cat_id);
+        $this->view->arrSingle = $this->model->getSingle($id);
+        $this->view->arrOrderDetail = $this->model->getOrderDetail($id);
         $this->view->loadView('detail');
     }
 

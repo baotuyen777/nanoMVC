@@ -44,7 +44,7 @@ class initController extends Controller {
             'date DATE NOT NULL',
             'total INT(11) NOT NULL',
             'payment_status INT (4) DEFAULT 1',
-            'method INT(4)',
+            'payment_method INT(4) DEFAULT 1',
             'note VARCHAR (255)',
             'status INT (2) DEFAULT 1'
         ));

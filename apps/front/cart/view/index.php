@@ -3,11 +3,11 @@
         <div class="page-title-inner flex-row medium-flex-wrap container">
             <div class="flex-col flex-grow medium-text-center">
                 <nav class="breadcrumbs heading-font checkout-breadcrumbs text-center h2 strong">
-                    <a href="http://linhshop.com.vn/cart/" class="current">Shopping Cart</a>
+                    <a  class="current">Giỏ hàng</a>
                     <span class="divider hide-for-small"><i class="icon-angle-right" ></i></span>
-                    <a href="http://linhshop.com.vn/checkout/" class="hide-for-small">Checkout details</a>
+                     <a  class="hide-for-small">Đặt hàng</a>
                     <span class="divider hide-for-small"><i class="icon-angle-right" ></i></span>
-                    <a href="#" class="no-click hide-for-small">Order Complete</a>
+                    <a href="#" class="no-click current">Hoàn thành đơn hàng</a>
                 </nav>
             </div>
             <!-- .flex-left -->

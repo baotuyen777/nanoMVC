@@ -154,6 +154,7 @@ class Controller {
     function redirect($link = 'product') {
         $fullLink = Helper::getPermalink($link);
         echo '<script>window.location.replace("' . $fullLink . '");</script>';
+        die();
     }
 
 }

@@ -1,6 +1,9 @@
 <?php
 $arrSingle = $this->arrSingle;
-$imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image) . '&h=150&w=300';
+$imgSrc=NO_IMAGE;
+if (property_exists($this->arrSingle, 'image')) {
+    $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $this->arrSingle->image . '&h=150&w=300';
+} 
 ?>
 
 <div class="container">
@@ -30,6 +33,12 @@ $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get
                 <input type="number" name="price" value="<?php echo $arrSingle->price ?>" class="form-control">
             </div>
         </div>
+         <div class="form-group">
+            <label class="control-label col-sm-2" >Sale:</label>
+            <div class="col-sm-10">
+                <input type="number" name="sale" value="<?php echo $arrSingle->sale ?>" class="form-control">
+            </div>
+        </div>
         <div class="form-group">
             <label class="control-label col-sm-2" >Category:</label>
             <div class="col-sm-10">
@@ -56,7 +65,7 @@ $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get
             <label class="control-label col-sm-2" >Image:</label>
             <div class="col-sm-10">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediaModal">Add Image</button>
-                <input type="hidden" name="image" id="image_id">
+                <input type="hidden" name="image_id" id="image_id">
                 <img id="image"
                      src="<?= $imgSrc ?>">
             </div>
@@ -68,7 +77,7 @@ $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get
                 <!--<input type="hidden" name="slide" id="image_id">-->
                 <div class="wrap_slide">
                     <?php foreach ($this->arrSlider as $arrSlide): ?>
-                        <img src="<?php echo Helper::show_image($arrSlide->image,'&h=50&w=100') ?>"/>
+                        <img src="<?php echo $arrSlide->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $arrSlide->image . '&h=50&w=100' ?>"/>
                     <?php endforeach; ?>
                 </div>
 

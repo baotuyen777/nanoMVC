@@ -1,7 +1,3 @@
-<?php
-$timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
-?>
-
 <div class="container">
     <div class="function">
         <a class="btn btn-success" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail') ?>">Add</a>
@@ -12,48 +8,58 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
     <table class="table">
         <tr>
             <th><input type="checkbox" class="masCheck"></th>
-            <th>STT</th>
-            <?php
-            foreach ($this->model as $field => $val):
-                if ($field == 'id' || $field == 'content')
-                    continue;
-                ?>
-                <th><?php echo ($field) ?></th>
-            <?php endforeach; ?>
+            <th>Code</th>
+            <th>Customer</th>
+            <th>Detail</th>
+            <th>Total</th>
+            <th>Date</th>
+            <th>Payment status</th>
+            <th>Payment method</th>
+            <th>Note</th>
             <th>Action</th>
         </tr>
         <?php
+        $arrPs = array(
+            1 => 'Pending',
+            2 => 'Done'
+        );
+        $arrPm = array(
+            1 => 'Direct',
+            2 => 'Bank tranfer'
+        );
         if (!empty($this->arrAll)):
             $i = 0;
+            $orderController = new ordersController('backend', 'orders');
             foreach ($this->arrAll as $arrSingle):
                 $i++;
-                $imgSrc = $arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($arrSingle->image) . '&h=50&w=100';
                 ?>
                 <tr>
                     <td><input type="checkbox" class="ick" name="ckc[]" value="<?php echo $arrSingle->id ?>"></td>
-                    <td><?php echo $i ?></td>
+                    <td>
+                        <a  href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail/') . $arrSingle->id ?>">
+                            #<?php echo $arrSingle->id ?>
+                        </a>
+                    </td>
                     <?php // foreach ($this->model as $field => $val):  ?>
-                    <!--<td><?php // echo $arrSingle->$field                       ?></td>-->
+                <!--<td><?php // echo $arrSingle->$field                                   ?></td>-->
                     <?php // endforeach;   ?>
                     <td>
                         <a  href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail/') . $arrSingle->id ?>">
-                            <?php echo $arrSingle->name ?>
+                            <?php echo $arrSingle->user_name ?>
+                            <br>
                         </a>
-                    </td>
-                    <td><?php echo $arrSingle->slug ?></td>
-                    <td><?php echo $arrSingle->price ?></td>
-                    <td><?php echo $arrSingle->cat_id ?></td>
-                    <td><?php echo $arrSingle->description ?></td>
-
-                    <td>
-                        <img class="img-list" 
-                             src="<?= $imgSrc ?>"/>
+                        <?php echo $arrSingle->phone ?>
                     </td>
                     <td>
-                        <?php $checkedHot = $arrSingle->is_hot ? 'checked' : '' ?>
-                        <input type="checkbox" <?php echo $checkedHot ?>  name="is_hot" value="1" 
-                               onchange="toggleHot(this, <?php echo $arrSingle->id ?>)"></td>
-                    <td><?php echo $arrSingle->status ?></td>
+                        <?php
+                        $orderController->showOrderDetail($arrSingle->id);
+                        ?>
+                    </td>
+                    <td><?php echo number_format($arrSingle->total) ?> VND</td>
+                    <td><?php echo $arrSingle->date ?></td>
+                    <td><?php echo $arrPs[$arrSingle->payment_status] ?></td>
+                    <td><?php echo $arrPm[$arrSingle->payment_method]?></td>
+                    <td><?php echo $arrSingle->note ?></td>
                     <td>
                         <button type="button" class="btn btn-danger" 
                                 onclick="del('<?php echo Helper::getPermalink('backend/' . $this->module . '/delete') ?>',<?php echo $arrSingle->id ?>)">

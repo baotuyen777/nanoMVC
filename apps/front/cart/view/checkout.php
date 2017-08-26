@@ -6,11 +6,11 @@
         <div class="page-title-inner flex-row medium-flex-wrap container">
             <div class="flex-col flex-grow medium-text-center">
                 <nav class="breadcrumbs heading-font checkout-breadcrumbs text-center h2 strong">
-                    <a href="http://linhshop.com.vn/cart/" class="hide-for-small">Shopping Cart</a>
+                    <a href="<?php echo Helper::getPermalink('cart') ?>" class="hide-for-small">Giỏ hàng</a>
                     <span class="divider hide-for-small"><i class="icon-angle-right" ></i></span>
-                    <a href="http://linhshop.com.vn/checkout/" class="current">Checkout details</a>
+                    <a class="current">Đặt hàng</a>
                     <span class="divider hide-for-small"><i class="icon-angle-right" ></i></span>
-                    <a href="#" class="no-click hide-for-small">Order Complete</a>
+                    <a href="#" class="no-click hide-for-small">Hoàn thành đơn hàng</a>
                 </nav>
             </div>
             <!-- .flex-left -->
@@ -180,8 +180,16 @@
                                     </table>
                                     <div id="payment" class="woocommerce-checkout-payment">
                                         <ul class="wc_payment_methods payment_methods methods">
+                                            <li class="wc_payment_method payment_method_cod">
+                                                <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="1" checked='checked' />
+                                                <label for="payment_method_cod">
+                                                    Thanh toán khi giao hàng </label>
+                                                <div class="payment_box payment_method_cod" style="display:none;">
+                                                    <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
+                                                </div>
+                                            </li>
                                             <li class="wc_payment_method payment_method_bacs">
-                                                <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" checked='checked' data-order_button_text="" />
+                                                <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="2"   />
 
                                                 <label for="payment_method_bacs">
                                                     Chuyển khoản ngân hàng trực tiếp </label>
@@ -192,15 +200,7 @@
 
                                                 </div>
                                             </li>
-                                            <li class="wc_payment_method payment_method_cod">
-                                                <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" data-order_button_text="" />
 
-                                                <label for="payment_method_cod">
-                                                    Thanh toán khi giao hàng </label>
-                                                <div class="payment_box payment_method_cod" style="display:none;">
-                                                    <p>Thanh toán bằng tiền mặt khi giao hàng.</p>
-                                                </div>
-                                            </li>
                                         </ul>
 
                                     </div>
