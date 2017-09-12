@@ -1,9 +1,9 @@
 <?php
 $arrSingle = $this->arrSingle;
 $imgSrc=NO_IMAGE;
-if (property_exists($this->arrSingle, 'image')) {
+//if (property_exists($this->arrSingle, 'image')) {
     $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $this->arrSingle->image . '&h=150&w=300';
-} 
+//} 
 ?>
 
 <div class="container">

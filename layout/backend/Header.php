@@ -30,10 +30,15 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo Helper::getPermalink('backend/') ?>">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                        <li class="dropdown">
+                        <!--<li class="active"><a href="<?php echo Helper::getPermalink('backend/') ?>">Home</a></li>-->
+<!--                         <li><a href="<?php echo Helper::getPermalink('backend/slider') ?>">Slider</a></li>
+                        <li><a href="<?php echo Helper::getPermalink('backend/menu') ?>">Menu</a></li>-->
+                        <li><a href="<?php echo Helper::getPermalink('backend/user') ?>">User</a></li>
+                        <li><a href="<?php echo Helper::getPermalink('backend/product') ?>">Product</a></li>
+                        <li><a href="<?php echo Helper::getPermalink('backend/productcat') ?>">Product category</a></li>
+                        <li><a href="<?php echo Helper::getPermalink('backend/orders') ?>">Order</a></li>
+                        <li><a href="<?php echo Helper::getPermalink('backend/media') ?>">Media</a></li>
+<!--                        <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
@@ -44,7 +49,7 @@
                                 <li><a href="#">Separated link</a></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -66,15 +71,5 @@
             </div>
         </nav>
         <div class="wrap_main clearfix">
-            <aside id="sidebar">
-                <ul>
-                    <li><a href="<?php echo Helper::getPermalink('backend/slider') ?>">Slider</a></li>
-                    <li><a href="<?php echo Helper::getPermalink('backend/menu') ?>">Menu</a></li>
-                    <li><a href="<?php echo Helper::getPermalink('backend/user') ?>">User</a></li>
-                    <li><a href="<?php echo Helper::getPermalink('backend/product') ?>">Product</a></li>
-                    <li><a href="<?php echo Helper::getPermalink('backend/productcat') ?>">Product category</a></li>
-                    <li><a href="<?php echo Helper::getPermalink('backend/orders') ?>">Order</a></li>
-                    <li><a href="<?php echo Helper::getPermalink('backend/media') ?>">Media</a></li>
-                </ul>
-            </aside>
+
             <main>

@@ -42,4 +42,9 @@ class ordersController extends Controller {
 //        $this->view->arrSingle = $arrSingle;
 //        $this->view->loadView('detail');
 //    }
+    function detail($id) {
+        $this->view->arrSingle = $this->model->getSingle($id);
+        $this->view->arrOrderDetail = $this->model->getOrderDetail($id);
+        $this->view->loadView('detail');
+    }
 }

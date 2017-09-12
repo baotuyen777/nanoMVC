@@ -1,11 +1,14 @@
 <?php
-$arrSingle = $this->arrSingle;
-$imgSrc=NO_IMAGE;
-if (property_exists($this->arrSingle, 'image')) {
-    $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $this->arrSingle->image . '&h=150&w=300';
-} 
+$arrPm = array(
+    1 => 'Thanh toán khi giao hàng',
+    2 => 'Thanh toán qua ngaân hàng'
+);
+$arrPs = array(
+    1 => 'Pending',
+    2 => 'Done'
+);
+$obj = $this->arrSingle;
 ?>
-
 <div class="container">
     <h1>Detail</h1>
     <div class="notice">
@@ -15,87 +18,60 @@ if (property_exists($this->arrSingle, 'image')) {
           action="<?php echo Helper::getPermalink('backend/' . $this->module . '/update/') . $this->arrSingle->id ?>" 
           data-url_list="<?php echo Helper::getPermalink('backend/' . $this->module) ?>"
           >
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="name">Title:</label>
-            <div class="col-sm-10">
-                <input type="text" name="name" value="<?php echo $this->arrSingle->name ?>" class="form-control" id="name">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Slug:</label>
-            <div class="col-sm-10">
-                <input type="text" name="slug" value="<?php echo $arrSingle->slug ?>" class="form-control" id="link">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Price:</label>
-            <div class="col-sm-10">
-                <input type="number" name="price" value="<?php echo $arrSingle->price ?>" class="form-control">
-            </div>
-        </div>
-         <div class="form-group">
-            <label class="control-label col-sm-2" >Sale:</label>
-            <div class="col-sm-10">
-                <input type="number" name="sale" value="<?php echo $arrSingle->sale ?>" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Category:</label>
-            <div class="col-sm-10">
-                <select name="cat_id" class="form-control">
-                    <option value="">Please choose a item</option>
-                    <?php
-                    foreach ($this->arrMultiCat as $arrSingleCat):
-                        $selected = $this->arrSingle->cat_id == $arrSingleCat->id ? 'selected' : '';
-                        ?>
-                        <option value="<?php echo $arrSingleCat->id ?>" <?php echo $selected ?>>
-                            <?php echo $arrSingleCat->name ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Description:</label>
-            <div class="col-sm-10">
-                <textarea name="description"  class="form-control" 
-                          ><?php echo $this->arrSingle->description ?></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Image:</label>
-            <div class="col-sm-10">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mediaModal">Add Image</button>
-                <input type="hidden" name="image_id" id="image_id">
-                <img id="image"
-                     src="<?= $imgSrc ?>">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Slide:</label>
-            <div class="col-sm-10">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#slideModal">Add Slide</button>
-                <!--<input type="hidden" name="slide" id="image_id">-->
-                <div class="wrap_slide">
-                    <?php foreach ($this->arrSlider as $arrSlide): ?>
-                        <img src="<?php echo $arrSlide->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $arrSlide->image . '&h=50&w=100' ?>"/>
-                    <?php endforeach; ?>
-                </div>
+        <table class="table">
 
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Content:</label>
-            <div class="col-sm-10">
-                <textarea name="description"  class="form-control" 
-                          ><?php echo $this->arrSingle->content ?></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" >Status:</label>
-            <div class="col-sm-10">
-                <input type="checkbox" name="status" <?php echo $this->arrSingle->status === "0" ? '' : 'checked' ?> value="1"   >
-            </div>
-        </div>
+            <thead>
+                <tr>
+                    <th class="woocommerce-table__product-name product-name">Sản phẩm</th>
+                    <th class="woocommerce-table__product-table product-total">Tổng tiền</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach ($this->arrOrderDetail as $product): ?>
+                    <tr class="woocommerce-table__line-item order_item">
+                        <td class="woocommerce-table__product-name product-name">
+                            <a href="<?php echo Helper::getPermalink('product/' . $product->product_id) ?>"><?php echo $product->product_name ?></a> 
+                            <strong class="product-quantity">&times; <?php echo $product->quantity ?></strong>	</td>
+                        <td class="woocommerce-table__product-total product-total">
+                            <span class="woocommerce-Price-amount amount"><?php echo number_format(($product->price - $product->price * $product->sale / 100) * $product->quantity) ?>
+                                <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>	</td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th scope="row">Tổng</th>
+                    <td><span class="woocommerce-Price-amount amount"><?php echo number_format($obj->total) ?><span class="woocommerce-Price-currencySymbol">&#8363;</span></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">Phương thức thanh toán</th>
+                    <td>
+                          <select>
+                            <?php foreach ($arrPm as $k => $v): 
+                                $selected=$k==$obj->payment_method ? 'selected' : '';
+                                ?>
+                            <option <?php echo $selected?>><?php echo $v ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                </tr>
+                <tr>
+                    <th scope="row">Status</th>
+                    <td> 
+                        <select>
+                            <?php foreach ($arrPs as $k => $v): 
+                                $selected=$k==$obj->payment_status ? 'selected' : '';
+                                ?>
+                            <option <?php echo $selected?>><?php echo $v ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                </tr>
+
+            </tfoot>
+        </table>
+      
         <div class="form-action">
             <a class="btn btn-default" href="<?php echo Helper::getPermalink('backend/' . $this->module) ?>" >Return</a>
             <button type="submit" class="btn btn-primary">Submit</button>

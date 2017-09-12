@@ -92,6 +92,11 @@ class Model {
         }
         $sql = "SELECT * FROM " . $this->module . " "
                 . "WHERE 1=1 {$cond} ORDER BY id DESC {$pagination}";
+        if (property_exists($this, 'image_id')) {
+            $sql = "SELECT O.*, M.image FROM " . $this->module . " O LEFT JOIN media M ON M.id=O.image_id "
+                    . "WHERE 1=1 {$cond} ORDER BY O.id DESC {$pagination}";
+        }
+
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -100,6 +105,9 @@ class Model {
 
     public function getAll() {
         $sql = "SELECT * FROM " . $this->module;
+        if (property_exists($this, 'image_id')) {
+            $sql = "SELECT O.*, M.image FROM " . $this->module . ' O LEFT JOIN media M ON M.id=O.image_id ';
+        }
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -113,6 +121,9 @@ class Model {
      */
     public function getSingle($id) {
         $sql = "SELECT * FROM " . $this->module . " WHERE id =:id ";
+        if (property_exists($this, 'image_id')) {
+            $sql = "SELECT O.*, M.image  FROM " . $this->module . " O LEFT JOIN media M ON M.id=O.image_id WHERE O.id =:id ";
+        }
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
         $stmt->execute();
@@ -139,7 +150,7 @@ class Model {
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute();
         if (!$result) {
-            
+
             var_dump($sql);
         }
         return $this->db->lastInsertId();

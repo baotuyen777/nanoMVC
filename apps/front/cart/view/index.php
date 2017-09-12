@@ -30,7 +30,7 @@
                                 <thead>
                                     <tr>
                                         <th class="product-name" colspan="3">Sản phẩm</th>
-                                        <th class="product-price">Giá</th>
+                                        <th class="product-price">don giá</th>
                                         <th class="product-quantity">Số lượng</th>
                                         <th class="product-subtotal">Tổng tiền</th>
                                     </tr>

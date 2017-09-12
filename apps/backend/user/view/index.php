@@ -12,11 +12,10 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
     <table class="table">
         <tr>
             <th><input type="checkbox" class="masCheck"></th>
-            <th>STT</th>
             <?php
             foreach ($this->model as $field => $val):
-                if ($field == 'id')
-                    continue;
+                if ($field == 'email')
+//                    continue;
                 ?>
                 <th><?php echo ($field) ?></th>
             <?php endforeach; ?>
@@ -26,16 +25,18 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
         if (!empty($this->arrAll)):
             $i = 0;
             foreach ($this->arrAll as $arrSingle):
-                $i++;
-                $imgSrc = $arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($arrSingle->image_id). '&h=50&w=100';
+//                $i++;
+                $imgSrc = $arrSingle->image_id == '' ? NO_IMAGE : TIMTHUMB_LINK . $arrSingle->image. '&h=50&w=100';
                 ?>
                 <tr>
                     <td><input type="checkbox" class="ick" name="ckc[]" value="<?php echo $arrSingle->id ?>"></td>
-                    <td><?php echo $i ?></td>
+                    <td><?php echo $arrSingle->id ?></td>
                     <?php // foreach ($this->model as $field => $val):  ?>
                     <!--<td><?php // echo $arrSingle->$field       ?></td>-->
                     <?php // endforeach;   ?>
                     <td><?php echo $arrSingle->name ?></td>
+                    <td><?php echo $arrSingle->phone ?></td>
+                    <td><?php echo $arrSingle->address ?></td>
                     <td><?php echo $arrSingle->email ?></td>
                     <td>
                         <img class="img-list" 
