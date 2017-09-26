@@ -19,7 +19,7 @@ jQuery('.formAddToCart').submit(function (e) {
             var cartHtml = '<ul class="woocommerce-mini-cart cart_list product_list_widget ">';
             for (let k in cart.data) {
                 cartHtml += '<li class="woocommerce-mini-cart-item mini_cart_item">'
-                        + '<a href="' + cart.data[k].linkDel + '" class="remove" aria-label="Xóa sản phẩm nà" >×</a>'
+                        + '<a href="#" class="remove" onclick="removeCart(' + cart.data[k].id + ')" >×</a>'
                         + '<a href="' + cart.data[k].linkProduct + '">'
                         + '<img width="180" height="180" src="' + cart.data[k].linkImage + '" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" >' + cart.data[k].name + '&nbsp;</a>'
                         + '<span class="quantity">' + cart.data[k].quantity + ' × '
@@ -34,14 +34,20 @@ jQuery('.formAddToCart').submit(function (e) {
                     + '<span class="woocommerce-Price-amount amount cart_total">' + cart.total + '<span class="woocommerce-Price-currencySymbol">₫</span></span></p>';
             jQuery('.btn_cart').removeClass('hidden');
             jQuery('.cart_list').html(cartHtml);
-            console.log(cart);
-//            jQuery('.cart_total').html(cart.total);
         }
-
-
     }
     );
 });
+function removeCart(product_id) {
+    jQuery.ajax({
+        type: "POST",
+        url: link_remove_cart + product_id,
+        success: function () {
+            location.reload();
+        }
+    });
+}
+
 function callAjaxForm(form, success) {
     var data = form.serializeArray();
     jQuery.ajax({

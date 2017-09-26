@@ -1,3 +1,7 @@
+<?php
+$timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
+?>
+
 <div class="container">
     <div class="function">
         <a class="btn btn-success" href="<?php echo Helper::getPermalink('backend/' . $this->module . '/detail') ?>">Add</a>
@@ -37,8 +41,6 @@
                         </a>
                     </td>
                     <td><?php echo $arrSingle->slug ?></td>
-                    <td><?php echo $arrSingle->price ?></td>
-                    <td><?php echo $arrSingle->sale ?>%</td>
                     <td><?php echo $arrSingle->cat_id ?></td>
                     <td><?php echo $arrSingle->description ?></td>
 
@@ -46,10 +48,6 @@
                         <img class="img-list" 
                              src="<?= $imgSrc ?>"/>
                     </td>
-                    <td>
-                        <?php $checkedHot = $arrSingle->is_hot ? 'checked' : '' ?>
-                        <input type="checkbox" <?php echo $checkedHot ?>  name="is_hot" value="1" 
-                               onchange="toggleHot(this, <?php echo $arrSingle->id ?>)"></td>
                     <td><?php echo $arrSingle->status ?></td>
                     <td>
                         <button type="button" class="btn btn-danger" 

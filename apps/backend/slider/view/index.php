@@ -26,7 +26,7 @@ $timthumb = SITE_ROOT . 'libs/timthumb.php?src=';
             $i = 0;
             foreach ($this->arrAll as $arrSingle):
                 $i++;
-                $imgSrc = $arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($arrSingle->image). '&h=50&w=100';
+                $imgSrc = $arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $arrSingle->image. '&h=50&w=100';
                 ?>
                 <tr>
                     <td><input type="checkbox" class="ckcItem" name="ckc[]"></td>

@@ -42,7 +42,7 @@ class cartController extends Controller {
     }
 
     function add() {
-     
+
         $result = array(
             'status' => FALSE
         );
@@ -61,13 +61,17 @@ class cartController extends Controller {
     function del($productId) {
 //        Session::destroy();
         $cart = Session::get('cart') != FALSE ? Session::get('cart') : array();
+        $cart['total'] =  $cart['total'] -  $cart['data'][$productId]->price - $cart['data'][$productId]->price * $cart['data'][$productId]->sale / 100;
         unset($cart['data'][$productId]);
+        if ($cart['total'] = 0) {
+            $cart=array();
+        }
         Session::set('cart', $cart);
     }
 
     function checkout() {
         $cart = Session::get('cart');
-        if(!$cart){
+        if (!$cart) {
             $this->redirect('index');
             die;
         }

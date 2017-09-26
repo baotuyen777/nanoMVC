@@ -1,3 +1,4 @@
+
 html {
     position: relative;
     min-height: 100%;
@@ -36,8 +37,8 @@ aside#sidebar{
 }
 main{
     /*width: 100%;*/
-/*    float: left;
-    width: calc(100% - 350px);*/
+    /*    float: left;
+        width: calc(100% - 350px);*/
 }
 #show_thumb .thumbnail{
     height: 100px;

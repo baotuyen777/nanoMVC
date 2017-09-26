@@ -5,7 +5,7 @@ class sliderModel extends Model {
     public $link = '';
     public $content = '';
     public $status = '';
-    public $image = '';
+    public $image_id = '';
     public function __construct($module) {
         parent::__construct($module);
     }

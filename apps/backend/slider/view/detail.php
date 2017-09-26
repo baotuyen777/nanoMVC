@@ -1,8 +1,12 @@
 <?php
 $arrSingle = $this->arrSingle;
-$imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get_image($this->arrSingle->image) . '&h=150&w=300';
+$imgSrc = NO_IMAGE;
+//if (property_exists($this->arrSingle, 'image')) {
+if ($arrSingle->image_id) {
+    $imgSrc = $arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $this->arrSingle->image . '&h=150&w=300';
+}
+//} 
 ?>
-
 <div class="container">
     <h1>Detail</h1>
     <div class="notice">
@@ -35,7 +39,7 @@ $imgSrc = $this->arrSingle->image == '' ? NO_IMAGE : TIMTHUMB_LINK . Helper::get
             <label class="control-label col-sm-2" >Image:</label>
             <div class="col-sm-10">
                 <button type="button" class="btn btn-primary" onclick="loadImage()">Add Image</button>
-                <input type="hidden" name="image" id="image_id">
+                <input type="hidden" name="image_id" id="image_id">
                 <img id="image"
                      src="<?= $imgSrc ?>">
             </div>

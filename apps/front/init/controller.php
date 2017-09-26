@@ -68,10 +68,10 @@ class initController extends Controller {
             'status INT (2) DEFAULT 1'
         ));
         $this->model->addSql('slider', array(
-            'name VARCHAR (255) NOT NULL',
-            'link VARCHAR (255) NOT NULL',
+            'name VARCHAR (255) ',
+            'link VARCHAR (255) ',
             'content TEXT  ',
-            'image  VARCHAR(255) NOT NULL',
+            'image_id  INT(11) NOT NULL',
             'orders INT (11)',
             'status INT (2) DEFAULT 1'
         ));
@@ -81,7 +81,15 @@ class initController extends Controller {
             'type VARCHAR (20) DEFAULT "jpg"',
             'description TEXT '
         ));
-
+        $this->model->addSql('post', array(
+            'name VARCHAR (255) NOT NULL',
+            'slug VARCHAR (255) ',
+            'cat_id INT (11)',
+            'description VARCHAR (255) ',
+            'content TEXT ',
+            'image_id  INT(11)',
+            'status INT (2) DEFAULT 1',
+        ));
         $this->model->runSql();
     }
 

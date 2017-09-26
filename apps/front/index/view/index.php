@@ -160,7 +160,7 @@
                             </div>
                             <div class="row align-center"  id="row-1086632122">
                                 <div class="col small-12 large-12"  ><div class="col-inner text-center"  >
-                                        <a class="button secondary is-larger"  >
+                                        <a class="button secondary is-larger"  href="<?php echo Helper::getPermalink('product/news')?>">
                                             <span>XEM THÊM ...</span>
                                             <i class="icon-play" ></i></a>
 

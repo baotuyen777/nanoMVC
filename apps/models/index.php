@@ -7,7 +7,8 @@ class IndexModel extends Model {
     }
 
     function getSlider() {
-        $sql = "SELECT * FROM slider limit 8";
+        $sql = " SELECT O.*, M.image FROM slider O LEFT JOIN media M ON M.id=O.image_id limit 8";
+        
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
