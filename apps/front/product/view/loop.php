@@ -51,5 +51,9 @@ if ($this->arrProduct):
         </div><!-- col -->
         <?php
     endforeach;
+else:
+    ?>
+    <p>Không tìm thấy sản phẩm trong mục này</p>
+<?php
 endif;
 ?>

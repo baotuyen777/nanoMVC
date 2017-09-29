@@ -49,7 +49,7 @@ if ($arrSingle->image_id) {
         <div class="form-group">
             <label class="control-label col-sm-2" >Content:</label>
             <div class="col-sm-10">
-                <textarea name="description"  class="form-control" 
+                <textarea name="content"  class="form-control" 
                           ><?php echo $this->arrSingle->content ?></textarea>
             </div>
         </div>

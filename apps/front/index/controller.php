@@ -15,6 +15,13 @@ class IndexController extends Controller {
         $this->view->loadView('index');
     }
 
+    function menu() {
+        $productcatModel=$this->loadModel('productcat');
+        $arrProductCat=$productcatModel->getAll();
+        $this->view->arrProductCat=$arrProductCat;
+        $this->view->customView('menu');
+    }
+
 }
 
 ?>

@@ -104,8 +104,7 @@
                             <!-- Right Elements -->
                             <div class="flex-col hide-for-medium flex-right">
                                 <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
-                                    <li class="account-item has-icon
-                                        "
+                                    <li class="account-item has-icon"
                                         >
                                         <div class="header-button">
                                             <a href="http://linhshop.com.vn/my-account/"
@@ -140,7 +139,7 @@
                                                                 foreach ($arrCart['data'] as $product):
                                                                     ?>
                                                                     <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                                       <a href="#" class="remove" onclick="removeCart('<?php echo $product->id ?>')" >×</a>											
+                                                                        <a href="#" class="remove" onclick="removeCart('<?php echo $product->id ?>')" >×</a>											
                                                                         <a href="<?php echo Helper::getPermalink('product/' . $product->id) ?>">
                                                                             <img width="180" height="180" src="<?php echo TIMTHUMB_LINK . $product->image ?>" 
                                                                                  class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" 
@@ -250,29 +249,11 @@
                     <div id="wide-nav" class="header-bottom wide-nav hide-for-medium">
                         <div class="flex-row container">
                             <div class="flex-col hide-for-medium flex-left">
-                                <ul class="nav header-nav header-bottom-nav nav-left  nav-divided nav-size-medium nav-spacing-xlarge nav-uppercase">
-                                    <li id="menu-item-338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-96 current_page_item active  menu-item-338">
-                                        <a href="<?php echo SITE_ROOT ?>" class="nav-top-link">Trang Chủ</a>
-                                    </li>
-                                    <li class="menu-item menu-item-type-post_type menu-item-object-page">
-                                        <a href="http://linhshop.com.vn/gioi-thieu-ve-linh-shop/" class="nav-top-link">Giới Thiệu</a></li>
-                                    <li id="menu-item-538" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  menu-item-538 has-dropdown">
-                                        <a href="http://linhshop.com.vn/shop/" class="nav-top-link">SẢN PHẨM<i class="icon-angle-down" ></i></a>
-                                        <ul class='nav-dropdown nav-dropdown-simple'>
-                                            <li id="menu-item-1926" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1926"><a href="http://linhshop.com.vn/danh-muc/thoi-trang-nam/">Váy suông</a></li>
-                                            <li id="menu-item-1940" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1940"><a href="http://linhshop.com.vn/danh-muc/phu-kien/">Phụ kiện</a></li>
-                                            <li id="menu-item-1693" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1693"><a href="http://linhshop.com.vn/danh-muc/set-do-bau/">Set đồ bầu</a></li>
-                                            <li id="menu-item-1144" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1144"><a href="http://linhshop.com.vn/danh-muc/vay-bau/">Váy bầu</a></li>
-                                            <li id="menu-item-1934" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1934"><a href="http://linhshop.com.vn/danh-muc/quan-bau/">Quần bầu</a></li>
-                                            <li id="menu-item-1692" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1692"><a href="http://linhshop.com.vn/danh-muc/do-lot/">Đồ lót</a></li>
-                                            <li id="menu-item-1694" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1694"><a href="http://linhshop.com.vn/danh-muc/ao-khoac/">Áo khoác</a></li>
-                                            <li id="menu-item-1696" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1696"><a href="http://linhshop.com.vn/danh-muc/giay-dep-nu/">Giày dép nữ</a></li>
-                                        </ul>
-                                    </li>
-                                    <li id="menu-item-1238" class="menu-item menu-item-type-taxonomy menu-item-object-category  menu-item-1238"><a href="http://linhshop.com.vn/category/tin-tuc/" class="nav-top-link">Tin Tức</a></li>
-                                    <li id="menu-item-1310" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-1310"><a href="http://linhshop.com.vn/elements/pages/faq/" class="nav-top-link">Khuyến Mãi</a></li>
-                                    <li id="menu-item-339" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-339"><a href="http://linhshop.com.vn/lien-he/" class="nav-top-link">Liên hệ</a></li>
-                                </ul>
+                                <?php 
+                                $indexController=$this->loadController('index');
+                                $indexController->menu();
+                                ?>
+                                
                             </div>
                             <!-- flex-col -->
                             <div class="flex-col hide-for-medium flex-right flex-grow">

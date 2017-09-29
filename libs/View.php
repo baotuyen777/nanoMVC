@@ -31,7 +31,7 @@ class View {
         }
     }
 
-    function loadModule($module) {
+    function loadController($module) {
         $file = 'apps/' . $this->app . '/' . $module . '/controller.php';
         if (file_exists($file)) {
             require_once $file;

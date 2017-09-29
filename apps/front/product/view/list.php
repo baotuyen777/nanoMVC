@@ -22,7 +22,7 @@
                 </div>
                 <div class="row large-columns-5 medium-columns- small-columns-2 row-small has-shadow row-box-shadow-1 row-box-shadow-1-hover">
                     <?php
-                    $productController = $this->loadModule('product');
+                    $productController = $this->loadController('product');
                     $productController->loop($this->arrMulti);
                     ?>
                 </div>
@@ -30,7 +30,7 @@
                     <h3 class="section-title section-title-bold-center"><b></b>
                         <b></b></h3>
                 </div>
-                <?php if ($this->countPage > 1): ?>
+                <?php if ($this->arrMulti && $this->countPage > 1): ?>
                     <nav class="woocommerce-pagination">
                         <ul class="page-numbers nav-pagination links text-center">
                             <?php if ($this->page > 1 && $this->page <= $this->countPage): ?>

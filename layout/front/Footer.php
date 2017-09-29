@@ -1,10 +1,4 @@
 <footer id="footer" class="footer-wrapper">
-
-
-    <!-- FOOTER 1 -->
-
-
-    <!-- FOOTER 2 -->
     <div class="footer-widgets footer footer-2 ">
         <div class="row large-columns-4 mb-0">
             <div id="text-8" class="col pb-0 widget widget_text"><h3 class="widget-title">Linh Shop | Váy suông &#8211; Váy bầu</h3><div class="is-divider small"></div>			<div class="textwidget"></div>
@@ -37,8 +31,6 @@
             </div>        
         </div><!-- end row -->
     </div><!-- end footer 2 -->
-
-
 
     <div class="absolute-footer light medium-text-center small-text-center">
         <div class="container clearfix">
@@ -82,7 +74,6 @@
 </footer><!-- .footer-wrapper -->
 
 </div><!-- #wrapper -->
-
 <!-- Mobile Sidebar -->
 <div id="main-menu" class="mobile-sidebar no-scrollbar mfp-hide">
     <div class="sidebar-menu no-scrollbar ">

@@ -29,19 +29,26 @@ class productcatModel extends Model {
         return ($result);
     }
 
-    public function getAll() {
-        $sql = "SELECT O.*, M.image FROM " . $this->module . ' O INNER JOIN media M ON M.id=O.image_id ';
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
-        return ($result);
-    }
+//    public function getAll() {
+//        $sql = "SELECT O.*, M.image FROM " . $this->module . ' O INNER JOIN media M ON M.id=O.image_id ';
+//        $stmt = $this->db->prepare($sql);
+//        $stmt->execute();
+//        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+//        return ($result);
+//    }
 
     public function getSingle($id) {
         $sql = "SELECT O.*, M.image FROM " . $this->module . " O INNER JOIN media M ON M.id=O.image_id WHERE O.id =:id ";
-        var_dump($sql);
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+    public function getBySlug($slug) {
+        $sql = "SELECT O.*, M.image FROM " . $this->module . " O INNER JOIN media M ON M.id=O.image_id WHERE O.slug =:slug ";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":slug", $slug);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         return $result;
