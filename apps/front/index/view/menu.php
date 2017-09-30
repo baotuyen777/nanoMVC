@@ -15,7 +15,8 @@
             <?php endforeach; ?>
         </ul>
     </li>
-    <li id="menu-item-1238" class="menu-item menu-item-type-taxonomy menu-item-object-category  menu-item-1238"><a href="http://linhshop.com.vn/category/tin-tuc/" class="nav-top-link">Tin Tức</a></li>
-    <li id="menu-item-1310" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-1310"><a href="http://linhshop.com.vn/elements/pages/faq/" class="nav-top-link">Khuyến Mãi</a></li>
-    <li id="menu-item-339" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-339"><a href="http://linhshop.com.vn/lien-he/" class="nav-top-link">Liên hệ</a></li>
+    <li id="menu-item-1310" class="menu-item menu-item-type-post_type menu-item-object-page ">
+        <a href="<?php echo Helper::getPermalink('post/detail/khuyen-mai') ?>" class="nav-top-link">Khuyến Mãi</a></li>
+    <li id="menu-item-339" class="menu-item menu-item-type-post_type menu-item-object-page">
+        <a href="<?php echo Helper::getPermalink('post/detail/lien-he') ?>" class="nav-top-link">Liên hệ</a></li>
 </ul>

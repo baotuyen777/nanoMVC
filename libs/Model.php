@@ -81,8 +81,6 @@ class Model {
     }
 
 // use all module
-
-
     public function getAllPagination($params = false) {
         $cond = "";
         $pagination = "";

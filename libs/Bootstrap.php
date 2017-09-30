@@ -14,17 +14,19 @@ class Bootstrap {
     }
 
     function loadModule($url) {
+
         //find module in common
         $app = 'front';
         $file = 'apps/' . $app . '/' . $url[0] . '/controller.php';
         if (file_exists($file)) {
             require $file;
             $module = $url[0];
-            $action = isset($url[1]) ? $url[1] : 'index';
-            if ($action > 0) {
-                $param = $action;
-                $action = 'index';
-            } else {
+            $classColtroller = $module . "Controller";
+            $controller = new $classColtroller($app, $module);
+            $action = 'index';
+            $param =  $url[1];
+            if (method_exists($controller, $url[1])) {
+                $action = $url[1];
                 $param = isset($url[2]) ? $url[2] : false;
             }
         } else {
@@ -53,8 +55,8 @@ class Bootstrap {
                 return;
             }
         }
-        $classColtroller = $module . "Controller";
-        $controller = new $classColtroller($app, $module);
+//        $classColtroller = $module . "Controller";
+//        $controller = new $classColtroller($app, $module);
         $this->loadMethod($controller, $action, $param);
     }
 

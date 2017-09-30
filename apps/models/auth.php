@@ -13,9 +13,9 @@ class authModel extends Model {
     }
 
     public function login($param) {
-        $sql = "SELECT id, activation_key, email,name FROM user WHERE email=:email AND password=:password";
+        $sql = "SELECT id, activation_key, email,name FROM user WHERE phone=:phone AND password=:password";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(":email", $param['email']);
+        $stmt->bindValue(":phone", $param['phone']);
         $stmt->bindValue(":password", $param['password']);
         $stmt->execute();
         $result = $stmt->fetchObject();

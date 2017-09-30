@@ -44,9 +44,7 @@ class ProductController extends Controller {
     function news() {
         $postPerPage = 12;
         $page = isset($_REQUEST['page']) ? filter_var($_REQUEST['page'], FILTER_SANITIZE_STRING) : 1;
-
         $total = count($this->model->getAll());
-
         $start = ($page - 1) * $postPerPage;
         $countPage = ceil($total / $postPerPage);
         $params = array(

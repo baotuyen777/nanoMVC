@@ -130,201 +130,64 @@
                                                                                                           ">
                     <h2 class="title">CÔNG TY TNHH THƯƠNG MẠI CHÂU PHƯƠNG </h2>
                     <h3 class="subtitle">Uy tín hàng đầu trong lĩnh vực cơ khí công nghiệp</h3>
-                </div></li>        </ul>
+                </div></li>        
+        </ul>
     </div><!-- inner -->
 </div><!-- #mobile-menu -->
 <div id="login-form-popup" class="lightbox-content mfp-hide">
-
-    <div class="my-account-header page-title normal-title
-         ">
-
-
-        <div class="page-title-inner flex-row  container">
-            <div class="flex-col flex-grow medium-text-center">
-
-                <div class="text-center social-login">
-
-                    <a href="http://linhshop.com.vn/wp-login.php?loginFacebook=1&redirect=http://linhshop.com.vn/"
-                       class="button social-button large facebook circle"
-                       onclick="window.location = 'http://linhshop.com.vn/wp-login.php?loginFacebook=1&redirect=' + window.location.href; return false;"><i class="icon-facebook"></i>
-                        <span>Login with <strong>Facebook</strong></span></a>
-
-
-                    <a class="button social-button large google-plus circle"
-                       href="http://linhshop.com.vn/wp-login.php?loginGoogle=1&redirect=http://linhshop.com.vn/"
-                       onclick="window.location = 'http://linhshop.com.vn/wp-login.php?loginGoogle=1&redirect=' + window.location.href; return false;">
-                        <i class="icon-google-plus"></i>
-                        <span>Login with <strong>Google</strong></span></a>
-
-                </div>
-
-            </div><!-- .flex-left -->
-        </div><!-- flex-row -->
-    </div><!-- .page-title -->
-
-
-
+    <!--    <div class="my-account-header page-title normal-title">
+            <div class="page-title-inner flex-row  container">
+                <div class="flex-col flex-grow medium-text-center">
+                    <div class="text-center social-login">
+                        <a href="http://linhshop.com.vn/wp-login.php?loginFacebook=1&redirect=http://linhshop.com.vn/"
+                           class="button social-button large facebook circle"
+                           onclick="window.location = 'http://linhshop.com.vn/wp-login.php?loginFacebook=1&redirect=' + window.location.href; return false;"><i class="icon-facebook"></i>
+                            <span>Login with <strong>Facebook</strong></span></a>
+                        <a class="button social-button large google-plus circle"
+                           href="http://linhshop.com.vn/wp-login.php?loginGoogle=1&redirect=http://linhshop.com.vn/"
+                           onclick="window.location = 'http://linhshop.com.vn/wp-login.php?loginGoogle=1&redirect=' + window.location.href; return false;">
+                            <i class="icon-google-plus"></i>
+                            <span>Login with <strong>Google</strong></span></a>
+                    </div>
+                </div> .flex-left 
+            </div> flex-row 
+        </div> .page-title -->
     <div class="account-container lightbox-inner">
-
-
         <div class="col2-set row row-divided row-large" id="customer_login">
+            <!--<div class="col-1 large-6 col pb-0">-->
+            <div class="account-login-inner">
+                <h3 class="uppercase">Đăng nhập</h3>
+                <form method="post" class="login">
+                    <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+                        <label for="phone">Số điện thoại <span class="required">*</span></label>
+                        <input type="number" class="woocommerce-Input woocommerce-Input--text input-text" 
+                               name="phone" id="phone"  />
+                    </p>
+                    <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+                        <label for="password">Mật khẩu <span class="required">*</span></label>
+                        <input class="woocommerce-Input woocommerce-Input--text input-text" 
+                               type="password" name="password" id="password" />
+                    </p>
+                    <p class="form-row">
+                        <input type="submit" formaction="<?php echo Helper::getPermalink('auth/login') ?>" class=" button" name="login" value="Đăng nhập" />
+                        <input type="submit" formaction="<?php echo Helper::getPermalink('auth/register') ?>" class="btn-primary button" name="register" value="Đăng ký" />
+                    </p>
+                    <p class="lost_password">
+                        <a href="<?php echo Helper::getPermalink('post/lien-he') ?>/lost-password/">Quên mật khẩu?</a>
+                    </p>
+                </form>
+            </div><!-- .login-inner -->
 
-            <div class="col-1 large-6 col pb-0">
-
-                <div class="account-login-inner">
-
-                    <h3 class="uppercase">Đăng nhập</h3>
-
-                    <form method="post" class="login">
-
-
-                        <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
-                            <label for="username">Tên đăng nhập hoặc địa chỉ Email <span class="required">*</span></label>
-                            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" value="" />
-                        </p>
-
-                        <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
-                            <label for="password">Mật khẩu <span class="required">*</span></label>
-                            <input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" />
-                        </p>
-
-
-
-                        <p class="form-row">
-                            <input type="hidden" id="_wpnonce" name="_wpnonce" value="51851410e8" /><input type="hidden" name="_wp_http_referer" value="/" />				<input type="submit" class="woocommerce-Button button" name="login" value="Đăng nhập" />
-                            <label for="rememberme" class="inline">
-                                <input class="woocommerce-Input woocommerce-Input--checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> Ghi nhớ thông tin				</label>
-                        </p>
-                        <p class="woocommerce-LostPassword lost_password">
-                            <a href="http://linhshop.com.vn/my-account/lost-password/">Quên mật khẩu?</a>
-                        </p>
-
-
-                    </form>
-                </div><!-- .login-inner -->
-
-
-            </div>
-
-            <div class="col-2 large-6 col pb-0">
-
-                <div class="account-register-inner">
-
-                    <h3 class="uppercase">Đăng ký</h3>
-
-                    <form method="post" class="register">
-
-
-
-                        <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
-                            <label for="reg_email">Địa chỉ email <span class="required">*</span></label>
-                            <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" value="" />
-                        </p>
-
-
-                        <!-- Spam Trap -->
-                        <div style="left: -999em; position: absolute;"><label for="trap">Chống thư rác</label><input type="text" name="email_2" id="trap" tabindex="-1" /></div>
-
-<!--                        <script type="text/javascript">
-                            if (jQuery.type(has_social_form) === "undefined") {
-                                var has_social_form = false;
-                                var socialLogins = null;
-                            }
-                            jQuery(document).ready(function () {
-                                (function ($) {
-                                    if (!has_social_form) {
-                                        has_social_form = true;
-                                        var loginForm = $('#loginform,#registerform,#front-login-form,#setupform');
-                                        socialLogins = $('<div class="newsociallogins" style="text-align: center;"><div style="clear:both;"></div></div>');
-                                        if (loginForm.find('input').length > 0)
-                                            loginForm.prepend("<h3 style='text-align:center;'>OR</h3>");
-                                        loginForm.prepend(socialLogins);
-                                        socialLogins = loginForm.find('.newsociallogins');
-                                    }
-                                    if (!window.fb_added) {
-                                        socialLogins.prepend('<a href=\"http://linhshop.com.vn/wp-login.php?loginFacebook=1\" rel=\"nofollow\"></a><br />');
-                                        window.fb_added = true;
-                                    }
-                                }(jQuery));
-                            });
-                        </script>
-                        <script>
-                            if (jQuery.type(has_social_form) === "undefined") {
-                                var has_social_form = false;
-                                var socialLogins = null;
-                            }
-                            jQuery(document).ready(function () {
-                                (function ($) {
-                                    if (!has_social_form) {
-                                        has_social_form = true;
-                                        var loginForm = $('#loginform,#registerform,#front-login-form,#setupform');
-                                        socialLogins = $('<div class="newsociallogins" style="text-align: center;"><div style="clear:both;"></div></div>');
-                                        if (loginForm.find('input').length > 0)
-                                            loginForm.prepend("<h3 style='text-align:center;'>OR</h3>");
-                                        loginForm.prepend(socialLogins);
-                                    }
-                                    if (!window.google_added) {
-                                        socialLogins.prepend('<a href=\"http://linhshop.com.vn/wp-login.php?loginGoogle=1\" rel=\"nofollow\"></a><br />');
-                                        window.google_added = true;
-                                    }
-                                }(jQuery));
-                            });
-                        </script>-->
-
-                        <p class="woocomerce-FormRow form-row">
-                            <input type="hidden" id="_wpnonce" name="_wpnonce" value="7e25b71b3d" /><input type="hidden" name="_wp_http_referer" value="/" />				<input type="submit" class="woocommerce-Button button" name="register" value="Đăng ký" />
-                        </p>
-
-
-                    </form>
-
-                </div>
-
-            </div><!-- .large-6 -->
 
         </div> <!-- .row -->
 
     </div><!-- .account-login-container -->
 
 </div>
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var wpcf7 = {"apiSettings": {"root": "http:\/\/linhshop.com.vn\/wp-json\/", "namespace": "contact-form-7\/v1"}, "recaptcha": {"messages": {"empty": "Please verify that you are not a robot."}}};
-    /* ]]> */
-</script>-->
-<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.8'></script>-->
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var wc_add_to_cart_params = {"ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "i18n_view_cart": "Xem gi\u1ecf h\u00e0ng", "cart_url": "http:\/\/linhshop.com.vn\/cart\/", "is_cart": "", "cart_redirect_after_add": "no"};
-    /* ]]> */
-</script>-->
-<!--<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.1.0'></script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>-->
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var woocommerce_params = {"ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%"};
-    /* ]]> */
-</script>
-<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.1.0'></script>-->
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var wc_cart_fragments_params = {"ajax_url": "\/wp-admin\/admin-ajax.php", "wc_ajax_url": "\/?wc-ajax=%%endpoint%%", "fragment_name": "wc_fragments_964b20f9da02269750935af09bfcfae3"};
-    /* ]]> */
-</script>-->
-<!--<script type='text/javascript' src='//linhshop.com.vn/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.1.0'></script>-->
-<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.selectBox.min.js?ver=1.2.0'></script>-->
-<!--<script type='text/javascript'>
-    /* <![CDATA[ */
-    var yith_wcwl_l10n = {"ajax_url": "\/wp-admin\/admin-ajax.php", "redirect_to_cart": "no", "multi_wishlist": "", "hide_add_button": "1", "is_user_logged_in": "", "ajax_loader_url": "http:\/\/linhshop.com.vn\/wp-content\/plugins\/yith-woocommerce-wishlist\/assets\/images\/ajax-loader.gif", "remove_from_wishlist_after_add_to_cart": "yes", "labels": {"cookie_disabled": "We are sorry, but this feature is available only if cookies are enabled on your browser.", "added_to_cart_message": "<div class=\"woocommerce-message\">Product correctly added to cart<\/div>"}, "actions": {"add_to_wishlist_action": "add_to_wishlist", "remove_from_wishlist_action": "remove_from_wishlist", "move_to_another_wishlist_action": "move_to_another_wishlsit", "reload_wishlist_and_adding_elem_action": "reload_wishlist_and_adding_elem"}};
-    /* ]]> */
-</script>-->
-<!--<script type='text/javascript' src='http://linhshop.com.vn/wp-content/plugins/yith-woocommerce-wishlist/assets/js/jquery.yith-wcwl.js?ver=2.1.2'></script>
-<script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/inc/integrations/wc-yith-wishlist/wishlist.js?ver=4.8'></script>
 <script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/inc/extensions/flatsome-live-search/flatsome-live-search.js?ver=3.3.6'></script>-->
 <script>
 
-    var link_remove_cart = '<?php echo Helper::getPermalink('cart/del/')?>'
+    var link_remove_cart = '<?php echo Helper::getPermalink('cart/del/') ?>'
 </script>
 <script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/hoverIntent.min.js?ver=1.8.1'></script>
 <script type='text/javascript'>

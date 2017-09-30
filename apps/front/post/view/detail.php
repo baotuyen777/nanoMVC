@@ -1,20 +1,35 @@
 <?php
 $obj = $this->obj;
-if (!$obj) {
-    echo "page not found";
-    return;
-}
-$imgSrc = NO_IMAGE;
-//if (property_exists($this->obj, 'image')) {
-if ($obj->image_id) {
-    $imgSrc = $obj->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $this->obj->image . '&h=200&w=400';
-}
-//} 
+$name = isset($obj->name) ? $obj->name : 'không tìm thấy';
 ?>
+<div class="page-title shop-page-title product-page-title">
+    <div class="page-title-inner flex-row medium-flex-wrap container">
+        <div class="flex-col flex-grow medium-text-center">
+            <div class="is-small">
+                <nav class="woocommerce-breadcrumb breadcrumbs">
+                    <a href="<?php echo SITE_ROOT ?>">Trang chủ</a> <span class="divider">&#47;</span> 
+                    <a ><?php echo $name ?></a>
+                </nav>
+            </div>
+        </div><!-- .flex-left -->
+
+    </div><!-- flex-row -->
+</div><!-- .page-title -->
 <main id="main" class="">
     <div id="content" class="blog-wrapper blog-single page-wrapper">
         <div class="row row-large row-divided ">
-
+            <?php
+            if (!$obj) {
+                echo "page not found";
+                return;
+            }
+            $imgSrc = NO_IMAGE;
+//if (property_exists($this->obj, 'image')) {
+            if ($obj->image_id) {
+                $imgSrc = $obj->image == '' ? NO_IMAGE : TIMTHUMB_LINK . $this->obj->image . '&h=200&w=400';
+            }
+//} 
+            ?>
             <div class="large-9 col">
                 <article id="post-2388" class="post-2388 post type-post status-publish format-standard has-post-thumbnail hentry category-tin-tuc">
                     <div class="article-inner has-shadow box-shadow-1">
@@ -33,7 +48,7 @@ if ($obj->image_id) {
                         </div><!-- .entry-content2 -->
                     </div><!-- .article-inner -->
                 </article><!-- #-2388 -->
-                
+
             </div> <!-- .large-9 -->
 
             <div class="post-sidebar large-3 col">

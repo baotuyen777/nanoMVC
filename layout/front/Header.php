@@ -185,7 +185,7 @@
                             <div class="flex-col show-for-medium flex-right">
                                 <ul class="mobile-nav nav nav-right ">
                                     <li class="cart-item has-icon">
-                                        <a href="http://linhshop.com.vn/cart/" class="header-cart-link off-canvas-toggle nav-top-link is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
+                                        <a href="<?php echo Helper::getPermalink('cart') ?>" class="header-cart-link off-canvas-toggle nav-top-link is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng">
                                             <i class="icon-shopping-basket"
                                                data-icon-label="0">
                                             </i>
@@ -249,11 +249,11 @@
                     <div id="wide-nav" class="header-bottom wide-nav hide-for-medium">
                         <div class="flex-row container">
                             <div class="flex-col hide-for-medium flex-left">
-                                <?php 
-                                $indexController=$this->loadController('index');
+                                <?php
+                                $indexController = $this->loadController('index');
                                 $indexController->menu();
                                 ?>
-                                
+
                             </div>
                             <!-- flex-col -->
                             <div class="flex-col hide-for-medium flex-right flex-grow">
