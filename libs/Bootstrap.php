@@ -17,22 +17,25 @@ class Bootstrap {
 
         //find module in common
         $app = 'front';
+        $module = 'index';
         $file = 'apps/' . $app . '/' . $url[0] . '/controller.php';
+        $param = '';
         if (file_exists($file)) {
             require $file;
             $module = $url[0];
             $classColtroller = $module . "Controller";
             $controller = new $classColtroller($app, $module);
             $action = 'index';
-            $param =  $url[1];
-            if (method_exists($controller, $url[1])) {
-                $action = $url[1];
-                $param = isset($url[2]) ? $url[2] : false;
+            if (isset($url[1])) {
+                $param = $url[1];
+                if (method_exists($controller, $url[1])) {
+                    $action = $url[1];
+                    $param = isset($url[2]) ? $url[2] : false;
+                }
             }
         } else {
             // find module in other apps
             if (isset($url[1])) {
-
                 $file = 'apps/' . $url[0] . '/' . $url[1] . '/controller.php';
                 if (file_exists($file)) {
                     require $file;
@@ -55,8 +58,8 @@ class Bootstrap {
                 return;
             }
         }
-//        $classColtroller = $module . "Controller";
-//        $controller = new $classColtroller($app, $module);
+        $classColtroller = $module . "Controller";
+        $controller = new $classColtroller($app, $module);
         $this->loadMethod($controller, $action, $param);
     }
 

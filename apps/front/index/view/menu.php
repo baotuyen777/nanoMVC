@@ -16,7 +16,7 @@
         </ul>
     </li>
     <li id="menu-item-1310" class="menu-item menu-item-type-post_type menu-item-object-page ">
-        <a href="<?php echo Helper::getPermalink('post/detail/khuyen-mai') ?>" class="nav-top-link">Khuyến Mãi</a></li>
+        <a href="<?php echo Helper::getPermalink('page/promotion') ?>" class="nav-top-link">Khuyến Mãi</a></li>
     <li id="menu-item-339" class="menu-item menu-item-type-post_type menu-item-object-page">
-        <a href="<?php echo Helper::getPermalink('post/detail/lien-he') ?>" class="nav-top-link">Liên hệ</a></li>
+        <a href="<?php echo Helper::getPermalink('page/contact') ?>" class="nav-top-link">Liên hệ</a></li>
 </ul>

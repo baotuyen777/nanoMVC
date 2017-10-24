@@ -111,7 +111,7 @@ class authController extends Controller {
      *     }
      */
     public function resetPassword2() {
-        $this->requireFields = array('email', 'key', 'password');
+//        $this->requireFields = array('email', 'key', 'password');
 
         $mes = 'something wrong! please contact admin!';
         $status = true;
@@ -143,47 +143,19 @@ class authController extends Controller {
         $this->showJson($result);
     }
 
-    /**
-     * @api {post} /auth Register
-     * @apiName Register
-     * @apiGroup Auth
-     *
-     * @apiParam {String} email Email unique id.
-     * @apiParam {String} password Password .
-     * @apiParam {String} name Name .
-     *
-     * @apiSuccess {String} status status of the API.
-     *
-     * @apiSuccessExample Success-Response:
-     *     HTTP/1.1 200 OK
-     *     {
-     *       "status": true,
-     *       "message": "200",
-     *       "id": 10
-     *     }
-     *
-     * @apiError UserNotFound The id of the User was not found.
-     *
-     * @apiErrorExample Error-Response:
-     *     HTTP/1.1 404 Not Found
-     *     {
-     *       "status": false,
-     *       "message": "Please input require field {email}"
-     *     }
-     */
+   
     function register() {
         $this->requireFields = array('email', 'password', 'name');
         $status = false;
-        if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        if ($_POST) {
             $params = $_POST;
             $params['password'] = md5($_POST['password']);
-            $email = ($_POST["email"]);
+            $phone = ($_POST["email"]);
             //validate email
-
             $mes = "something wrong! please contact admin!";
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $mes = "Invalid email format";
-            } else if ($this->model->getUserByEmail($email)) {
+            } else if ($this->model->getUserByPhone($phone)) {
                 $mes = "Email existed!";
             } else {
                 $id = $this->model->register($params);

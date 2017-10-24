@@ -30,7 +30,7 @@ class OrdersModel extends Model {
         return ($result);
     }
 
-    public function getAll() {
+    public function getAll($cond = '') {
         $sql = "SELECT * FROM " . $this->module;
         $stmt = $this->db->prepare($sql);
         $stmt->execute();

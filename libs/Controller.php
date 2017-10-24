@@ -16,13 +16,16 @@ class Controller {
         $this->module = $module;
         $this->view = new View($app, $module, $action);
         $this->model = $this->loadModel($module);
+//        menu
+        $productcatModel = $this->loadModel('productcat');
+        $arrProductCat = $productcatModel->getAll();
+        $this->view->arrProductCat = $arrProductCat;
+        
         if ($app == 'bachend' && !Session::get('isLogin') && $module != 'auth') {
             Helper::redirect(Helper::getPermalink('backend/auth/login'));
             die();
         }
     }
-
-   
 
     /**
      * @function \loadModel

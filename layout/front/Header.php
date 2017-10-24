@@ -104,16 +104,16 @@
                             <!-- Right Elements -->
                             <div class="flex-col hide-for-medium flex-right">
                                 <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
-                                    <li class="account-item has-icon"
+<!--                                    <li class="account-item has-icon"
                                         >
                                         <div class="header-button">
                                             <a href="http://linhshop.com.vn/my-account/"
                                                class="nav-top-link nav-top-not-logged-in icon button circle is-outline is-small"
                                                data-open="#login-form-popup"  >
                                                 <i class="icon-user" ></i>
-                                            </a><!-- .account-login-link -->
+                                            </a> .account-login-link 
                                         </div>
-                                    </li>
+                                    </li>-->
                                     <li class="header-divider"></li>
                                     <li class="cart-item has-icon
                                         has-dropdown">
