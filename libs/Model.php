@@ -85,11 +85,11 @@ class Model {
         $cond = "";
         $pagination = "";
         if ($params) {
-            $search = isset($params['s']) ? ' AND name like "%' . filter_var($params['s'], FILTER_SANITIZE_STRING) . '%"' : "";
+            $search = isset($params['s']) ? ' AND O.name like "%' . filter_var($params['s'], FILTER_SANITIZE_STRING) . '%"' : "";
             $pagination = "limit {$params['start']},{$params['postPerPage']}";
             $cond = isset($params['cond']) ? $params['cond'] : '';
         }
-        $sql = "SELECT * FROM " . $this->module . " "
+        $sql = "SELECT * FROM " . $this->module . "O "
                 . "WHERE 1=1 {$cond} ORDER BY id DESC {$pagination}";
         if (property_exists($this, 'image_id')) {
             $sql = "SELECT O.*, M.image FROM " . $this->module . " O LEFT JOIN media M ON M.id=O.image_id "

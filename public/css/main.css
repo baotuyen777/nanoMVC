@@ -379,7 +379,19 @@ ul.menu>li>a, ul.menu>li>span:first-child, .widget>ul>li>a, .widget>ul>li>span:f
 .btn-primary{
     background-color: #446084 !important;
 }
-
+.mfp-container {
+    /*overflow: hidden;*/
+}
+/*.box{
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}*/
+.page_content{
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+}
 @media(max-width:768px){
     #logo span{
         font-size: 25px;

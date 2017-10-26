@@ -15,7 +15,7 @@ define('SITE_ROOT', 'http://localhost/nanoMVC/');
 
 define('DS', DIRECTORY_SEPARATOR);
 define('SERVER_ROOT', __DIR__ . DS);
-define('IS_REWRITE', false);
+define('IS_REWRITE', true);
 define('TIMTHUMB', SITE_ROOT . 'libs/timthumb.php?src=');
 define('UPLOAD_DIR', SERVER_ROOT . 'public/img/upload/');
 define('UPLOAD_LINK', SITE_ROOT . 'public/img/upload/');

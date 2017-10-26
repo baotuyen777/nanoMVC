@@ -20,7 +20,7 @@ class Controller {
         $productcatModel = $this->loadModel('productcat');
         $arrProductCat = $productcatModel->getAll();
         $this->view->arrProductCat = $arrProductCat;
-        
+
         if ($app == 'bachend' && !Session::get('isLogin') && $module != 'auth') {
             Helper::redirect(Helper::getPermalink('backend/auth/login'));
             die();
@@ -70,7 +70,7 @@ class Controller {
         $start = ($page - 1) * $postPerPage;
         $countPage = ceil($total / $postPerPage);
         $params = array(
-            'filter' => isset($_REQUEST['filter']) ? filter_var($_REQUEST['filter'], FILTER_SANITIZE_STRING) : "",
+            'filter' => isset($_REQUEST['s']) ? filter_var($_REQUEST['s'], FILTER_SANITIZE_STRING) : "",
             'start' => $start,
             'postPerPage' => $postPerPage
         );
@@ -79,6 +79,25 @@ class Controller {
         $this->view->countPage = $countPage;
         $this->view->arrAll = $this->model->getAllPagination($params);
         $this->view->model = $this->model;
+        $this->view->loadView('index');
+    }
+
+    function search() {
+        $postPerPage = 12;
+        $page = isset($_REQUEST['page']) ? filter_var($_REQUEST['page'], FILTER_SANITIZE_STRING) : 1;
+        $total = count($this->model->getAll());
+        $start = ($page - 1) * $postPerPage;
+        $countPage = ceil($total / $postPerPage);
+        $params = array(
+            's' => isset($_REQUEST['s']) ? filter_var($_REQUEST['s'], FILTER_SANITIZE_STRING) : "",
+            'start' => $start,
+            'postPerPage' => $postPerPage
+        );
+        $this->view->page = $page;
+        $this->view->countPage = $countPage;
+        $this->view->arrMulti = $this->model->getAllPagination($params);
+        $this->view->model = $this->model;
+        $this->view->title = "Tìm kiếm";
         $this->view->loadView('index');
     }
 

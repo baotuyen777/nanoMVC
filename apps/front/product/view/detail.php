@@ -1,11 +1,7 @@
 
 <?php
-if (empty($this->arrSingle)) {
-    die('san pham ko ton tai');
-}
 $obj = $this->arrSingle;
 $imgSrc = NO_IMAGE;
-//var_dump(Session::get('cart'));
 ?>
 <div class="page-title shop-page-title product-page-title">
     <div class="page-title-inner flex-row medium-flex-wrap container">
@@ -14,7 +10,7 @@ $imgSrc = NO_IMAGE;
                 <nav class="woocommerce-breadcrumb breadcrumbs">
                     <a href="<?php echo SITE_ROOT ?>">Trang chủ</a> <span class="divider">&#47;</span> 
                     <a href="<?php echo Helper::getPermalink('product') ?>">Shop</a> <span class="divider">&#47;</span> 
-                    <a ><?php echo $obj->name ?></a>
+                    <a ><?php echo isset($obj->name) ? $obj->name : '' ?></a>
                 </nav>
             </div>
         </div><!-- .flex-left -->
@@ -39,13 +35,19 @@ $imgSrc = NO_IMAGE;
 </div><!-- .page-title -->
 
 <main id="main" class="">
-
     <div class="shop-container">
         <div id="product-2224" class="post-2224 product type-product status-publish has-post-thumbnail product_cat-vay-bau product_cat-thoi-trang-nam first instock shipping-taxable purchasable product-type-simple">
             <div class="product-container">
                 <div class="product-main">
                     <div class="row content-row mb-0">
-
+                        <?php
+                        if (empty($this->arrSingle)) {
+                            ?>
+                            <p class="error">San pham ko ton tai</p>
+                            <?php
+                            return;
+                        }
+                        ?>
                         <div class="product-gallery large-6 col">
                             <div class="product-images relative mb-half has-hover woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
                                 <div class="badge-container absolute left top z-1">
