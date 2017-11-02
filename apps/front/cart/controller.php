@@ -15,6 +15,7 @@ class cartController extends Controller {
     }
 
     function addToCart($params) {
+        
         $productId = $params['productId'];
         $quantity = $params['quantity'];
         $cart = Session::get('cart') != FALSE ? Session::get('cart') : array();
@@ -41,6 +42,15 @@ class cartController extends Controller {
         );
     }
 
+    function buynow($product_id) {
+        $params = array(
+            'productId' => $product_id,
+            'quantity' => 1,
+        );
+        $this->addToCart($params);
+        $this->redirect('cart');
+    }
+
     function add() {
 
         $result = array(
@@ -61,10 +71,10 @@ class cartController extends Controller {
     function del($productId) {
 //        Session::destroy();
         $cart = Session::get('cart') != FALSE ? Session::get('cart') : array();
-        $cart['total'] =  $cart['total'] -  $cart['data'][$productId]->price - $cart['data'][$productId]->price * $cart['data'][$productId]->sale / 100;
+        $cart['total'] = $cart['total'] - $cart['data'][$productId]->price - $cart['data'][$productId]->price * $cart['data'][$productId]->sale / 100;
         unset($cart['data'][$productId]);
         if ($cart['total'] = 0) {
-            $cart=array();
+            $cart = array();
         }
         Session::set('cart', $cart);
     }

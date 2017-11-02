@@ -1,6 +1,6 @@
 <footer id="footer" class="footer-wrapper">
     <div class="footer-widgets footer footer-2 ">
-        <div class="row large-columns-4 mb-0">
+        <div class="row large-columns-3 mb-0">
 
             <div id="text-9" class="col pb-0 widget widget_text">
                 <h3 class="widget-title">THÔNG TIN LIÊN HỆ</h3>
@@ -11,31 +11,25 @@
                     </header>
                     <section class="panel-body">
                         <ul class="uk-list list-info">
-                            <li class="location">Số 1 Hoàng Cầu &#8211; Phường ô Chợ Dừa &#8211; Đống Đa &#8211; Hà Nội ( nhìn ra đèn xanh đèn đỏ hoàng cầu &#8211; ô chợ dừa)</li>
-                            <li class="phone">Điện thoại: 01694142008</li>
-                            <li class="hotline">Hotline: 01694142008</li>
+                            <li class="location">Số 60 Ngách 141, Ngõ Thịnh Quang, Đống Đa, Hà Nội</li>
+                            <li class="phone">Điện thoại: 01694 404 5475</li>
+                            <li class="hotline">Điện thoại: 01678 310 111</li>
                         </ul>
                     </section>
                 </div>
             </div>
 
             <div id="text-13" class="col pb-0 widget widget_text">
-                <h3 class="widget-title">HỖ TRỢ</h3>
+                <h3 class="widget-title">MAP</h3>
                 <div class="is-divider small"></div>
                 <div class="textwidget">
-                    <div class="textwidget">
-                        <div class="support-item">
-                            <div class="pull-left skype"></div>
-                            <div class="name">Mr Tú</div>
-                            <div class="hotline">Hotline: 01694.142.008</div>
-                        </div>
-                        <div class="support-item"></div>
-                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1862.3334187937612!2d105.81786570569453!3d21.005987998757426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDAwJzIxLjYiTiAxMDXCsDQ5JzA2LjciRQ!5e0!3m2!1svi!2s!4v1509620278786" 
+                            width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
             <div id="text-10" class="col pb-0 widget widget_text">
                 <h3 class="widget-title">KẾT NỐI VỚI CHÚNG TÔI</h3><div class="is-divider small"></div>			
-                <div class="fb-page" data-href="https://www.facebook.com/pg/Choxanh247-1993578137586376/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/pg/Choxanh247-1993578137586376/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/pg/Choxanh247-1993578137586376/">Choxanh247</a></blockquote></div>
+                <div class="fb-page" data-href="https://www.facebook.com/choxanh247/"  data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
             </div>
         </div>
         <!-- end row -->
@@ -189,8 +183,7 @@
 </div>
 <!--<script type='text/javascript' src='http://linhshop.com.vn/wp-content/themes/flatsome/inc/extensions/flatsome-live-search/flatsome-live-search.js?ver=3.3.6'></script>-->
 <script>
-    var link_remove_cart = '<?php echo Helper::getPermalink('
-    cart / del / ') ?>'
+    var link_remove_cart = '<?php echo Helper::getPermalink('cart/del/') ?>'
 </script>
 <script type='text/javascript' src='<?php echo SITE_ROOT ?>public/js/hoverIntent.min.js?ver=1.8.1'></script>
 <script type='text/javascript'>

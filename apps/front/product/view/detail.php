@@ -38,80 +38,88 @@ $imgSrc = NO_IMAGE;
     <div class="shop-container">
         <div id="product-2224" class="post-2224 product type-product status-publish has-post-thumbnail product_cat-vay-bau product_cat-thoi-trang-nam first instock shipping-taxable purchasable product-type-simple">
             <div class="product-container">
-                <div class="product-main">
-                    <div class="row content-row mb-0">
-                        <?php
-                        if (empty($this->arrSingle)) {
-                            ?>
-                            <p class="error">San pham ko ton tai</p>
+                <form class="cart formAddToCart" method="post" enctype='multipart/form-data' 
+                      action="<?php echo Helper::getPermalink('cart/add') ?>"
+                      >
+                    <div class="product-main">
+                        <div class="row content-row mb-0">
                             <?php
-                            return;
-                        }
-                        ?>
-                        <div class="product-gallery large-6 col">
-                            <div class="product-images relative mb-half has-hover woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
-                                <div class="badge-container absolute left top z-1">
-                                    <div class="callout badge badge-circle">
-                                        <div class="badge-inner secondary on-sale">
-                                            <span class="onsale">-<?php echo $obj->sale ?>%</span></div></div>
-                                </div>
-                                <figure class="woocommerce-product-gallery__wrapper product-gallery-slider slider slider-nav-small mb-half"
-                                        data-flickity-options='{
-                                        "cellAlign": "center",
-                                        "wrapAround": true,
-                                        "autoPlay": false,
-                                        "prevNextButtons":true,
-                                        "adaptiveHeight": true,
-                                        "imagesLoaded": true,
-                                        "lazyLoad": 1,
-                                        "dragThreshold" : 15,
-                                        "pageDots": false,
-                                        "rightToLeft": false       }'>
-                                            <?php
-                                            foreach ($this->arrSlider as $arrSlider):
-                                                $imgSrc = TIMTHUMB_LINK . $arrSlider->image . '&h=600&w=800';
-                                                ?>
-                                        <div data-thumb="<?php echo $imgSrc ?>" 
-                                             class="first slide woocommerce-product-gallery__image">
-                                            <a href="<?php echo $imgSrc ?>">
-                                                <img width="600" height="600" src="<?php echo $imgSrc ?>"
-                                                     sizes="(max-width: 600px) 100vw, 600px" />
-                                            </a>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </figure>
-                                <div class="image-tools absolute bottom left z-3">
-                                    <a href="#product-zoom" class="zoom-button button is-outline circle icon tooltip hide-for-small" title="Zoom">
-                                        <i class ="icon-expand" ></i>    
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="product-info summary col-fit col entry-summary product-summary form-flat">
-                            <h1 class="product-title entry-title"><?php echo $obj->name ?></h1>
-                            <div class="is-divider small"></div>
-                            <div class="price-wrapper">
-                                <p class="price product-page-price ">
+                            if (empty($this->arrSingle)) {
+                                ?>
+                                <p class="error">San pham ko ton tai</p>
+                                <?php
+                                return;
+                            }
+                            ?>
+                            <div class="product-gallery large-6 col">
+                                <div class="product-images relative mb-half has-hover woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
                                     <?php if ($obj->sale > 0): ?>
-                                        <del>
-                                            <span class="woocommerce-Price-amount amount">
-                                                <?php echo number_format($obj->price) ?>
-                                                <span class="woocommerce-Price-currencySymbol">&#8363;</span>
-                                            </span>
-                                        </del> 
+                                        <div class="badge-container absolute left top z-1">
+                                            <div class="callout badge badge-circle">
+                                                <div class="badge-inner secondary on-sale">
+                                                    <span class="onsale">-<?php echo $obj->sale ?>%</span></div></div>
+                                        </div>
                                     <?php endif; ?>
-                                    <ins>
-                                        <span class="woocommerce-Price-amount amount">
-                                            <?php echo number_format($obj->price - ($obj->sale * $obj->price) / 100) ?>
-                                            <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
-                                    </ins>
-                                </p>
+                                    <figure class="woocommerce-product-gallery__wrapper product-gallery-slider slider slider-nav-small mb-half"
+                                            data-flickity-options='{
+                                            "cellAlign": "center",
+                                            "wrapAround": true,
+                                            "autoPlay": false,
+                                            "prevNextButtons":true,
+                                            "adaptiveHeight": true,
+                                            "imagesLoaded": true,
+                                            "lazyLoad": 1,
+                                            "dragThreshold" : 15,
+                                            "pageDots": false,
+                                            "rightToLeft": false       }'>
+                                                <?php
+                                                foreach ($this->arrSlider as $arrSlider):
+                                                    $imgSrc = TIMTHUMB_LINK . $arrSlider->image . '&h=600&w=800';
+                                                    ?>
+                                            <div data-thumb="<?php echo $imgSrc ?>" 
+                                                 class="first slide woocommerce-product-gallery__image">
+                                                <a href="<?php echo $imgSrc ?>">
+                                                    <img width="600" height="600" src="<?php echo $imgSrc ?>"
+                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                </a>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </figure>
+                                    <div class="image-tools absolute bottom left z-3">
+                                        <a href="#product-zoom" class="zoom-button button is-outline circle icon tooltip hide-for-small" title="Zoom">
+                                            <i class ="icon-expand" ></i>    
+                                        </a>
+                                    </div>
+                                    <div class="image-tools absolute bottom right z-3">
+                                        <button type="button" 
+                                                onclick="window.location.href='<?php echo Helper::getPermalink('cart/buynow/', $obj->id) ?>'" 
+                                                name="buynow" class="btn btn_buy_now btn-5">Mua ngay</button>
+                                    </div>
+                                </div>
+
                             </div>
-                            <form class="cart formAddToCart" method="post" enctype='multipart/form-data' 
-                                  action="<?php echo Helper::getPermalink('cart/add') ?>"
-                                  >
+
+                            <div class="product-info summary col-fit col entry-summary product-summary form-flat">
+                                <h1 class="product-title entry-title"><?php echo $obj->name ?></h1>
+                                <div class="is-divider small"></div>
+                                <div class="price-wrapper">
+                                    <p class="price product-page-price ">
+                                        <?php if ($obj->sale > 0): ?>
+                                            <del>
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <?php echo number_format($obj->price) ?>
+                                                    <span class="woocommerce-Price-currencySymbol">&#8363;</span>
+                                                </span>
+                                            </del> 
+                                        <?php endif; ?>
+                                        <ins>
+                                            <span class="woocommerce-Price-amount amount">
+                                                <?php echo number_format($obj->price - ($obj->sale * $obj->price) / 100) ?>
+                                                <span class="woocommerce-Price-currencySymbol">&#8363;</span></span>
+                                        </ins>
+                                    </p>
+                                </div>
+
                                 <div class="quantity buttons_added">
                                     <input type="button" value="-" class="minus button is-form">    
                                     <input type="number" class="input-text qty text" step="1" min="1" max="9999" name="quantity" value="1" title="SL"
@@ -120,23 +128,23 @@ $imgSrc = NO_IMAGE;
                                     <input type="button" value="+" class="plus button is-form">  
                                 </div>
                                 <button type="submit" name="add-to-cart" value="2224" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
-                            </form>
-                            <div class="product_meta">
-                                <span class="posted_in">Danh mục:  
-                                    <a href="<?= Helper::getPermalink('product/cat/' . $obj->cat_id) ?>" rel="tag">
-                                        <?php echo $obj->cat_name ?></a></span>
-                            </div>
-                            <div class="social-icons share-icons share-row relative icon-style-outline " >
-                                <a href="//www.facebook.com/sharer.php?u=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" data-label="Facebook" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;" rel="nofollow" target="_blank" class="icon button circle is-outline tooltip facebook" title="Share on Facebook"><i class="icon-facebook" ></i></a>
-                                <a href="//twitter.com/share?url=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;" rel="nofollow" target="_blank" class="icon button circle is-outline tooltip twitter" title="Share on Twitter"><i class="icon-twitter" ></i></a>
-                                <a href="//plus.google.com/share?url=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" target="_blank" class="icon button circle is-outline tooltip google-plus" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;" rel="nofollow" title="Share on Google+"><i class="icon-google-plus" ></i></a>
-                                <a href="//www.linkedin.com/shareArticle?mini=true&url=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;"  rel="nofollow" target="_blank" class="icon button circle is-outline tooltip linkedin" title="Share on LinkedIn"><i class="icon-linkedin" ></i></a>
-                            </div>
-                        </div><!-- .summary -->
 
-                    </div><!-- .row -->
-                </div><!-- .product-main -->
+                                <div class="product_meta">
+                                    <span class="posted_in">Danh mục:  
+                                        <a href="<?= Helper::getPermalink('product/cat/' . $obj->cat_id) ?>" rel="tag">
+                                            <?php echo $obj->cat_name ?></a></span>
+                                </div>
+                                <div class="social-icons share-icons share-row relative icon-style-outline " >
+                                    <a href="//www.facebook.com/sharer.php?u=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" data-label="Facebook" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;" rel="nofollow" target="_blank" class="icon button circle is-outline tooltip facebook" title="Share on Facebook"><i class="icon-facebook" ></i></a>
+                                    <a href="//twitter.com/share?url=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;" rel="nofollow" target="_blank" class="icon button circle is-outline tooltip twitter" title="Share on Twitter"><i class="icon-twitter" ></i></a>
+                                    <a href="//plus.google.com/share?url=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" target="_blank" class="icon button circle is-outline tooltip google-plus" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;" rel="nofollow" title="Share on Google+"><i class="icon-google-plus" ></i></a>
+                                    <a href="//www.linkedin.com/shareArticle?mini=true&url=<?php echo Helper::getPermalink('product/' . $obj->id) ?>" onclick="window.open(this.href, this.title, 'width=500,height=500,top=300px,left=300px');  return false;"  rel="nofollow" target="_blank" class="icon button circle is-outline tooltip linkedin" title="Share on LinkedIn"><i class="icon-linkedin" ></i></a>
+                                </div>
+                            </div><!-- .summary -->
 
+                        </div><!-- .row -->
+                    </div><!-- .product-main -->
+                </form>
                 <div class="product-footer">
                     <div class="container">
 

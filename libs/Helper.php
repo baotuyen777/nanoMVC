@@ -60,7 +60,7 @@ class Helper {
      */
     static function getPermalink($action = '', $param = "") {
         if (IS_REWRITE) {
-            $param = $param != "" ? '?' . $param : '';
+//            $param = $param != "" ? '?' . $param : '';
             return SITE_ROOT . $action . $param;
         } else {
             $param = $param != "" ? '&' . $param : '';

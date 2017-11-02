@@ -4,11 +4,13 @@ if ($this->arrProduct):
         ?>
         <div class="col" >
             <div class="col-inner">
-                <div class="badge-container absolute left top z-1">
-                    <div class="callout badge badge-circle">
-                        <div class="badge-inner secondary on-sale">
-                            <span class="onsale">-<?php echo $product->sale ?>%</span></div></div>
-                </div>
+                <?php if ($product->sale > 0): ?>
+                    <div class="badge-container absolute left top z-1">
+                        <div class="callout badge badge-circle">
+                            <div class="badge-inner secondary on-sale">
+                                <span class="onsale">-<?php echo $product->sale ?>%</span></div></div>
+                    </div>
+                <?php endif; ?>
                 <div class="product-small box has-hover box-normal box-text-bottom">
                     <div class="box-image" >
                         <div class="" >
@@ -18,7 +20,10 @@ if ($this->arrProduct):
                                      srcset="<?php echo TIMTHUMB_LINK . $product->image . '&h=400&w=400' ?>" sizes="(max-width: 400px) 100vw, 400px" />									
                             </a>
                         </div>
-
+                        <div class="image-tools absolute bottom right z-3">
+                            <button onclick="window.location.href='<?php echo Helper::getPermalink('cart/buynow/', $product->id) ?>'" name="buynow" class="btn btn_buy_now btn-5">Mua ngay</button>
+                           
+                        </div>
                         <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
                         </div>
                     </div><!-- box-image -->

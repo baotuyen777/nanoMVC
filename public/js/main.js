@@ -50,6 +50,7 @@ function removeCart(product_id) {
 
 function callAjaxForm(form, success) {
     var data = form.serializeArray();
+    console.log(data)
     jQuery.ajax({
         type: "POST",
         url: form.attr('action'),
